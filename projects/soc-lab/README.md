@@ -39,29 +39,3 @@ It aligns with industry frameworks:
 sudo ufw enable
 sudo ufw allow ssh
 sudo apt install fail2ban -y
-
----
-
-## 3. Secure SSH Configuration
-
-sudo nano /etc/ssh/sshd_config
-
-Set:
-PermitRootLogin no
-PasswordAuthentication no
-
-
-Restart service:
-
-sudo systemctl restart ssh
-
-4. Log Management
-
-Enable system logging:
-
-sudo systemctl enable rsyslog
-
-
-Monitor logs:
-
-cat /var/log/auth.log
