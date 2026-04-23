@@ -1,4 +1,3 @@
-# oamosu14.github.io
 # Cybersecurity Lab & Projects Repository
 
 ## Overview
