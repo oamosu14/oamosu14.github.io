@@ -80,6 +80,17 @@ All activities were conducted in a controlled lab environment for educational pu
 
 ---
 
+---
+## 🔴 System Administration Projects
+
+### 🐧 Linux Operations & System Administration
+[View Full Project →](projects/linux-operations/)
+
+- System hardening and security configurations
+- User and access management
+- System monitoring and log analysis
+- Task automation using cron jobs
+
 ## 📞 Contact
 
 - GitHub: https://github.com/oamosu14  
