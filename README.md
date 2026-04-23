@@ -1,0 +1,1 @@
+# oamosu14.github.io
