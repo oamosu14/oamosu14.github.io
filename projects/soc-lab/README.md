@@ -1,42 +1,31 @@
-[⬅ Back to Portfolio](../../)
-
 # 🛡️ SOC-Ready Virtual Machine (Security Operations Center Lab)
 
+[⬅ Back to Portfolio](../../)
+
 ## 📌 Overview
-
-This project builds a hardened Linux-based SOC environment designed for security monitoring, incident detection, threat intelligence, and response operations.
-
-It aligns with industry frameworks:
-- NIST Cybersecurity Framework
-- ISO 27001
-- CIS Controls
+This project builds a hardened Linux-based SOC environment for monitoring, detection, and incident response operations aligned with industry frameworks such as NIST and CIS Controls.
 
 ---
 
 ## 🎯 Objectives
-
 - Deploy secure SOC VM
-- Enable log collection and monitoring
-- Implement SIEM tools
+- Enable centralized logging and monitoring
+- Implement SIEM capabilities
 - Support incident response lifecycle
 - Integrate threat intelligence feeds
 
 ---
 
-# 🚀 FULL IMPLEMENTATION
+## 🚀 Implementation
+
+### 1. VM Deployment
+- Ubuntu Server VM created in VirtualBox
+- Host-only network configuration for isolation
+- Optimized system resource allocation
 
 ---
 
-## 1. VM Deployment
-
-- Create Ubuntu Server VM in VirtualBox
-- Assign isolated network (host-only)
-- Allocate secure system resources
-
----
-
-## 2. System Hardening
-
+### 2. System Hardening
 ```bash
 sudo ufw enable
 sudo ufw allow ssh
