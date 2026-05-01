@@ -1,96 +1,60 @@
-[⬅ Back to Portfolio](../../)
----
-
-# 🖥️ 2. HOME LAB MINI DATA CENTER (FULL VERSION)
-
-📁 `projects/home-lab-data-center/README.md`
-
----
-
-```markdown
 # 🖥️ Home Lab Mini Data Center (Virtualized Infrastructure Platform)
 
-## 📌 Overview
+[⬅ Back to Portfolio](../../)
 
+## 📌 Overview
 This project builds a scalable virtual infrastructure platform that simulates an enterprise data center environment using Linux virtualization.
 
-It is designed to run continuously, host multiple services, and support automation and remote management.
+It is designed to run multiple services, support automation, and simulate real-world enterprise infrastructure.
 
 ---
 
-## 🏗️ Architecture Design
-
+## 🏗️ Architecture
 Physical Host → Hypervisor → Multiple Linux VMs → Service Layer → Automation Layer
 
 ---
 
-# 🚀 FULL IMPLEMENTATION
+## 🚀 Implementation
 
----
-
-## 1. Hypervisor Setup
-
-- Install VirtualBox or Proxmox
-- Enable virtualization (VT-x/AMD-V)
-- Configure networking:
+### 1. Hypervisor Setup
+- Installed VirtualBox / Proxmox
+- Enabled virtualization (VT-x / AMD-V)
+- Configured networking:
   - Bridged network (external access)
   - Internal network (isolated services)
 
----
-
-## 2. VM Deployment Strategy
-
-Create multiple Linux VMs:
-
+### 2. VM Deployment Strategy
 - Web Server Node
 - Database Node
 - Security Node
 - Automation Node
 
----
+### 3. Network Segmentation
+- Isolates traffic between services
+- Improves security posture
+- Mimics enterprise architecture
 
-## 3. Network Segmentation
-
-
-✔ Isolates traffic  
-✔ Improves security  
-✔ Mimics enterprise architecture  
-
----
-
-## 4. Central Services
-
+### 4. Central Services
 - SSH remote management
-- File sharing (NFS/Samba)
-- DNS services (optional)
+- File sharing (NFS / Samba)
+- Optional DNS services
 
----
-
-## 5. Automation Layer
-
+### 5. Automation Layer
 - Ansible for configuration management
 - Cron jobs for scheduled automation tasks
 
----
-
-## 6. Remote Access Setup
-
+### 6. Remote Access
 - SSH key-based authentication
-- Secure login only (no passwords)
-- Optional VPN access for remote control
+- Secure access enforcement (no password login)
+
+### 7. Scalability
+- VM templates for rapid deployment
+- Standardized configurations
+- Expandable architecture
 
 ---
 
-## 7. Scalability Design
-
-- VM templates for fast deployment
-- Standardized OS configuration
-- Easy expansion without redesign
-
----
-
-# 🧰 Tools Used
-
+## 🧰 Tools Used
 - Ubuntu Server
 - VirtualBox / Proxmox
 - SSH
@@ -100,12 +64,7 @@ Create multiple Linux VMs:
 
 ---
 
-# 📊 Outcome
-
-- Built enterprise-style virtual infrastructure
-- Implemented isolated multi-service environment
-- Enabled automation and remote administration
-- Designed scalable data center architecture
-
-
-
+## 📊 Outcome
+- Enterprise-style virtual infrastructure
+- Isolated multi-service environment
+- Automation-enabled data center simulation
