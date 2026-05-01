@@ -1,25 +1,25 @@
-[⬅ Back to Portfolio](../../)
-
 # ⚙️ DevSecOps Pipeline
 
-## Overview
-Integrated security into CI/CD pipeline.
+[⬅ Back to Portfolio](../../)
+
+## 📌 Overview
+This project integrates security practices directly into the CI/CD pipeline to ensure continuous secure software delivery.
 
 ---
 
-## Tools Used
+## 🧰 Tools Used
 - GitHub Actions
 - Docker
 - Trivy
 
 ---
 
-## Activities
+## 🔐 Security Activities
 - Static code analysis
-- Container scanning
-- Dependency checks
+- Container image vulnerability scanning
+- Dependency security checks
 
 ---
 
-## Outcome
-Implemented secure development workflow.
+## 📊 Outcome
+Implemented a secure software delivery workflow with continuous security validation across the pipeline.
