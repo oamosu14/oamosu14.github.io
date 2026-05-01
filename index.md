@@ -58,3 +58,5 @@ title: Home
 </section>
 
 <script src="assets/js/script.js"></script>
+
+<script src="assets/main.js"></script>
