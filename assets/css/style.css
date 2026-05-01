@@ -162,3 +162,21 @@ a:hover {
 .light-mode .summary {
   opacity: 0.9;
 }
+
+/* ============================= */
+/* SHRINKING NAVBAR ON SCROLL */
+/* ============================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.shrink {
+  padding: 10px 30px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+}
