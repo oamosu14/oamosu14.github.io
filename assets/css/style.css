@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.highlight {
+  color: #38bdf8;
+}
+
+.summary {
+  max-width: 700px;
+  margin: 20px auto;
+  opacity: 0.8;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px 20px;
+  background: #38bdf8;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+}
+
+/* PROJECTS */
+.projects-preview {
+  padding: 50px;
+}
+
+.grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.1);
+}
+
+/* CONTACT */
+.contact {
+  text-align: center;
+  padding: 50px;
+}
+
+/* LIGHT MODE */
+.light-mode {
+  background: white;
+  color: black;
+}
+
+.light-mode .navbar {
+  background: rgba(0,0,0,0.05);
+}
+
+.light-mode .card {
+  background: rgba(0,0,0,0.05);
+}
