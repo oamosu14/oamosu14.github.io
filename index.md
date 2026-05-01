@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity & DevOps Portfolio</title>
 
-<style>
-:root {
-    --bg: #0f172a;
-    --text: #e2e8f0;
-    --card: rgba(255,255,255,0.05);
-    --accent: #38bdf8;
-}
-
-.light-mode {
-    --bg: #f8fafc;
-    --text: #0f172a;
-    --card: rgba(0,0,0,0.05);
-}
-
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: 0.3s;
-}
-
-/* HEADER */
-header {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-header h1 {
-    font-size: 2.5em;
-}
 
 header p {
     color: gray;
