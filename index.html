@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity & DevOps Portfolio</title>
+
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --accent: #22c55e;
+}
+
+body.light {
+  --bg: #ffffff;
+  --card: #f3f4f6;
+  --text: #111827;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+}
+
+nav a {
+  color: var(--text);
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 3em;
+}
+
+.typing {
+  color: var(--accent);
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px 25px;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+
+/* SECTION */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+/* PROJECT CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div><strong>Portfolio</strong></div>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <button onclick="toggleMode()">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Cybersecurity & DevOps Engineer</h1>
+  <h2 class="typing"></h2>
+
+  <a href="assets/resume.pdf" download>
+    <button class="btn">Download Resume</button>
+  </a>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="grid">
+
+    <div class="card" onclick="go('projects/pentest-lab/')">
+      <h3>🛡️ Penetration Testing Lab</h3>
+      <p>Nmap, Nessus, Metasploit</p>
+    </div>
+
+    <div class="card" onclick="go('projects/soc-lab/')">
+      <h3>🛡️ SOC Lab</h3>
+      <p>Threat Detection & SIEM</p>
+    </div>
+
+    <div class="card" onclick="go('projects/cicd-pipeline/')">
+      <h3>⚙️ CI/CD Pipeline</h3>
+      <p>Jenkins, Automation</p>
+    </div>
+
+    <div class="card" onclick="go('projects/devsecops/')">
+      <h3>🔐 DevSecOps</h3>
+      <p>Security in CI/CD</p>
+    </div>
+
+    <div class="card" onclick="go('projects/linux-operations/')">
+      <h3>🖥️ Linux Operations</h3>
+      <p>Enterprise Linux Admin</p>
+    </div>
+
+    <div class="card" onclick="go('projects/home-lab-data-center/')">
+      <h3>🏢 Home Lab Data Center</h3>
+      <p>Infrastructure Simulation</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <p>Email: your@email.com</p>
+  <p>GitHub: github.com/oamosu14</p>
+</section>
+
+<footer>
+  <p>© 2026 Portfolio</p>
+</footer>
+
+<script>
+// DARK MODE
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+
+// PROJECT NAVIGATION
+function go(link) {
+  window.location.href = link;
+}
+
+// TYPING EFFECT
+const words = ["Cybersecurity", "DevOps", "Cloud Engineering", "Automation"];
+let i = 0, j = 0, current = "", deleting = false;
+
+function type() {
+  current = words[i];
+
+  document.querySelector(".typing").textContent =
+    current.substring(0, j);
+
+  if (!deleting && j++ === current.length) {
+    deleting = true;
+    setTimeout(type, 1000);
+    return;
+  }
+
+  if (deleting && j-- === 0) {
+    deleting = false;
+    i = (i + 1) % words.length;
+  }
+
+  setTimeout(type, 100);
+}
+
+type();
+</script>
+
+</body>
+</html>
