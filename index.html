@@ -3,111 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity & DevOps Portfolio</title>
+
+<title>Cybersecurity & DevOps Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg: #0f172a;
-  --card: #111827;
-  --text: #e5e7eb;
-  --accent: #22c55e;
+:root{
+  --bg:#0b0f19;
+  --card:rgba(255,255,255,0.05);
+  --text:#e6edf3;
+  --accent:#22c55e;
 }
 
-body.light {
-  --bg: #ffffff;
-  --card: #f3f4f6;
-  --text: #111827;
+body.light{
+  --bg:#ffffff;
+  --card:#f3f4f6;
+  --text:#111;
 }
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  scroll-behavior: smooth;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* NAVBAR */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  background: rgba(0,0,0,0.6);
-  position: sticky;
-  top: 0;
-  backdrop-filter: blur(10px);
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.3);
+  z-index:1000;
 }
 
-nav a {
-  color: var(--text);
-  margin: 0 15px;
-  text-decoration: none;
+nav a{
+  margin:0 15px;
+  text-decoration:none;
+  color:var(--text);
 }
 
 /* HERO */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-.hero h1 {
-  font-size: 3em;
+.hero h1{
+  font-size:3rem;
 }
 
-.typing {
-  color: var(--accent);
+.typing{
+  color:var(--accent);
+  font-size:1.5rem;
 }
 
 /* BUTTON */
-.btn {
-  padding: 12px 25px;
-  background: var(--accent);
-  border: none;
-  cursor: pointer;
-  margin-top: 20px;
-  border-radius: 6px;
+.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 /* SECTION */
-.section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
+.section{
+  padding:80px 20px;
+  max-width:1200px;
+  margin:auto;
 }
 
-/* PROJECT CARDS */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
 }
 
-.card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 12px;
-  transition: 0.3s;
-  cursor: pointer;
+/* CARD */
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:16px;
+  backdrop-filter:blur(10px);
+  transition:0.4s;
+  cursor:pointer;
 }
 
-.card:hover {
-  transform: translateY(-10px);
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* SCROLL ANIMATION */
+.hidden{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #020617;
+footer{
+  text-align:center;
+  padding:30px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-  <div><strong>Portfolio</strong></div>
+  <strong>Portfolio</strong>
   <div>
     <a href="#home">Home</a>
     <a href="#projects">Projects</a>
@@ -116,56 +139,53 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="home" class="hero">
   <h1>Cybersecurity & DevOps Engineer</h1>
-  <h2 class="typing"></h2>
+  <div class="typing"></div>
 
   <a href="assets/resume.pdf" download>
     <button class="btn">Download Resume</button>
   </a>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects" class="section">
-  <h2>Projects</h2>
+  <h2 class="hidden">Projects</h2>
 
   <div class="grid">
 
-    <div class="card" onclick="go('projects/pentest-lab/')">
+    <div class="card hidden" onclick="go('projects/pentest-lab/')">
       <h3>🛡️ Penetration Testing Lab</h3>
-      <p>Nmap, Nessus, Metasploit</p>
+      <p>Nmap • Nessus • Metasploit</p>
     </div>
 
-    <div class="card" onclick="go('projects/soc-lab/')">
+    <div class="card hidden" onclick="go('projects/soc-lab/')">
       <h3>🛡️ SOC Lab</h3>
-      <p>Threat Detection & SIEM</p>
+      <p>SIEM • Threat Detection</p>
     </div>
 
-    <div class="card" onclick="go('projects/cicd-pipeline/')">
-      <h3>⚙️ CI/CD Pipeline</h3>
-      <p>Jenkins, Automation</p>
-    </div>
-
-    <div class="card" onclick="go('projects/devsecops/')">
+    <div class="card hidden" onclick="go('projects/devsecops/')">
       <h3>🔐 DevSecOps</h3>
       <p>Security in CI/CD</p>
     </div>
 
-    <div class="card" onclick="go('projects/linux-operations/')">
-      <h3>🖥️ Linux Operations</h3>
-      <p>Enterprise Linux Admin</p>
+    <div class="card hidden" onclick="go('projects/cicd-pipeline/')">
+      <h3>⚙️ CI/CD Pipeline</h3>
+      <p>Automation • Jenkins</p>
     </div>
 
-    <div class="card" onclick="go('projects/home-lab-data-center/')">
-      <h3>🏢 Home Lab Data Center</h3>
+    <div class="card hidden" onclick="go('projects/linux-operations/')">
+      <h3>🖥️ Linux Operations</h3>
+      <p>Enterprise Linux</p>
+    </div>
+
+    <div class="card hidden" onclick="go('projects/home-lab-data-center/')">
+      <h3>🏢 Data Center Lab</h3>
       <p>Infrastructure Simulation</p>
     </div>
 
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section">
   <h2>Contact</h2>
   <p>Email: your@email.com</p>
@@ -173,45 +193,53 @@ footer {
 </section>
 
 <footer>
-  <p>© 2026 Portfolio</p>
+  © 2026 Portfolio
 </footer>
 
 <script>
 // DARK MODE
-function toggleMode() {
+function toggleMode(){
   document.body.classList.toggle("light");
 }
 
-// PROJECT NAVIGATION
-function go(link) {
+// NAVIGATION
+function go(link){
   window.location.href = link;
 }
 
 // TYPING EFFECT
-const words = ["Cybersecurity", "DevOps", "Cloud Engineering", "Automation"];
-let i = 0, j = 0, current = "", deleting = false;
+const words=["Cybersecurity","DevOps","Cloud","Automation"];
+let i=0,j=0,deleting=false;
 
-function type() {
-  current = words[i];
+function type(){
+  let current=words[i];
+  document.querySelector(".typing").textContent=current.substring(0,j);
 
-  document.querySelector(".typing").textContent =
-    current.substring(0, j);
-
-  if (!deleting && j++ === current.length) {
-    deleting = true;
-    setTimeout(type, 1000);
+  if(!deleting && j++===current.length){
+    deleting=true;
+    setTimeout(type,1000);
     return;
   }
 
-  if (deleting && j-- === 0) {
-    deleting = false;
-    i = (i + 1) % words.length;
+  if(deleting && j--===0){
+    deleting=false;
+    i=(i+1)%words.length;
   }
 
-  setTimeout(type, 100);
+  setTimeout(type,100);
 }
-
 type();
+
+// SCROLL ANIMATION
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 </script>
 
 </body>
