@@ -1,39 +1,36 @@
-[⬅ Back to Portfolio](../../)
-
 # 🐧 Linux System Administration & Security Operations
 
-## Overview
+[⬅ Back to Portfolio](../../)
 
-This project demonstrates hands-on Linux system administration tasks focused on security hardening, system monitoring, user management, and automation. All tasks were performed on Ubuntu-based systems in a controlled lab environment.
+## 📌 Overview
+This project demonstrates Linux system administration tasks focused on security hardening, monitoring, user management, and automation in a controlled lab environment.
 
 ---
 
-## 🔧 Core Areas
-
-### 🔐 System Hardening
-- SSH configuration (disable root login, change port)
-- Firewall setup (UFW)
+## 🔐 System Hardening
+- SSH hardening (disable root login, secure configuration)
+- Firewall configuration (UFW)
 - Fail2Ban intrusion prevention
-- File permissions and access control
+- File permission enforcement
 
 ---
 
-### 👥 User & Access Management
-- Creating and managing users
-- Configuring sudo privileges
-- Password policies enforcement
-- Group-based access control
+## 👥 User Management
+- User and group creation
+- Sudo privilege configuration
+- Password policy enforcement
+- Role-based access control
 
 ---
 
-### 📂 File & Directory Management
-- File permissions (chmod, chown)
+## 📂 File System Management
+- Permissions (chmod, chown)
 - Secure directory structures
 - Log file protection
 
 ---
 
-### 📊 System Monitoring
+## 📊 System Monitoring
 - Process monitoring (top, htop)
 - Disk usage (df, du)
 - Memory usage (free)
@@ -41,17 +38,16 @@ This project demonstrates hands-on Linux system administration tasks focused on 
 
 ---
 
-### ⚙️ Automation & Scheduling
-- Cron jobs for automation
-- Backup scripts using tar
-- System updates automation
+## ⚙️ Automation
+- Cron job scheduling
+- Backup automation scripts (tar, rsync)
+- System update automation
 
 ---
 
-## 🧰 Tools & Commands
-
+## 🧰 Tools Used
 - SSH
-- UFW (Firewall)
+- UFW
 - Fail2Ban
 - Cron
 - Netstat / ss
@@ -61,21 +57,12 @@ This project demonstrates hands-on Linux system administration tasks focused on 
 
 ---
 
-## 📸 Screenshots
-
+## 📸 Evidence
 ![Linux Terminal](../../assets/images/linux-terminal.png)
 
 ---
 
-## 📚 Key Outcomes
-
-- Strengthened Linux system security
-- Improved monitoring and troubleshooting skills
-- Implemented secure user and access controls
-- Automated routine administrative tasks
-
----
-
-## ⚠️ Notes
-
-All configurations and testing were performed in a controlled lab environment for learning purposes.
+## 📊 Outcome
+- Strengthened Linux security posture
+- Improved system administration skills
+- Implemented automation for routine tasks
