@@ -103,3 +103,62 @@ body {
 .light-mode .card {
   background: rgba(0,0,0,0.05);
 }
+
+/* ============================= */
+/* GLOBAL LINK STYLING FIX */
+/* ============================= */
+
+a {
+  color: #38bdf8;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+/* Ensure links are visible in dark mode containers */
+.navbar a {
+  color: white;
+}
+
+.navbar a:hover {
+  color: #38bdf8;
+}
+
+/* ============================= */
+/* BACK TO PORTFOLIO LINK FIX */
+/* ============================= */
+
+.back-link {
+  display: inline-block;
+  margin: 20px 0;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+.back-link:hover {
+  color: #7dd3fc;
+}
+
+/* ============================= */
+/* DARK / LIGHT MODE LINK OVERRIDE */
+/* ============================= */
+
+.light-mode a {
+  color: #0369a1;
+}
+
+.light-mode a:hover {
+  color: #0284c7;
+}
+
+/* ============================= */
+/* IMPROVE READABILITY IN LIGHT MODE */
+/* ============================= */
+
+.light-mode .summary {
+  opacity: 0.9;
+}
