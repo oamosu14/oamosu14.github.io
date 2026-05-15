@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linux Operations | System Administration Lab</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:#0b0f19;
+  color:#e6edf3;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 20px;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav a{
+  color:#e6edf3;
+  text-decoration:none;
+  margin-right:15px;
+}
+
+nav a.primary{ color:#22c55e; }
+
+h1,h2{ color:#22c55e; }
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+/* OPERATION GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.metric{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+}
+
+/* LOG CONSOLE */
+.logbox{
+  margin-top:25px;
+  background:#0f172a;
+  padding:15px;
+  border-radius:10px;
+  font-family:monospace;
+  font-size:12px;
+  height:300px;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a class="primary" href="../../index.html">⬅ Portfolio</a>
+  <a href="../sentinelops/index.html">SentinelOps</a>
+</nav>
+
+<div class="container">
+
+<section>
+  <h1>Linux System Operations Lab</h1>
+
+  <div class="card">
+    This environment simulates enterprise Linux system administration operations
+    including monitoring, security enforcement, user management, and system diagnostics.
+  </div>
+</section>
+
+<!-- SYSTEM METRICS -->
+<section>
+  <h2>System Health Overview</h2>
+
+  <div class="grid">
+    <div class="metric">CPU Usage<br><b id="cpu">--%</b></div>
+    <div class="metric">Memory Usage<br><b id="mem">--%</b></div>
+    <div class="metric">Disk Usage<br><b id="disk">--%</b></div>
+    <div class="metric">Active Users<br><b id="users">--</b></div>
+  </div>
+</section>
+
+<!-- OPERATIONS LOG -->
+<section>
+  <h2>Operations Console</h2>
+
+  <div id="log" class="logbox"></div>
+</section>
+
+</div>
+
+<script>
+
+// =========================
+// SYSTEM STATE
+// =========================
+function rand(min,max){
+  return Math.floor(Math.random()*(max-min)+min);
+}
+
+// =========================
+// UPDATE METRICS
+// =========================
+function updateMetrics(){
+  document.getElementById("cpu").innerText = rand(10,90) + "%";
+  document.getElementById("mem").innerText = rand(20,85) + "%";
+  document.getElementById("disk").innerText = rand(30,95) + "%";
+  document.getElementById("users").innerText = rand(1,12);
+}
+
+// =========================
+// LOG EVENTS
+// =========================
+const actions = [
+  "User 'opsadmin' logged in via SSH",
+  "UFW firewall rules updated",
+  "Fail2Ban blocked suspicious IP",
+  "Cron job executed backup script",
+  "System package updates installed",
+  "Permission change applied to /var/log",
+  "New user account created",
+  "System audit scan completed"
+];
+
+function logEvent(){
+  let msg = actions[Math.floor(Math.random()*actions.length)];
+
+  let box = document.getElementById("log");
+
+  box.innerHTML += `<div>[INFO] ${msg}</div>`;
+  box.scrollTop = box.scrollHeight;
+}
+
+// =========================
+// BOOT LOOP
+// =========================
+setInterval(updateMetrics, 2000);
+setInterval(logEvent, 2500);
+
+</script>
+
+</body>
+</html>
