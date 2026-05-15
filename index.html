@@ -10,8 +10,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-</head>
-
 <style>
 :root{
   --bg:#0b0f19;
@@ -46,6 +44,7 @@ body{
   backdrop-filter:blur(10px);
   position:sticky;
   top:0;
+  z-index:1000;
   border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
@@ -60,6 +59,36 @@ body{
   background:rgba(34,197,94,0.15);
   border:1px solid rgba(34,197,94,0.3);
   font-size:12px;
+}
+
+/* HERO PROFILE */
+.hero-profile{
+  padding:50px 22px 20px 22px;
+}
+
+.hero-content{
+  max-width:1200px;
+  margin:auto;
+}
+
+.hero-content h1{
+  font-size:48px;
+  color:var(--accent);
+}
+
+.hero-content h2{
+  margin-top:10px;
+  font-size:22px;
+  font-weight:400;
+  color:#e6edf3;
+}
+
+.hero-content p{
+  margin-top:18px;
+  max-width:950px;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
 }
 
 /* MAIN GRID */
@@ -178,51 +207,139 @@ footer{
   color:var(--muted);
   font-size:12px;
 }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .metrics{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero-content h1{
+    font-size:36px;
+  }
+
+  .hero-content h2{
+    font-size:18px;
+  }
+}
 </style>
 </head>
 
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
   <div class="brand">🛡 SOC CONTROL CENTER | OAMOSU</div>
   <div class="status-pill">SYSTEM ONLINE</div>
 </div>
 
+<!-- HERO PROFILE -->
+<section class="hero-profile">
+
+  <div class="hero-content">
+
+    <h1>Olufemi Amosu</h1>
+
+    <h2>Platform Engineer | SRE | Cybersecurity Analyst</h2>
+
+    <p>
+      Infrastructure-focused engineer with 11+ years of experience across Linux systems administration,
+      cybersecurity operations, DevOps automation, observability engineering, and enterprise infrastructure management.
+    </p>
+
+    <p>
+      Specialized in building secure operational environments using centralized logging, monitoring,
+      automation, configuration management, CI/CD workflows, and security hardening principles.
+      This portfolio simulates enterprise-style operational ecosystems used across modern DevOps,
+      SRE, and SOC engineering environments.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- MAIN GRID -->
 <div class="grid">
 
   <!-- LEFT -->
   <div class="panel">
 
     <div class="hero-title">Operational Security Dashboard</div>
-    <div class="subtitle">Real-time infrastructure telemetry • simulated SOC environment</div>
+    <div class="subtitle">
+      Real-time infrastructure telemetry • simulated SOC environment
+    </div>
 
     <div class="metrics">
-      <div class="metric"><h3>EVENTS</h3><p id="events">0</p></div>
-      <div class="metric"><h3>INFO</h3><p class="info" id="info">0</p></div>
-      <div class="metric"><h3>WARN</h3><p class="warn" id="warn">0</p></div>
-      <div class="metric"><h3>CRITICAL</h3><p class="crit" id="crit">0</p></div>
+      <div class="metric">
+        <h3>EVENTS</h3>
+        <p id="events">0</p>
+      </div>
+
+      <div class="metric">
+        <h3>INFO</h3>
+        <p class="info" id="info">0</p>
+      </div>
+
+      <div class="metric">
+        <h3>WARN</h3>
+        <p class="warn" id="warn">0</p>
+      </div>
+
+      <div class="metric">
+        <h3>CRITICAL</h3>
+        <p class="crit" id="crit">0</p>
+      </div>
     </div>
 
     <div class="stream" id="stream"></div>
+
   </div>
 
   <!-- RIGHT -->
   <div class="right-grid">
 
     <div class="panel">
-      <h3>🚀 Projects</h3>
+      <h3>🚀 Infrastructure Projects</h3>
 
-      <div class="card" onclick="go('projects/sentinelops/')">SentinelOps Platform</div>
-      <div class="card" onclick="go('projects/soc-lab/')">SOC Lab (SIEM Engine)</div>
-      <div class="card" onclick="go('projects/cicd-pipeline/')">CI/CD Pipeline</div>
-      <div class="card" onclick="go('projects/linux-operations/')">Linux Operations</div>
-      <div class="card" onclick="go('projects/devsecops/')">DevSecOps Lab</div>
+      <div class="card" onclick="go('projects/sentinelops/')">
+        SentinelOps Platform
+      </div>
+
+      <div class="card" onclick="go('projects/soc-lab/')">
+        SOC Lab (SIEM Engine)
+      </div>
+
+      <div class="card" onclick="go('projects/cicd-pipeline/')">
+        CI/CD Pipeline
+      </div>
+
+      <div class="card" onclick="go('projects/linux-operations/')">
+        Linux Operations
+      </div>
+
+      <div class="card" onclick="go('projects/devsecops/')">
+        DevSecOps Lab
+      </div>
     </div>
 
     <div class="panel contact">
       <h3>📩 Contact</h3>
-      Email: <a href="mailto:oamosu14@aol.com">oamosu14@aol.com</a><br>
-      GitHub: <a href="https://github.com/oamosu14" target="_blank">github.com/oamosu14</a>
+
+      Email:
+      <a href="mailto:oamosu14@aol.com">
+        oamosu14@aol.com
+      </a>
+      <br>
+
+      GitHub:
+      <a href="https://github.com/oamosu14" target="_blank">
+        github.com/oamosu14
+      </a>
     </div>
 
     <div class="panel">
@@ -240,19 +357,31 @@ footer{
 <script>
 
 let logs=[];
-let stats={total:0,info:0,warn:0,crit:0};
+
+let stats={
+  total:0,
+  info:0,
+  warn:0,
+  crit:0
+};
 
 const events=[
   {t:"INFO",m:"Node heartbeat OK - IND-WEB-01"},
   {t:"WARN",m:"High CPU usage detected - FSH-DEV-01"},
-  {t:"CRIT",m:"Brute-force attempt detected"},
-  {t:"INFO",m:"Backup completed"},
-  {t:"WARN",m:"Disk threshold reached"},
+  {t:"CRIT",m:"Brute-force attempt detected on SSH gateway"},
+  {t:"INFO",m:"Backup completed successfully"},
+  {t:"WARN",m:"Disk threshold warning - IND-LOG-01"},
+  {t:"INFO",m:"Prometheus scrape completed"},
+  {t:"CRIT",m:"Authentication anomaly detected"},
+  {t:"INFO",m:"CI/CD pipeline execution successful"}
 ];
 
 function push(){
+
   let e=events[Math.floor(Math.random()*events.length)];
+
   logs.push(e);
+
   stats.total++;
 
   if(e.t==="INFO") stats.info++;
@@ -263,20 +392,28 @@ function push(){
 }
 
 function render(){
+
   document.getElementById("events").innerText=stats.total;
   document.getElementById("info").innerText=stats.info;
   document.getElementById("warn").innerText=stats.warn;
   document.getElementById("crit").innerText=stats.crit;
 
   let stream=document.getElementById("stream");
+
   stream.innerHTML="";
 
   logs.slice(-25).reverse().forEach(l=>{
+
     let cls="info";
+
     if(l.t==="WARN") cls="warn";
     if(l.t==="CRIT") cls="crit";
 
-    stream.innerHTML+=`<div class="event ${cls}">[${l.t}] ${l.m}</div>`;
+    stream.innerHTML+=`
+      <div class="event ${cls}">
+        [${l.t}] ${l.m}
+      </div>
+    `;
   });
 }
 
@@ -285,6 +422,7 @@ function go(link){
 }
 
 setInterval(push,2000);
+
 render();
 
 </script>
