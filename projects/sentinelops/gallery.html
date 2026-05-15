@@ -10,129 +10,80 @@ body{
   font-family:Inter, sans-serif;
   background:#0b0f19;
   color:#e6edf3;
-  padding:40px;
 }
 
 .container{
-  max-width:1100px;
+  max-width:1000px;
   margin:auto;
+  padding:60px 20px;
 }
 
 h1{
   color:#22c55e;
-  margin-bottom:10px;
-}
-
-p{
-  opacity:0.8;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
   margin-top:30px;
 }
 
 .card{
   background:rgba(255,255,255,0.05);
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:0.3s;
   border:1px solid rgba(255,255,255,0.08);
-}
-
-.card:hover{
-  transform:scale(1.03);
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
-
-.card img{
-  width:100%;
-  display:block;
-}
-
-.caption{
+  border-radius:12px;
   padding:15px;
 }
 
-.caption h3{
-  margin:0;
-  color:#22c55e;
-  font-size:1rem;
-}
-
-.caption p{
-  font-size:0.9rem;
-  opacity:0.8;
+img{
+  width:100%;
+  border-radius:10px;
 }
 
 nav{
-  margin-bottom:20px;
+  padding:15px 20px;
+  background:rgba(0,0,0,0.5);
+  position:sticky;
+  top:0;
 }
 
 a{
   color:#22c55e;
   text-decoration:none;
+  margin-right:15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
 <nav>
-  <a href="../index.html">← Back to Portfolio</a>
+  <a href="../../index.html">⬅ Back to Portfolio</a>
+  <a href="./index.html">Case Study</a>
 </nav>
 
+<div class="container">
+
 <h1>SentinelOps Evidence Gallery</h1>
-<p>
-Operational proof of infrastructure, monitoring, automation, and security systems.
-Each artifact reflects a functional component of the SentinelOps platform.
-</p>
+
+<p>Operational artifacts, dashboards, logs, and infrastructure snapshots.</p>
 
 <div class="grid">
 
   <div class="card">
-    <img src="../../assets/images/sentinelops-architecture.png">
-    <div class="caption">
-      <h3>System Architecture</h3>
-      <p>Multi-site virtual enterprise topology</p>
-    </div>
-  </div>
-
-  <div class="card">
+    <h3>Grafana Dashboard</h3>
     <img src="../../assets/images/grafana-dashboard.png">
-    <div class="caption">
-      <h3>Monitoring Dashboard</h3>
-      <p>Real-time system metrics (CPU, Memory, Disk)</p>
-    </div>
   </div>
 
   <div class="card">
-    <img src="../../assets/images/prometheus-alerts.png">
-    <div class="caption">
-      <h3>Alerting System</h3>
-      <p>Prometheus rule-based alert generation</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="../../assets/images/ansible-run.png">
-    <div class="caption">
-      <h3>Automation Layer</h3>
-      <p>Ansible orchestration execution output</p>
-    </div>
-  </div>
-
-  <div class="card">
+    <h3>CMDB Inventory</h3>
     <img src="../../assets/images/cmdb-dashboard.png">
-    <div class="caption">
-      <h3>CMDB Dashboard</h3>
-      <p>Infrastructure inventory & live node tracking</p>
-    </div>
+  </div>
+
+  <div class="card">
+    <h3>Ansible Execution</h3>
+    <img src="../../assets/images/ansible-run.png">
   </div>
 
 </div>
