@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevSecOps Pipeline Simulation</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:#0b0f19;
+  color:#e6edf3;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 20px;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav a{
+  color:#e6edf3;
+  text-decoration:none;
+  margin-right:15px;
+}
+
+nav a.primary{ color:#22c55e; }
+
+h1,h2{ color:#22c55e; }
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+/* PIPELINE VISUAL */
+.pipeline{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
+
+.stage{
+  flex:1;
+  min-width:150px;
+  padding:15px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+  position:relative;
+}
+
+.stage::after{
+  content:"→";
+  position:absolute;
+  right:-15px;
+  top:40%;
+  color:#22c55e;
+}
+
+.stage:last-child::after{
+  content:"";
+}
+
+/* SECURITY GATES */
+.gate{
+  margin-top:10px;
+  padding:6px;
+  font-size:12px;
+  border-radius:6px;
+}
+
+.pass{ background:rgba(34,197,94,0.15); color:#22c55e; }
+.fail{ background:rgba(239,68,68,0.15); color:#ef4444; }
+
+/* LOG PANEL */
+.logbox{
+  margin-top:25px;
+  background:#0f172a;
+  padding:15px;
+  border-radius:10px;
+  font-family:monospace;
+  font-size:12px;
+  height:250px;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a class="primary" href="../../index.html">⬅ Portfolio</a>
+  <a href="../sentinelops/index.html">SentinelOps</a>
+</nav>
+
+<div class="container">
+
+<section>
+  <h1>DevSecOps Pipeline Simulation</h1>
+
+  <div class="card">
+    This project simulates a secure CI/CD pipeline integrating development,
+    security validation, and deployment governance.
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section>
+  <h2>CI/CD Pipeline Flow</h2>
+
+  <div class="pipeline">
+
+    <div class="stage">
+      DEV
+      <div class="gate pass">SAST Scan: PASS</div>
+    </div>
+
+    <div class="stage">
+      BUILD
+      <div class="gate pass">Dependency Check: PASS</div>
+    </div>
+
+    <div class="stage">
+      TEST
+      <div class="gate pass">DAST Scan: PASS</div>
+    </div>
+
+    <div class="stage">
+      STAGING
+      <div class="gate pass">Security Policy: PASS</div>
+    </div>
+
+    <div class="stage">
+      PROD
+      <div class="gate pass">Deployment: APPROVED</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECURITY MODEL -->
+<section>
+  <h2>Security Enforcement Layer</h2>
+
+  <div class="card">
+    <ul>
+      <li>Static Application Security Testing (SAST)</li>
+      <li>Dynamic Application Security Testing (DAST)</li>
+      <li>Dependency vulnerability scanning</li>
+      <li>Policy-based deployment gating</li>
+      <li>Shift-left security enforcement model</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SIMULATION LOG -->
+<section>
+  <h2>Pipeline Execution Log</h2>
+
+  <div id="log" class="logbox"></div>
+</section>
+
+</div>
+
+<script>
+
+const steps = [
+  "SAST scan completed on source code",
+  "Dependency scan passed (no CVEs critical)",
+  "Container build successful",
+  "DAST scan completed against staging environment",
+  "Security policy validated",
+  "Deployment approved to production"
+];
+
+let i = 0;
+
+function runPipeline(){
+  if(i < steps.length){
+    document.getElementById("log").innerHTML +=
+      `<div>[INFO] ${steps[i]}</div>`;
+    i++;
+  }
+}
+
+setInterval(runPipeline, 2000);
+
+</script>
+
+</body>
+</html>
