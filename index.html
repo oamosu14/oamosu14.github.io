@@ -123,6 +123,11 @@ nav a{
   border-radius:6px;
 }
 
+/* STATUS STRIP */
+.status-card small{
+  opacity:0.8;
+}
+
 /* SCROLL ANIMATION */
 .hidden{
   opacity:0;
@@ -156,6 +161,7 @@ footer{
   </div>
 </nav>
 
+<!-- HERO -->
 <section id="home" class="hero">
   <h1>Platform Engineer (SRE + Cybersecurity)</h1>
   <div class="typing"></div>
@@ -167,7 +173,7 @@ footer{
   </p>
 
   <p class="summary">
-    I build infrastructure systems that combine observability, automation, and security into operational environments.
+    I design and operate infrastructure systems that combine observability, automation, and security into production-like environments.
   </p>
 
   <a href="assets/resume.pdf" download>
@@ -175,44 +181,84 @@ footer{
   </a>
 </section>
 
+<!-- LIVE STATUS STRIP -->
+<section class="section hidden">
+  <h2>Live Infrastructure Status</h2>
+
+  <div class="grid">
+
+    <div class="card status-card">
+      <h3>🟢 SOC Stack</h3>
+      <p>SIEM + Alerting + Log Pipeline</p>
+      <small>Status: Operational</small>
+    </div>
+
+    <div class="card status-card">
+      <h3>🟢 SRE Layer</h3>
+      <p>Monitoring + Observability + Metrics</p>
+      <small>Status: Healthy</small>
+    </div>
+
+    <div class="card status-card">
+      <h3>🟡 CI/CD System</h3>
+      <p>Pipeline execution + security scans</p>
+      <small>Status: Build Queue Active</small>
+    </div>
+
+    <div class="card status-card">
+      <h3>🟢 Security Controls</h3>
+      <p>Hardening + Firewall + Access control</p>
+      <small>Status: Enforced</small>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects" class="section">
   <h2 class="hidden">Infrastructure & Security Systems</h2>
 
   <div class="grid">
+
+    <div class="card hidden" onclick="go('projects/control-center/index.html')">
+      <h3>🧩 Unified Control Center</h3>
+      <p>Single operations dashboard for entire cyber range</p>
+    </div>
+
+    <div class="card hidden" onclick="go('projects/sentinelops/')">
+      <h3>🏗️ SentinelOps Platform</h3>
+      <p>Multi-site enterprise infrastructure simulation</p>
+    </div>
+
+    <div class="card hidden" onclick="go('projects/soc-lab/')">
+      <h3>🛡️ SOC Lab</h3>
+      <p>SIEM simulation engine with real-time detection logic</p>
+    </div>
+
+    <div class="card hidden" onclick="go('projects/devsecops/')">
+      <h3>🔐 DevSecOps</h3>
+      <p>Security enforcement in CI/CD pipeline workflows</p>
+    </div>
+
+    <div class="card hidden" onclick="go('projects/cicd-pipeline/')">
+      <h3>⚙️ CI/CD Pipeline</h3>
+      <p>Jenkins-style staged build execution simulation</p>
+    </div>
+
+    <div class="card hidden" onclick="go('projects/linux-operations/')">
+      <h3>🖥️ Linux Operations</h3>
+      <p>Enterprise system administration & security operations layer</p>
+    </div>
 
     <div class="card hidden" onclick="go('projects/pentest-lab/')">
       <h3>🛡️ Penetration Testing Lab</h3>
       <p>Nmap • Nessus • Metasploit</p>
     </div>
 
-    <div class="card hidden" onclick="go('projects/soc-lab/')">
-      <h3>🛡️ SOC Lab</h3>
-      <p>SIEM • Threat Detection</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/devsecops/')">
-      <h3>🔐 DevSecOps</h3>
-      <p>Security in CI/CD</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/cicd-pipeline/')">
-      <h3>⚙️ CI/CD Pipeline</h3>
-      <p>Jenkins • Automation</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/linux-operations/')">
-      <h3>🖥️ Linux Operations</h3>
-      <p>Enterprise Linux Admin</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/sentinelops/')">
-      <h3>🏗️ SentinelOps Platform</h3>
-      <p>SRE + Cybersecurity Enterprise Simulation (Multi-Site Infrastructure)</p>
-    </div>
-
   </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills" class="section">
   <h2 class="hidden">Technical Skills</h2>
 
@@ -223,8 +269,6 @@ footer{
     <span>Prometheus</span>
     <span>Grafana</span>
     <span>Alertmanager</span>
-    <span>Apache</span>
-    <span>SQLite</span>
     <span>UFW Firewall</span>
     <span>Fail2Ban</span>
     <span>Rsyslog</span>
@@ -232,6 +276,7 @@ footer{
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="section">
   <h2>Contact</h2>
   <p>Email: oamosu14@aol.com</p>
