@@ -2,289 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Unified SOC Control Center | Oamosu Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>CI/CD Pipeline | Execution Console</title>
 
 <style>
-:root{
-  --bg:#0b0f19;
-  --card:rgba(255,255,255,0.05);
-  --text:#e6edf3;
-  --accent:#22c55e;
-  --warn:#fbbf24;
-  --crit:#ef4444;
-  --info:#60a5fa;
-  --muted:#9ca3af;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter, sans-serif;
-}
-
 body{
-  background:var(--bg);
-  color:var(--text);
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:#0b0f19;
+  color:#e6edf3;
 }
 
-/* TOP BAR */
-.topbar{
+header{
+  padding:18px;
+  background:rgba(0,0,0,0.6);
+  border-bottom:1px solid rgba(255,255,255,0.08);
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:14px 22px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  position:sticky;
-  top:0;
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.brand{
-  font-weight:600;
-  color:var(--accent);
-}
-
-.status-pill{
-  padding:4px 10px;
-  border-radius:999px;
-  background:rgba(34,197,94,0.15);
-  border:1px solid rgba(34,197,94,0.3);
-  font-size:12px;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap:18px;
-  padding:22px;
-}
-
-/* PANELS */
-.panel{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:14px;
-  padding:18px;
-}
-
-.hero-title{
-  font-size:26px;
-}
-
-.subtitle{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:4px;
-}
-
-/* METRICS */
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-
-.metric{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:12px;
-  border-radius:12px;
-}
-
-.metric h3{
-  font-size:11px;
-  color:var(--muted);
-}
-
-.metric p{
-  font-size:18px;
-  margin-top:4px;
-}
-
-.info{ color:var(--info); }
-.warn{ color:var(--warn); }
-.crit{ color:var(--crit); }
-.ok{ color:var(--accent); }
-
-/* STREAM */
-.stream{
-  margin-top:14px;
-  height:320px;
-  overflow:auto;
-  font-family:monospace;
-  font-size:12px;
-}
-
-.event{
-  padding:8px;
-  margin-bottom:6px;
-  background:rgba(255,255,255,0.03);
-  border-radius:8px;
-  border-left:3px solid transparent;
-}
-
-.event.info{ border-color:var(--info); }
-.event.warn{ border-color:var(--warn); }
-.event.crit{ border-color:var(--crit); }
-
-/* RIGHT */
-.right-grid{
-  display:grid;
-  gap:14px;
-}
-
-.card{
-  padding:12px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-  border-color:var(--accent);
-}
-
-/* CONTACT */
-.contact{
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.8;
 }
 
 a{
-  color:var(--accent);
+  color:#22c55e;
   text-decoration:none;
 }
 
-/* FOOTER */
-footer{
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+.pipeline{
+  display:flex;
+  gap:10px;
+  margin-top:30px;
+}
+
+.stage{
+  flex:1;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:15px;
+  border-radius:10px;
   text-align:center;
-  padding:20px;
-  color:var(--muted);
-  font-size:12px;
+}
+
+.running{
+  border-color:#22c55e;
+  box-shadow:0 0 15px rgba(34,197,94,0.2);
+}
+
+.log{
+  margin-top:30px;
+  background:#0f172a;
+  padding:15px;
+  border-radius:10px;
+  font-family:monospace;
+  height:280px;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,0.08);
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <div class="brand">🛡 SOC CONTROL CENTER | OAMOSU</div>
-  <div class="status-pill">SYSTEM ONLINE</div>
+<header>
+  <a href="../../index.html">⬅ Portfolio</a>
+  <span>CI/CD Execution Pipeline</span>
+</header>
+
+<div class="container">
+
+<h1>Jenkins-Style CI/CD Simulation</h1>
+<p>Simulated build → test → security scan → deploy workflow</p>
+
+<div class="pipeline">
+  <div class="stage running" id="s1">BUILD</div>
+  <div class="stage" id="s2">TEST</div>
+  <div class="stage" id="s3">SECURITY SCAN</div>
+  <div class="stage" id="s4">DEPLOY</div>
 </div>
 
-<div class="grid">
+<div class="log" id="log"></div>
 
-  <!-- LEFT PANEL -->
-  <div class="panel">
-
-    <div class="hero-title">Operational Security Dashboard</div>
-    <div class="subtitle">Real-time infrastructure telemetry • simulated SOC environment</div>
-
-    <div class="metrics">
-      <div class="metric"><h3>EVENTS</h3><p id="events">0</p></div>
-      <div class="metric"><h3>INFO</h3><p class="info" id="info">0</p></div>
-      <div class="metric"><h3>WARN</h3><p class="warn" id="warn">0</p></div>
-      <div class="metric"><h3>CRITICAL</h3><p class="crit" id="crit">0</p></div>
-    </div>
-
-    <div class="stream" id="stream"></div>
-  </div>
-
-  <!-- RIGHT PANEL -->
-  <div class="right-grid">
-
-    <div class="panel">
-      <h3>🚀 Projects</h3>
-
-      <div class="card" onclick="go('projects/sentinelops/')">SentinelOps Platform</div>
-      <div class="card" onclick="go('projects/soc-lab/')">SOC Lab (SIEM Engine)</div>
-
-      <!-- FIXED CI/CD LINK -->
-      <div class="card" onclick="go('projects/cicd-pipeline/')">CI/CD Pipeline</div>
-
-      <div class="card" onclick="go('projects/linux-operations/')">Linux Operations</div>
-      <div class="card" onclick="go('projects/devsecops/')">DevSecOps Lab</div>
-    </div>
-
-    <div class="panel contact">
-      <h3>📩 Contact</h3>
-      Email: <a href="mailto:oamosu14@aol.com">oamosu14@aol.com</a><br>
-      GitHub: <a href="https://github.com/oamosu14" target="_blank">github.com/oamosu14</a>
-    </div>
-
-    <div class="panel">
-      <h3>⚙ System Status</h3>
-      <p class="ok">All services operational</p>
-    </div>
-
-  </div>
 </div>
-
-<footer>
-  © 2026 Unified SOC Engineering Portfolio
-</footer>
 
 <script>
 
-let logs=[];
-let stats={total:0,info:0,warn:0,crit:0};
+let step = 0;
 
-const events=[
-  {t:"INFO",m:"Node heartbeat OK - IND-WEB-01"},
-  {t:"WARN",m:"High CPU usage detected - FSH-DEV-01"},
-  {t:"CRIT",m:"Brute-force attempt detected"},
-  {t:"INFO",m:"Backup completed"},
-  {t:"WARN",m:"Disk threshold reached"},
-];
+const logs = document.getElementById("log");
 
-function push(){
-  let e=events[Math.floor(Math.random()*events.length)];
-  logs.push(e);
-  stats.total++;
-
-  if(e.t==="INFO") stats.info++;
-  if(e.t==="WARN") stats.warn++;
-  if(e.t==="CRIT") stats.crit++;
-
-  render();
+function write(msg){
+  logs.innerHTML += msg + "\n";
+  logs.scrollTop = logs.scrollHeight;
 }
 
-function render(){
-  document.getElementById("events").innerText=stats.total;
-  document.getElementById("info").innerText=stats.info;
-  document.getElementById("warn").innerText=stats.warn;
-  document.getElementById("crit").innerText=stats.crit;
+function pipeline(){
 
-  let stream=document.getElementById("stream");
-  stream.innerHTML="";
+  const stages = ["s1","s2","s3","s4"];
 
-  logs.slice(-25).reverse().forEach(l=>{
-    let cls="info";
-    if(l.t==="WARN") cls="warn";
-    if(l.t==="CRIT") cls="crit";
+  if(step > 0){
+    document.getElementById(stages[step-1]).classList.remove("running");
+  }
 
-    stream.innerHTML+=`<div class="event ${cls}">[${l.t}] ${l.m}</div>`;
-  });
+  if(step < stages.length){
+    document.getElementById(stages[step]).classList.add("running");
+  }
+
+  const messages = [
+    "Pulling source code from Git repo...",
+    "Running unit tests...",
+    "Executing SAST scan (Simulated)...",
+    "Deploying container to staging..."
+  ];
+
+  write("[CI/CD] " + messages[step]);
+
+  step++;
+
+  if(step >= stages.length){
+    write("[SUCCESS] Pipeline completed successfully");
+    return;
+  }
+
+  setTimeout(pipeline, 2000);
 }
 
-function go(link){
-  window.location.href=link;
-}
-
-setInterval(push,2000);
-render();
+pipeline();
 
 </script>
 
