@@ -95,17 +95,90 @@ h1,h2{ color:#22c55e; }
 
 <div class="container">
 
+<!-- =========================
+     CONTEXT / READINESS LAYER
+========================= -->
 <section>
-  <span class="badge">SIEM Simulation Engine</span>
-  <h1>SOC Lab — Security Event Monitoring System</h1>
+  <span class="badge">SOC Simulation + SIEM Engine</span>
+  <h1>SOC Lab — Security Operations Center Environment</h1>
 
-  <p>
-    This lab simulates a lightweight SIEM engine that performs real-time log ingestion,
-    correlation, and alert generation similar to Splunk / Wazuh / ELK behavior.
-  </p>
+  <div class="card">
+    <p>
+      This project simulates a lightweight Security Operations Center (SOC) environment with SIEM-like behavior,
+      focusing on real-time event monitoring, detection logic, and incident response workflows.
+    </p>
+
+    <p>
+      Unlike traditional static labs, this system includes a browser-based SIEM simulation engine that models how SOC analysts interact with security telemetry.
+    </p>
+  </div>
 </section>
 
-<!-- DASHBOARD -->
+<!-- =========================
+     OBJECTIVES
+========================= -->
+<section>
+  <h2>Objectives</h2>
+
+  <div class="card">
+    <ul>
+      <li>Simulate real-time security event ingestion</li>
+      <li>Model SIEM-style log processing and alerting</li>
+      <li>Demonstrate detection engineering concepts</li>
+      <li>Implement correlation logic for threat detection</li>
+      <li>Replicate SOC analyst workflows in a controlled environment</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =========================
+     CORE CAPABILITIES
+========================= -->
+<section>
+  <h2>Core Capabilities (SIMULATED SIEM)</h2>
+
+  <div class="card">
+    <h3>Event Ingestion Engine</h3>
+    <p>Continuous generation of system, authentication, and network events in real time.</p>
+  </div>
+
+  <div class="card">
+    <h3>Detection Rules Engine</h3>
+    <p>Simulated detection of brute-force attempts, anomalies, and privilege escalation patterns.</p>
+  </div>
+
+  <div class="card">
+    <h3>Correlation Layer</h3>
+    <p>Multi-event pattern detection using threshold-based escalation logic.</p>
+  </div>
+
+  <div class="card">
+    <h3>SOC Dashboard Simulation</h3>
+    <p>Live event stream with severity classification and continuous monitoring.</p>
+  </div>
+</section>
+
+<!-- =========================
+     IMPLEMENTATION NOTE
+========================= -->
+<section>
+  <h2>Implementation Context</h2>
+
+  <div class="card">
+    <p>
+      This lab runs as a lightweight virtual SOC node inside a VirtualBox environment using Linux.
+      It is designed to simulate SIEM behavior without requiring external enterprise tools.
+    </p>
+
+    <p>
+      It mirrors foundational components found in platforms such as Splunk, ELK Stack, and Wazuh.
+    </p>
+  </div>
+</section>
+
+<!-- =========================
+     SIEM DASHBOARD
+========================= -->
 <section>
   <h2>SIEM Dashboard</h2>
 
@@ -121,7 +194,9 @@ h1,h2{ color:#22c55e; }
   </div>
 </section>
 
-<!-- LOG STREAM -->
+<!-- =========================
+     LIVE LOG STREAM
+========================= -->
 <section>
   <h2>Live SIEM Event Stream</h2>
   <div id="logbox" class="logbox"></div>
@@ -132,7 +207,7 @@ h1,h2{ color:#22c55e; }
 <script>
 
 // =========================
-// SIEM EVENT STREAM
+// STATE
 // =========================
 let logs = [];
 
@@ -144,7 +219,7 @@ let stats = {
 };
 
 // =========================
-// EVENT GENERATION
+// SIMULATED EVENTS
 // =========================
 const events = [
   {t:"INFO", m:"User login successful - opsadmin"},
@@ -173,7 +248,7 @@ function detectPattern(){
 }
 
 // =========================
-// PUSH EVENT
+// LOG GENERATION
 // =========================
 function pushLog(type, msg){
 
@@ -198,15 +273,13 @@ function pushLog(type, msg){
 // STREAM ENGINE
 // =========================
 function generate(){
-
   let e = events[Math.floor(Math.random()*events.length)];
   pushLog(e.t, e.m);
-
   detectPattern();
 }
 
 // =========================
-// RENDER SIEM
+// RENDER DASHBOARD
 // =========================
 function render(){
 
@@ -239,7 +312,7 @@ function render(){
 }
 
 // =========================
-// BOOT SIEM
+// BOOT ENGINE
 // =========================
 setInterval(generate, 2500);
 
