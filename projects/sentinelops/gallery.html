@@ -98,6 +98,45 @@ nav a{
   white-space:pre-wrap;
   border:1px solid rgba(255,255,255,0.08);
 }
+
+/* GRAFANA MINI DASHBOARD */
+.grafana {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 280px;
+  background: rgba(0,0,0,0.75);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 12px;
+  z-index: 9999;
+}
+
+.metric { margin: 8px 0; }
+
+.bar {
+  height: 8px;
+  background: #1f2937;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: #22c55e;
+  width: 0%;
+  transition: 0.3s;
+}
+
+.fill.warn { background: #fbbf24; }
+.fill.crit { background: #ef4444; }
+
+.title {
+  color: #22c55e;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 </style>
 </head>
 
@@ -151,8 +190,32 @@ nav a{
 
 </div>
 
+<!-- SOC LIVE FEED -->
+<div id="feed"></div>
+
+<!-- GRAFANA DASHBOARD -->
+<div class="grafana">
+  <div class="title">SOC Observability Panel</div>
+
+  <div class="metric">Active Alerts: <span id="m_total">0</span></div>
+  <div class="metric">CRITICAL: <span id="m_crit">0</span></div>
+  <div class="metric">WARN: <span id="m_warn">0</span></div>
+  <div class="metric">INFO: <span id="m_info">0</span></div>
+
+  <div class="metric">SLA Pressure</div>
+  <div class="bar">
+    <div id="slaBar" class="fill"></div>
+  </div>
+
+  <div class="metric">Throughput (alerts/min)</div>
+  <div id="throughput">0</div>
+</div>
+
 <script>
 
+// =========================
+// SOC LIVE FEED
+// =========================
 const alertFeed = document.createElement("div");
 alertFeed.style.position = "fixed";
 alertFeed.style.right = "20px";
@@ -168,11 +231,16 @@ alertFeed.style.fontSize = "12px";
 alertFeed.style.zIndex = "9999";
 document.body.appendChild(alertFeed);
 
-// INCIDENT STATE
+// =========================
+// STATE
+// =========================
 let incidents = [];
 let selectedIncident = null;
+let alertHistory = [];
 
-// ALERT GENERATOR
+// =========================
+// ALERT TYPES
+// =========================
 const alerts = [
   {type:"INFO", msg:"Node heartbeat OK - IND-WEB-01"},
   {type:"WARN", msg:"High CPU usage detected - FSH-DEV-01"},
@@ -182,7 +250,9 @@ const alerts = [
   {type:"INFO", msg:"Backup job completed successfully"}
 ];
 
-// PUSH ALERTS PERIODICALLY
+// =========================
+// INCIDENT ENGINE
+// =========================
 function generateAlert(){
   const a = alerts[Math.floor(Math.random()*alerts.length)];
 
@@ -194,15 +264,20 @@ function generateAlert(){
   };
 
   incidents.unshift(entry);
+  alertHistory.push(Date.now());
+
   renderFeed();
+  updateDashboard();
 }
 
-// RENDER ALERT FEED
+// =========================
+// RENDER FEED
+// =========================
 function renderFeed(){
   alertFeed.innerHTML = "<b>SOC Live Feed</b><hr>";
 
   incidents.slice(0,8).forEach(i=>{
-    let color = "white";
+    let color = "#fff";
 
     if(i.type === "INFO") color = "#60a5fa";
     if(i.type === "WARN") color = "#fbbf24";
@@ -211,9 +286,7 @@ function renderFeed(){
     alertFeed.innerHTML += `
       <div onclick="selectIncident(${i.id})"
            style="margin-bottom:8px;cursor:pointer;">
-        <span style="color:${color};font-weight:bold;">
-          [${i.type}]
-        </span>
+        <span style="color:${color};font-weight:bold;">[${i.type}]</span>
         ${i.msg}<br>
         <small>${i.time}</small>
       </div>
@@ -221,13 +294,14 @@ function renderFeed(){
   });
 }
 
-// SELECT INCIDENT
+// =========================
+// INCIDENT SELECT
+// =========================
 function selectIncident(id){
   selectedIncident = incidents.find(x=>x.id===id);
   showPanel();
 }
 
-// SHOW PANEL
 function showPanel(){
   const panel = document.getElementById("panel");
   panel.style.display = "block";
@@ -244,20 +318,91 @@ Message: ${selectedIncident.msg}
 SLA Remaining: ${selectedIncident.sla}s`;
 }
 
+// =========================
+// TIMELINE
+// =========================
+function step(t){
+  const logs = {
+    cpu:{
+      1:"CPU baseline normal",
+      2:"CPU spike detected (92%)",
+      3:"Alert triggered via Prometheus",
+      4:"Service restarted via automation"
+    },
+    auth:{
+      1:"Auth baseline stable",
+      2:"Failed login spike detected",
+      3:"Fail2Ban triggered",
+      4:"Access stabilized"
+    },
+    network:{
+      1:"Latency normal",
+      2:"Packet delay detected",
+      3:"Traffic congestion confirmed",
+      4:"Routing optimized"
+    }
+  };
+
+  document.getElementById("logbox").innerText =
+    logs[selectedIncident?.msg.includes("CPU") ? "cpu" :
+         selectedIncident?.msg.includes("AUTH") ? "auth" :
+         "network"][t] || "No data";
+}
+
+// =========================
 // SLA TIMER
+// =========================
 function tickSLA(){
   incidents.forEach(i=>{
-    i.sla--;
-    if(i.sla < 0) i.sla = 0;
+    i.sla = Math.max(0, i.sla - 1);
   });
 
   renderFeed();
 }
 
-// START SYSTEM
+// =========================
+// GRAFANA DASHBOARD
+// =========================
+function updateDashboard(){
+
+  const total = incidents.length;
+  const crit = incidents.filter(i=>i.type==="CRITICAL").length;
+  const warn = incidents.filter(i=>i.type==="WARN").length;
+  const info = incidents.filter(i=>i.type==="INFO").length;
+
+  let avgSLA = incidents.length
+    ? incidents.reduce((a,b)=>a+b.sla,0)/incidents.length
+    : 0;
+
+  let pressure = Math.max(0, 100 - (avgSLA/3));
+
+  let lastMin = alertHistory.filter(t=>Date.now()-t<60000).length;
+
+  document.getElementById("m_total").innerText = total;
+  document.getElementById("m_crit").innerText = crit;
+  document.getElementById("m_warn").innerText = warn;
+  document.getElementById("m_info").innerText = info;
+
+  const bar = document.getElementById("slaBar");
+  bar.style.width = pressure + "%";
+
+  bar.className = "fill";
+  if(pressure > 60) bar.classList.add("crit");
+  else if(pressure > 30) bar.classList.add("warn");
+
+  document.getElementById("throughput").innerText = lastMin;
+}
+
+// =========================
+// BOOT SYSTEM
+// =========================
 setInterval(generateAlert, 4000);
 setInterval(tickSLA, 1000);
+setInterval(updateDashboard, 1000);
 
 renderFeed();
 
 </script>
+
+</body>
+</html>
