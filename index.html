@@ -11,14 +11,13 @@
 <style>
 :root{
   --bg:#0b0f19;
-  --panel:#111827;
   --card:rgba(255,255,255,0.05);
   --text:#e6edf3;
-  --muted:#9ca3af;
   --accent:#22c55e;
   --warn:#fbbf24;
   --crit:#ef4444;
   --info:#60a5fa;
+  --muted:#9ca3af;
 }
 
 *{
@@ -49,7 +48,6 @@ body{
 .brand{
   font-weight:600;
   color:var(--accent);
-  letter-spacing:0.5px;
 }
 
 .status-pill{
@@ -60,7 +58,7 @@ body{
   font-size:12px;
 }
 
-/* GRID LAYOUT */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -68,7 +66,7 @@ body{
   padding:22px;
 }
 
-/* PANEL */
+/* PANELS */
 .panel{
   background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,0.08);
@@ -76,15 +74,14 @@ body{
   padding:18px;
 }
 
-/* HERO STATE */
 .hero-title{
-  font-size:28px;
-  margin-bottom:6px;
+  font-size:26px;
 }
 
 .subtitle{
   color:var(--muted);
-  font-size:14px;
+  font-size:13px;
+  margin-top:4px;
 }
 
 /* METRICS */
@@ -103,51 +100,49 @@ body{
 }
 
 .metric h3{
-  font-size:12px;
+  font-size:11px;
   color:var(--muted);
 }
 
 .metric p{
-  font-size:20px;
+  font-size:18px;
   margin-top:4px;
 }
 
-/* COLOR STATES */
 .info{ color:var(--info); }
 .warn{ color:var(--warn); }
 .crit{ color:var(--crit); }
 .ok{ color:var(--accent); }
 
-/* INCIDENT STREAM */
+/* STREAM */
 .stream{
   margin-top:14px;
   height:320px;
   overflow:auto;
   font-family:monospace;
   font-size:12px;
-  padding-right:6px;
 }
 
 .event{
   padding:8px;
-  border-left:3px solid transparent;
   margin-bottom:6px;
   background:rgba(255,255,255,0.03);
   border-radius:8px;
+  border-left:3px solid transparent;
 }
 
 .event.info{ border-color:var(--info); }
 .event.warn{ border-color:var(--warn); }
 .event.crit{ border-color:var(--crit); }
 
-/* RIGHT PANEL */
+/* RIGHT */
 .right-grid{
   display:grid;
   gap:14px;
 }
 
 .card{
-  padding:14px;
+  padding:12px;
   border-radius:12px;
   background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.08);
@@ -158,6 +153,18 @@ body{
 .card:hover{
   transform:translateY(-3px);
   border-color:var(--accent);
+}
+
+/* CONTACT */
+.contact{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+a{
+  color:var(--accent);
+  text-decoration:none;
 }
 
 /* FOOTER */
@@ -172,84 +179,54 @@ footer{
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="brand">🛡 SOC CONTROL CENTER | OAMOSU</div>
-  <div class="status-pill" id="status">SYSTEM ONLINE</div>
+  <div class="status-pill">SYSTEM ONLINE</div>
 </div>
 
 <div class="grid">
 
-  <!-- LEFT: LIVE SOC CONSOLE -->
+  <!-- LEFT PANEL -->
   <div class="panel">
 
     <div class="hero-title">Operational Security Dashboard</div>
     <div class="subtitle">Real-time infrastructure telemetry • simulated SOC environment</div>
 
-    <!-- METRICS -->
     <div class="metrics">
-      <div class="metric">
-        <h3>EVENTS</h3>
-        <p id="events">0</p>
-      </div>
-      <div class="metric">
-        <h3>INFO</h3>
-        <p class="info" id="info">0</p>
-      </div>
-      <div class="metric">
-        <h3>WARN</h3>
-        <p class="warn" id="warn">0</p>
-      </div>
-      <div class="metric">
-        <h3>CRITICAL</h3>
-        <p class="crit" id="crit">0</p>
-      </div>
+      <div class="metric"><h3>EVENTS</h3><p id="events">0</p></div>
+      <div class="metric"><h3>INFO</h3><p class="info" id="info">0</p></div>
+      <div class="metric"><h3>WARN</h3><p class="warn" id="warn">0</p></div>
+      <div class="metric"><h3>CRITICAL</h3><p class="crit" id="crit">0</p></div>
     </div>
 
-    <!-- LIVE STREAM -->
     <div class="stream" id="stream"></div>
   </div>
 
-  <!-- RIGHT: CONTROL CENTER -->
+  <!-- RIGHT PANEL -->
   <div class="right-grid">
 
     <div class="panel">
-      <h3>📡 System Nodes</h3>
-      <p class="subtitle">Simulated infrastructure fleet</p>
-      <div style="margin-top:10px;font-size:13px;">
-        IND-DC • FSH-DC • MCV-DC<br>
-        WEB • MON • LOG • CICD • DB
-      </div>
+      <h3>🚀 Projects</h3>
+
+      <div class="card" onclick="go('projects/sentinelops/')">SentinelOps Platform</div>
+      <div class="card" onclick="go('projects/soc-lab/')">SOC Lab (SIEM Engine)</div>
+
+      <!-- FIXED CI/CD LINK -->
+      <div class="card" onclick="go('projects/cicd-pipeline/')">CI/CD Pipeline</div>
+
+      <div class="card" onclick="go('projects/linux-operations/')">Linux Operations</div>
+      <div class="card" onclick="go('projects/devsecops/')">DevSecOps Lab</div>
     </div>
 
-    <div class="panel">
-      <h3>🚀 Project Access</h3>
-
-      <div class="card" onclick="go('projects/sentinelops/')">
-        SentinelOps Platform
-      </div>
-
-      <div class="card" onclick="go('projects/soc-lab/')">
-        SOC Lab (SIEM Engine)
-      </div>
-
-      <div class="card" onclick="go('projects/cicd-pipeline/')">
-        CI/CD Pipeline
-      </div>
-
-      <div class="card" onclick="go('projects/linux-operations/')">
-        Linux Operations
-      </div>
-
-      <div class="card" onclick="go('projects/devsecops/')">
-        DevSecOps Lab
-      </div>
+    <div class="panel contact">
+      <h3>📩 Contact</h3>
+      Email: <a href="mailto:oamosu14@aol.com">oamosu14@aol.com</a><br>
+      GitHub: <a href="https://github.com/oamosu14" target="_blank">github.com/oamosu14</a>
     </div>
 
     <div class="panel">
       <h3>⚙ System Status</h3>
       <p class="ok">All services operational</p>
-      <p class="subtitle">No active outages detected</p>
     </div>
 
   </div>
@@ -261,21 +238,19 @@ footer{
 
 <script>
 
-let logs = [];
-let stats = { total:0, info:0, warn:0, crit:0 };
+let logs=[];
+let stats={total:0,info:0,warn:0,crit:0};
 
-const events = [
-  {t:"INFO", m:"Node heartbeat OK - IND-WEB-01"},
-  {t:"WARN", m:"High CPU usage detected - FSH-DEV-01"},
-  {t:"CRIT", m:"Brute-force attempt detected - SSH Gateway"},
-  {t:"INFO", m:"Backup completed successfully"},
-  {t:"WARN", m:"Disk usage threshold reached - IND-LOG-01"},
-  {t:"INFO", m:"Prometheus scrape successful"}
+const events=[
+  {t:"INFO",m:"Node heartbeat OK - IND-WEB-01"},
+  {t:"WARN",m:"High CPU usage detected - FSH-DEV-01"},
+  {t:"CRIT",m:"Brute-force attempt detected"},
+  {t:"INFO",m:"Backup completed"},
+  {t:"WARN",m:"Disk threshold reached"},
 ];
 
 function push(){
-  let e = events[Math.floor(Math.random()*events.length)];
-
+  let e=events[Math.floor(Math.random()*events.length)];
   logs.push(e);
   stats.total++;
 
@@ -287,34 +262,28 @@ function push(){
 }
 
 function render(){
+  document.getElementById("events").innerText=stats.total;
+  document.getElementById("info").innerText=stats.info;
+  document.getElementById("warn").innerText=stats.warn;
+  document.getElementById("crit").innerText=stats.crit;
 
-  document.getElementById("events").innerText = stats.total;
-  document.getElementById("info").innerText = stats.info;
-  document.getElementById("warn").innerText = stats.warn;
-  document.getElementById("crit").innerText = stats.crit;
-
-  const stream = document.getElementById("stream");
-  stream.innerHTML = "";
+  let stream=document.getElementById("stream");
+  stream.innerHTML="";
 
   logs.slice(-25).reverse().forEach(l=>{
-
-    let cls = "info";
+    let cls="info";
     if(l.t==="WARN") cls="warn";
     if(l.t==="CRIT") cls="crit";
 
-    stream.innerHTML += `
-      <div class="event ${cls}">
-        [${l.t}] ${l.m}
-      </div>
-    `;
+    stream.innerHTML+=`<div class="event ${cls}">[${l.t}] ${l.m}</div>`;
   });
 }
 
 function go(link){
-  window.location.href = link;
+  window.location.href=link;
 }
 
-setInterval(push, 2000);
+setInterval(push,2000);
 render();
 
 </script>
