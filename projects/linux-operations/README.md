@@ -1,68 +1,104 @@
-# 🐧 Linux System Administration & Security Operations
+# 🐧 Linux System Administration & Security Operations Lab
 
 [⬅ Back to Portfolio](../../)
 
+---
+
 ## 📌 Overview
-This project demonstrates Linux system administration tasks focused on security hardening, monitoring, user management, and automation in a controlled lab environment.
+This project simulates a Linux system administration and security operations environment focused on enterprise-style system hardening, user management, monitoring, and operational automation.
+
+It models how Linux systems are managed in production environments where security, stability, and automation are required simultaneously.
 
 ---
 
-## 🔐 System Hardening
-- SSH hardening (disable root login, secure configuration)
-- Firewall configuration (UFW)
-- Fail2Ban intrusion prevention
-- File permission enforcement
+## 🎯 Objectives
+- Implement secure Linux system configuration practices
+- Enforce system hardening aligned with enterprise standards
+- Manage users, groups, and privilege access controls
+- Monitor system health and performance metrics
+- Automate repetitive administrative operations
+- Simulate production-grade Linux operations workflows
 
 ---
 
-## 👥 User Management
-- User and group creation
-- Sudo privilege configuration
+## 🔐 Security Hardening Layer
+
+This section simulates baseline enterprise server hardening practices.
+
+- SSH hardening (disable root login, secure access configuration)
+- Firewall configuration using UFW
+- Intrusion prevention using Fail2Ban
+- Secure file permission enforcement
+- System update and patch management practices
+
+---
+
+## 👥 Identity & Access Management (IAM Layer)
+
+- User and group provisioning
+- Sudo privilege assignment and restriction
 - Password policy enforcement
-- Role-based access control
+- Role-based access control (RBAC simulation)
+
+This replicates how access control is enforced in production Linux environments.
 
 ---
 
-## 📂 File System Management
-- Permissions (chmod, chown)
-- Secure directory structures
-- Log file protection
+## 📂 File System & Data Security
+
+- File and directory permission management (chmod, chown)
+- Secure directory structuring
+- Log file access protection
+- Controlled access to sensitive system resources
 
 ---
 
-## 📊 System Monitoring
+## 📊 System Monitoring & Observability
+
 - Process monitoring (top, htop)
-- Disk usage (df, du)
-- Memory usage (free)
-- Log analysis (/var/log)
+- Disk utilization tracking (df, du)
+- Memory usage analysis (free)
+- System log inspection (/var/log)
+- Service health validation
 
 ---
 
-## ⚙️ Automation
-- Cron job scheduling
-- Backup automation scripts (tar, rsync)
-- System update automation
+## ⚙️ Automation Layer
+
+This layer simulates early-stage DevOps/SRE automation practices.
+
+- Cron-based scheduling of system tasks
+- Automated backup workflows (tar, rsync)
+- System update automation scripts
+- Basic operational scripting for repeatable tasks
 
 ---
 
-## 🧰 Tools Used
-- SSH
-- UFW
-- Fail2Ban
-- Cron
-- Netstat / ss
-- top / htop
-- chmod / chown
-- tar / rsync
+## 🧰 Tooling Stack
+
+- SSH (Secure remote access)
+- UFW (Firewall management)
+- Fail2Ban (Intrusion prevention)
+- Cron (Job scheduling)
+- Netstat / SS (Network inspection)
+- Top / Htop (System monitoring)
+- chmod / chown (Permission management)
+- tar / rsync (Backup and sync utilities)
 
 ---
 
-## 📸 Evidence
-![Linux Terminal](../../assets/images/linux-terminal.png)
+## 📸 Evidence of Work
+
+![Linux Terminal Operations](../../assets/images/linux-terminal.png)
 
 ---
 
-## 📊 Outcome
-- Strengthened Linux security posture
-- Improved system administration skills
-- Implemented automation for routine tasks
+## 📊 Engineering Outcome
+
+This project demonstrates:
+
+- Practical Linux system administration in a controlled environment
+- Security-first server configuration mindset
+- Operational monitoring and troubleshooting capability
+- Early DevOps-style automation practices
+- Understanding of production Linux system lifecycle management
