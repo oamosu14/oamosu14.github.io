@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SentinelOps Platform Case Study</title>
+
+<style>
+body{
+  font-family: Inter, sans-serif;
+  background:#0b0f19;
+  color:#e6edf3;
+  margin:0;
+  padding:40px;
+  line-height:1.6;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+}
+
+h1,h2{
+  color:#22c55e;
+}
+
+.section{
+  margin-bottom:50px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:12px;
+  margin:15px 0;
+}
+
+img{
+  width:100%;
+  border-radius:12px;
+  margin-top:10px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+code{
+  background:#111827;
+  padding:2px 6px;
+  border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>SentinelOps: Hybrid SRE + Cybersecurity Infrastructure Platform</h1>
+
+<p>
+SentinelOps is a simulated enterprise-grade infrastructure environment designed to replicate real-world
+platform engineering, SRE operations, and cybersecurity enforcement across multiple virtual data centers.
+</p>
+
+---
+
+<div class="section">
+
+<h2>1. Problem Statement</h2>
+
+<div class="card">
+Modern infrastructure systems require integration between:
+<ul>
+  <li>Observability (metrics, logs, alerts)</li>
+  <li>Automation (configuration management)</li>
+  <li>Security (access control, hardening, monitoring)</li>
+</ul>
+
+Most learning environments isolate these domains. SentinelOps was built to unify them into a single operational model.
+</div>
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>2. System Architecture</h2>
+
+<div class="card">
+Multi-site virtual infrastructure built using VirtualBox:
+
+<ul>
+  <li>IND-DC (Monitoring + API + Logging)</li>
+  <li>FSH-DC (CI/CD + Dev + Test + Prod)</li>
+  <li>MCV-DC (Web + Auth + Database)</li>
+</ul>
+
+Core layers:
+<ul>
+  <li>Prometheus → Metrics collection</li>
+  <li>Grafana → Visualization</li>
+  <li>Alertmanager → Incident alerts</li>
+  <li>Rsyslog → Centralized logging</li>
+  <li>Ansible → Automation layer</li>
+  <li>Linux Security Hardening → SSH, firewall, Fail2Ban</li>
+</ul>
+</div>
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>3. Architecture Diagram</h2>
+
+<div class="card">
+<p>High-level system design:</p>
+
+<img src="../../assets/images/sentinelops-architecture.png">
+</div>
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>4. Observability Stack</h2>
+
+<div class="card">
+Prometheus collects system metrics from all nodes using Node Exporter.
+
+Grafana provides visualization dashboards for:
+<ul>
+  <li>CPU utilization</li>
+  <li>Memory pressure</li>
+  <li>Disk usage</li>
+  <li>Service health</li>
+</ul>
+
+Alertmanager routes system anomalies for incident simulation.
+</div>
+
+<img src="../../assets/images/grafana-dashboard.png">
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>5. Automation Layer</h2>
+
+<div class="card">
+Ansible is used as the configuration management system.
+
+Capabilities:
+<ul>
+  <li>Centralized host configuration</li>
+  <li>System package management</li>
+  <li>Security policy enforcement</li>
+</ul>
+</div>
+
+<img src="../../assets/images/ansible-run.png">
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>6. Security Architecture</h2>
+
+<div class="card">
+Security controls implemented:
+
+<ul>
+  <li>SSH key-based authentication</li>
+  <li>Root login disabled</li>
+  <li>Firewall rules (UFW)</li>
+  <li>Fail2Ban brute-force protection</li>
+</ul>
+</div>
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>7. CMDB / Inventory System</h2>
+
+<div class="card">
+Lightweight infrastructure dashboard using:
+<ul>
+  <li>PHP backend</li>
+  <li>SQLite database</li>
+  <li>Auto-refresh (60s updates)</li>
+</ul>
+
+Provides real-time visibility into:
+<ul>
+  <li>Node status</li>
+  <li>IP mapping</li>
+  <li>Service roles</li>
+</ul>
+</div>
+
+<img src="../../assets/images/cmdb-dashboard.png">
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>8. Operational Simulation</h2>
+
+<div class="card">
+Failure scenarios were simulated to validate:
+<ul>
+  <li>Alert generation</li>
+  <li>Log tracing</li>
+  <li>System recovery workflows</li>
+</ul>
+
+This validates real-world SRE incident response behavior.
+</div>
+
+</div>
+
+---
+
+<div class="section">
+
+<h2>9. Key Engineering Outcomes</h2>
+
+<div class="card">
+This project demonstrates:
+
+<ul>
+  <li>Distributed infrastructure design thinking</li>
+  <li>SRE observability implementation</li>
+  <li>Security-first system architecture</li>
+  <li>Automation-driven operations model</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
