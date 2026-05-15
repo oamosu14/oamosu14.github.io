@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SentinelOps Evidence Gallery</title>
+<title>SentinelOps SOC Investigation Gallery</title>
 
 <style>
 body{
@@ -18,27 +18,8 @@ body{
   padding:60px 20px;
 }
 
-h1{
+h1,h2{
   color:#22c55e;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-  margin-top:30px;
-}
-
-.card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:12px;
-  padding:15px;
-}
-
-img{
-  width:100%;
-  border-radius:10px;
 }
 
 nav{
@@ -46,12 +27,76 @@ nav{
   background:rgba(0,0,0,0.5);
   position:sticky;
   top:0;
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-a{
+nav a{
   color:#22c55e;
   text-decoration:none;
   margin-right:15px;
+}
+
+/* INCIDENT CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:15px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.card:hover{
+  transform:scale(1.03);
+  border-color:#22c55e;
+}
+
+/* INVESTIGATION PANEL */
+.panel{
+  margin-top:30px;
+  padding:20px;
+  background:rgba(255,255,255,0.05);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  display:none;
+}
+
+.timeline{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+
+.step{
+  padding:8px 12px;
+  background:#1f2937;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:12px;
+}
+
+.step:hover{
+  background:#374151;
+}
+
+.logbox{
+  margin-top:15px;
+  background:#0f172a;
+  padding:15px;
+  border-radius:10px;
+  font-family:monospace;
+  font-size:12px;
+  white-space:pre-wrap;
+  border:1px solid rgba(255,255,255,0.08);
 }
 </style>
 </head>
@@ -59,36 +104,102 @@ a{
 <body>
 
 <nav>
-  <a href="../../index.html">⬅ Back to Portfolio</a>
+  <a href="../../index.html">⬅ Portfolio</a>
   <a href="./index.html">Case Study</a>
 </nav>
 
 <div class="container">
 
-<h1>SentinelOps Evidence Gallery</h1>
+<h1>SOC Investigation Gallery</h1>
 
-<p>Operational artifacts, dashboards, logs, and infrastructure snapshots.</p>
+<p>Select an incident to investigate system behavior, logs, and timeline progression.</p>
 
+<!-- INCIDENT SELECTION -->
 <div class="grid">
 
-  <div class="card">
-    <h3>Grafana Dashboard</h3>
-    <img src="../../assets/images/grafana-dashboard.png">
+  <div class="card" onclick="loadIncident('cpu')">
+    <h3>CPU Spike Incident</h3>
+    <p>FSH-PROD-01 performance degradation</p>
   </div>
 
-  <div class="card">
-    <h3>CMDB Inventory</h3>
-    <img src="../../assets/images/cmdb-dashboard.png">
+  <div class="card" onclick="loadIncident('auth')">
+    <h3>Authentication Failure</h3>
+    <p>MCV-AUTH-01 login anomaly detection</p>
   </div>
 
-  <div class="card">
-    <h3>Ansible Execution</h3>
-    <img src="../../assets/images/ansible-run.png">
+  <div class="card" onclick="loadIncident('network')">
+    <h3>Network Latency Event</h3>
+    <p>IND-PRX-01 routing delay analysis</p>
   </div>
 
 </div>
 
+<!-- INVESTIGATION PANEL -->
+<div id="panel" class="panel">
+
+  <h2 id="title"></h2>
+
+  <div class="timeline">
+    <div class="step" onclick="step(1)">T+0</div>
+    <div class="step" onclick="step(2)">T+5m</div>
+    <div class="step" onclick="step(3)">T+10m</div>
+    <div class="step" onclick="step(4)">Resolution</div>
+  </div>
+
+  <div id="logbox" class="logbox"></div>
 </div>
+
+</div>
+
+<script>
+
+let current = "";
+
+function loadIncident(type){
+  current = type;
+  document.getElementById("panel").style.display = "block";
+
+  const titles = {
+    cpu: "CPU Spike Incident - FSH-PROD-01",
+    auth: "Authentication Failure - MCV-AUTH-01",
+    network: "Network Latency Event - IND-PRX-01"
+  };
+
+  document.getElementById("title").innerText = titles[type];
+  step(1);
+}
+
+function step(t){
+
+  const logs = {
+
+    cpu: {
+      1: "CPU baseline normal (20–30%). No alerts.",
+      2: "CPU spikes to 92%. Node exporter reports anomaly.",
+      3: "Prometheus triggers high CPU alert. Alertmanager routes incident.",
+      4: "Ansible playbook restarts service. CPU normalizes."
+    },
+
+    auth: {
+      1: "Login baseline stable. No anomalies.",
+      2: "Multiple failed SSH attempts detected.",
+      3: "Fail2Ban triggers IP block. Alert raised.",
+      4: "Access stabilized. No further intrusion attempts."
+    },
+
+    network: {
+      1: "Latency within expected thresholds.",
+      2: "Packet delay increases on IND-PRX-01.",
+      3: "Grafana dashboard shows traffic congestion.",
+      4: "Routing corrected. Latency normalized."
+    }
+  };
+
+  document.getElementById("logbox").innerText =
+    logs[current][t];
+}
+
+</script>
 
 </body>
 </html>
