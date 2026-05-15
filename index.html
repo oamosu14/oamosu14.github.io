@@ -4,336 +4,320 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cybersecurity & DevOps Engineer</title>
+<title>Unified SOC Control Center | Oamosu Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#0b0f19;
+  --panel:#111827;
   --card:rgba(255,255,255,0.05);
   --text:#e6edf3;
+  --muted:#9ca3af;
   --accent:#22c55e;
+  --warn:#fbbf24;
+  --crit:#ef4444;
+  --info:#60a5fa;
 }
 
-body.light{
-  --bg:#ffffff;
-  --card:#f3f4f6;
-  --text:#111;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, sans-serif;
 }
-
-*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:Inter,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
 
-/* NAV */
-nav{
-  position:fixed;
-  width:100%;
+/* TOP BAR */
+.topbar{
   display:flex;
   justify-content:space-between;
-  padding:20px 40px;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.3);
-  z-index:1000;
-}
-
-nav a{
-  margin:0 15px;
-  text-decoration:none;
-  color:var(--text);
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:20px;
+  padding:14px 22px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.hero h1{
-  font-size:3rem;
-}
-
-.typing{
+.brand{
+  font-weight:600;
   color:var(--accent);
-  font-size:1.4rem;
-  margin:10px 0;
+  letter-spacing:0.5px;
 }
 
-.summary{
-  max-width:800px;
-  margin-top:20px;
-  line-height:1.6;
+.status-pill{
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(34,197,94,0.15);
+  border:1px solid rgba(34,197,94,0.3);
+  font-size:12px;
 }
 
-/* BUTTON */
-.btn{
-  margin-top:20px;
-  padding:12px 25px;
-  background:var(--accent);
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-/* SECTION */
-.section{
-  padding:80px 20px;
-  max-width:1200px;
-  margin:auto;
-}
-
-/* GRID */
+/* GRID LAYOUT */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap:18px;
+  padding:22px;
 }
 
-/* CARD */
+/* PANEL */
+.panel{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:18px;
+}
+
+/* HERO STATE */
+.hero-title{
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* METRICS */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+
+.metric{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:12px;
+  border-radius:12px;
+}
+
+.metric h3{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.metric p{
+  font-size:20px;
+  margin-top:4px;
+}
+
+/* COLOR STATES */
+.info{ color:var(--info); }
+.warn{ color:var(--warn); }
+.crit{ color:var(--crit); }
+.ok{ color:var(--accent); }
+
+/* INCIDENT STREAM */
+.stream{
+  margin-top:14px;
+  height:320px;
+  overflow:auto;
+  font-family:monospace;
+  font-size:12px;
+  padding-right:6px;
+}
+
+.event{
+  padding:8px;
+  border-left:3px solid transparent;
+  margin-bottom:6px;
+  background:rgba(255,255,255,0.03);
+  border-radius:8px;
+}
+
+.event.info{ border-color:var(--info); }
+.event.warn{ border-color:var(--warn); }
+.event.crit{ border-color:var(--crit); }
+
+/* RIGHT PANEL */
+.right-grid{
+  display:grid;
+  gap:14px;
+}
+
 .card{
-  background:var(--card);
-  padding:25px;
-  border-radius:16px;
-  backdrop-filter:blur(10px);
-  transition:0.4s;
+  padding:14px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
   cursor:pointer;
+  transition:0.2s;
 }
 
 .card:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 20px 40px rgba(0,0,0,0.4);
-}
-
-/* SKILLS */
-.skills span{
-  display:inline-block;
-  margin:8px;
-  padding:8px 12px;
-  background:var(--card);
-  border-radius:6px;
-}
-
-/* STATUS STRIP */
-.status-card small{
-  opacity:0.8;
-}
-
-/* SCROLL ANIMATION */
-.hidden{
-  opacity:0;
-  transform:translateY(40px);
-  transition:0.8s;
-}
-
-.show{
-  opacity:1;
-  transform:translateY(0);
+  transform:translateY(-3px);
+  border-color:var(--accent);
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:30px;
+  padding:20px;
+  color:var(--muted);
+  font-size:12px;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <strong>Portfolio</strong>
-  <div>
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-    <button onclick="toggleMode()">🌙</button>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="brand">🛡 SOC CONTROL CENTER | OAMOSU</div>
+  <div class="status-pill" id="status">SYSTEM ONLINE</div>
+</div>
+
+<div class="grid">
+
+  <!-- LEFT: LIVE SOC CONSOLE -->
+  <div class="panel">
+
+    <div class="hero-title">Operational Security Dashboard</div>
+    <div class="subtitle">Real-time infrastructure telemetry • simulated SOC environment</div>
+
+    <!-- METRICS -->
+    <div class="metrics">
+      <div class="metric">
+        <h3>EVENTS</h3>
+        <p id="events">0</p>
+      </div>
+      <div class="metric">
+        <h3>INFO</h3>
+        <p class="info" id="info">0</p>
+      </div>
+      <div class="metric">
+        <h3>WARN</h3>
+        <p class="warn" id="warn">0</p>
+      </div>
+      <div class="metric">
+        <h3>CRITICAL</h3>
+        <p class="crit" id="crit">0</p>
+      </div>
+    </div>
+
+    <!-- LIVE STREAM -->
+    <div class="stream" id="stream"></div>
   </div>
-</nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <h1>Platform Engineer (SRE + Cybersecurity)</h1>
-  <div class="typing"></div>
+  <!-- RIGHT: CONTROL CENTER -->
+  <div class="right-grid">
 
-  <p class="summary">
-    Infrastructure-focused engineer specializing in Linux systems, DevOps automation, and cybersecurity operations.
-    Focused on building and operating enterprise-style environments using observability, configuration management,
-    and security hardening principles.
-  </p>
-
-  <p class="summary">
-    I design and operate infrastructure systems that combine observability, automation, and security into production-like environments.
-  </p>
-
-  <a href="assets/resume.pdf" download>
-    <button class="btn">Download Resume</button>
-  </a>
-</section>
-
-<!-- LIVE STATUS STRIP -->
-<section class="section hidden">
-  <h2>Live Infrastructure Status</h2>
-
-  <div class="grid">
-
-    <div class="card status-card">
-      <h3>🟢 SOC Stack</h3>
-      <p>SIEM + Alerting + Log Pipeline</p>
-      <small>Status: Operational</small>
+    <div class="panel">
+      <h3>📡 System Nodes</h3>
+      <p class="subtitle">Simulated infrastructure fleet</p>
+      <div style="margin-top:10px;font-size:13px;">
+        IND-DC • FSH-DC • MCV-DC<br>
+        WEB • MON • LOG • CICD • DB
+      </div>
     </div>
 
-    <div class="card status-card">
-      <h3>🟢 SRE Layer</h3>
-      <p>Monitoring + Observability + Metrics</p>
-      <small>Status: Healthy</small>
+    <div class="panel">
+      <h3>🚀 Project Access</h3>
+
+      <div class="card" onclick="go('projects/sentinelops/')">
+        SentinelOps Platform
+      </div>
+
+      <div class="card" onclick="go('projects/soc-lab/')">
+        SOC Lab (SIEM Engine)
+      </div>
+
+      <div class="card" onclick="go('projects/cicd-pipeline/')">
+        CI/CD Pipeline
+      </div>
+
+      <div class="card" onclick="go('projects/linux-operations/')">
+        Linux Operations
+      </div>
+
+      <div class="card" onclick="go('projects/devsecops/')">
+        DevSecOps Lab
+      </div>
     </div>
 
-    <div class="card status-card">
-      <h3>🟡 CI/CD System</h3>
-      <p>Pipeline execution + security scans</p>
-      <small>Status: Build Queue Active</small>
-    </div>
-
-    <div class="card status-card">
-      <h3>🟢 Security Controls</h3>
-      <p>Hardening + Firewall + Access control</p>
-      <small>Status: Enforced</small>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="section">
-  <h2 class="hidden">Infrastructure & Security Systems</h2>
-
-  <div class="grid">
-
-    <div class="card hidden" onclick="go('projects/control-center/index.html')">
-      <h3>🧩 Unified Control Center</h3>
-      <p>Single operations dashboard for entire cyber range</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/sentinelops/')">
-      <h3>🏗️ SentinelOps Platform</h3>
-      <p>Multi-site enterprise infrastructure simulation</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/soc-lab/')">
-      <h3>🛡️ SOC Lab</h3>
-      <p>SIEM simulation engine with real-time detection logic</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/devsecops/')">
-      <h3>🔐 DevSecOps</h3>
-      <p>Security enforcement in CI/CD pipeline workflows</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/cicd-pipeline/')">
-      <h3>⚙️ CI/CD Pipeline</h3>
-      <p>Jenkins-style staged build execution simulation</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/linux-operations/')">
-      <h3>🖥️ Linux Operations</h3>
-      <p>Enterprise system administration & security operations layer</p>
-    </div>
-
-    <div class="card hidden" onclick="go('projects/pentest-lab/')">
-      <h3>🛡️ Penetration Testing Lab</h3>
-      <p>Nmap • Nessus • Metasploit</p>
+    <div class="panel">
+      <h3>⚙ System Status</h3>
+      <p class="ok">All services operational</p>
+      <p class="subtitle">No active outages detected</p>
     </div>
 
   </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="section">
-  <h2 class="hidden">Technical Skills</h2>
-
-  <div class="skills hidden">
-    <span>Linux Systems</span>
-    <span>Networking</span>
-    <span>Ansible</span>
-    <span>Prometheus</span>
-    <span>Grafana</span>
-    <span>Alertmanager</span>
-    <span>UFW Firewall</span>
-    <span>Fail2Ban</span>
-    <span>Rsyslog</span>
-    <span>VirtualBox</span>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <p>Email: oamosu14@aol.com</p>
-  <p>GitHub: github.com/oamosu14</p>
-</section>
+</div>
 
 <footer>
-  © 2026 Cybersecurity Portfolio
+  © 2026 Unified SOC Engineering Portfolio
 </footer>
 
 <script>
-// DARK MODE
-function toggleMode(){
-  document.body.classList.toggle("light");
+
+let logs = [];
+let stats = { total:0, info:0, warn:0, crit:0 };
+
+const events = [
+  {t:"INFO", m:"Node heartbeat OK - IND-WEB-01"},
+  {t:"WARN", m:"High CPU usage detected - FSH-DEV-01"},
+  {t:"CRIT", m:"Brute-force attempt detected - SSH Gateway"},
+  {t:"INFO", m:"Backup completed successfully"},
+  {t:"WARN", m:"Disk usage threshold reached - IND-LOG-01"},
+  {t:"INFO", m:"Prometheus scrape successful"}
+];
+
+function push(){
+  let e = events[Math.floor(Math.random()*events.length)];
+
+  logs.push(e);
+  stats.total++;
+
+  if(e.t==="INFO") stats.info++;
+  if(e.t==="WARN") stats.warn++;
+  if(e.t==="CRIT") stats.crit++;
+
+  render();
 }
 
-// NAVIGATION
+function render(){
+
+  document.getElementById("events").innerText = stats.total;
+  document.getElementById("info").innerText = stats.info;
+  document.getElementById("warn").innerText = stats.warn;
+  document.getElementById("crit").innerText = stats.crit;
+
+  const stream = document.getElementById("stream");
+  stream.innerHTML = "";
+
+  logs.slice(-25).reverse().forEach(l=>{
+
+    let cls = "info";
+    if(l.t==="WARN") cls="warn";
+    if(l.t==="CRIT") cls="crit";
+
+    stream.innerHTML += `
+      <div class="event ${cls}">
+        [${l.t}] ${l.m}
+      </div>
+    `;
+  });
+}
+
 function go(link){
   window.location.href = link;
 }
 
-// TYPING EFFECT
-const words=["Cybersecurity","DevOps","SRE","Infrastructure"];
-let i=0,j=0,deleting=false;
+setInterval(push, 2000);
+render();
 
-function type(){
-  let current=words[i];
-  document.querySelector(".typing").textContent=current.substring(0,j);
-
-  if(!deleting && j++===current.length){
-    deleting=true;
-    setTimeout(type,1000);
-    return;
-  }
-
-  if(deleting && j--===0){
-    deleting=false;
-    i=(i+1)%words.length;
-  }
-
-  setTimeout(type,100);
-}
-type();
-
-// SCROLL ANIMATION
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-});
-
-document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 </script>
-
-<script src="assets/main.js"></script>
 
 </body>
 </html>
