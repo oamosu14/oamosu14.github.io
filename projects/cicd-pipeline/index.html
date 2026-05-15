@@ -1,49 +1,222 @@
-<section>
-  <h2>📌 Extended Linux Operations Scope</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CI/CD Pipeline | Execution Engine</title>
 
-  <div class="card">
-    <h3>System Administration Core Tasks</h3>
+<style>
+body{
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:#0b0f19;
+  color:#e6edf3;
+}
 
-    <h4>User Management</h4>
-    <ul>
-      <li>Create and manage users and groups (adduser, usermod, passwd)</li>
-      <li>Configure sudo access using visudo</li>
-      <li>Manage authentication via SSH key-based login</li>
-    </ul>
+/* TOP BAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 20px;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
 
-    <h4>File System Management</h4>
-    <ul>
-      <li>File permissions (chmod, chown)</li>
-      <li>Directory structure enforcement</li>
-      <li>Log file inspection and protection</li>
-    </ul>
+nav a{
+  color:#22c55e;
+  text-decoration:none;
+}
 
-    <h4>System Monitoring</h4>
-    <ul>
-      <li>CPU monitoring (top, htop)</li>
-      <li>Memory usage (free, vmstat)</li>
-      <li>Disk usage analysis (df, du)</li>
-    </ul>
+/* HERO SIMULATION */
+.hero{
+  padding:40px 20px;
+  text-align:center;
+}
 
-    <h4>Security Hardening</h4>
-    <ul>
-      <li>SSH hardening (disable root login, key-based auth)</li>
-      <li>Firewall configuration (ufw)</li>
-      <li>Intrusion prevention (fail2ban)</li>
-    </ul>
+.pipeline{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
 
-    <h4>Automation</h4>
-    <ul>
-      <li>Cron job scheduling</li>
-      <li>System update automation</li>
-      <li>Backup scripting (rsync, tar)</li>
-    </ul>
+.stage{
+  padding:14px 18px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  min-width:120px;
+  position:relative;
+  overflow:hidden;
+}
 
-    <h4>Practice Lab</h4>
-    <ul>
-      <li>VM-based Linux environment setup</li>
-      <li>Security hardening simulation</li>
-      <li>Monitoring script development</li>
-    </ul>
+.stage.active{
+  border-color:#22c55e;
+  box-shadow:0 0 20px rgba(34,197,94,0.3);
+}
+
+.stage::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(34,197,94,0.2),transparent);
+  animation:scan 2s infinite;
+}
+
+@keyframes scan{
+  0%{left:-100%}
+  100%{left:100%}
+}
+
+/* LOGS */
+.console{
+  margin:30px auto;
+  max-width:900px;
+  background:#0f172a;
+  border:1px solid rgba(255,255,255,0.08);
+  padding:15px;
+  border-radius:12px;
+  font-family:monospace;
+  height:220px;
+  overflow:auto;
+  font-size:12px;
+}
+
+/* CONTENT */
+.section{
+  max-width:900px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+h2{
+  color:#22c55e;
+}
+
+.card{
+  background:rgba(255,255,255,0.04);
+  padding:15px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  margin-top:15px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#9ca3af;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="../../index.html">⬅ Portfolio</a>
+  <a href="../sentinelops/index.html">SentinelOps</a>
+</nav>
+
+<!-- ===================== -->
+<!-- 1. CI/CD SIMULATION -->
+<!-- ===================== -->
+<div class="hero">
+  <h1>CI/CD Execution Engine</h1>
+  <p>Live pipeline simulation: Build → Test → Scan → Package → Artifact</p>
+
+  <div class="pipeline">
+    <div class="stage" id="s1">Checkout</div>
+    <div class="stage" id="s2">Build</div>
+    <div class="stage" id="s3">Test</div>
+    <div class="stage" id="s4">Security Scan</div>
+    <div class="stage" id="s5">Package</div>
+    <div class="stage" id="s6">Artifact</div>
   </div>
-</section>
+
+  <div class="console" id="console"></div>
+</div>
+
+<!-- ===================== -->
+<!-- 2. PROJECT DESCRIPTION -->
+<!-- ===================== -->
+<div class="section">
+
+<h2>Execution Overview</h2>
+
+<div class="card">
+This CI/CD pipeline implements an automated software delivery workflow using a structured build-and-test system.
+Each commit triggers a full lifecycle execution that validates code quality, executes tests, performs security scanning,
+and produces deployable artifacts.
+</div>
+
+<div class="card">
+The system is designed around deterministic stages where each phase must complete successfully before progression.
+Failures at any stage immediately halt the pipeline and surface actionable logs for debugging and remediation.
+</div>
+
+<h2>Pipeline Architecture</h2>
+
+<div class="card">
+Git Repository → Jenkins Execution Engine → Build System → Unit Tests → Code Quality & Security Scan → Artifact Packaging → Storage Registry
+</div>
+
+<h2>Tools Used</h2>
+
+<div class="card">
+Jenkins • Git • SonarQube • OWASP Dependency Check • CMake / MSBuild • Nexus Artifact Repository
+</div>
+
+</div>
+
+<footer>
+CI/CD Pipeline Execution System • 2026
+</footer>
+
+<script>
+
+let steps=["Checkout","Build","Test","Security Scan","Package","Artifact"];
+let i=0;
+
+let consoleBox=document.getElementById("console");
+
+function log(msg){
+  consoleBox.innerHTML += msg + "<br>";
+  consoleBox.scrollTop = consoleBox.scrollHeight;
+}
+
+function activate(step){
+  document.querySelectorAll(".stage").forEach(s=>s.classList.remove("active"));
+  document.getElementById(step).classList.add("active");
+}
+
+function runPipeline(){
+
+  if(i>=steps.length){
+    log("✔ Pipeline completed successfully");
+    i=0;
+    return;
+  }
+
+  let stage=steps[i];
+  activate("s"+(i+1));
+
+  log("▶ Running: "+stage);
+
+  setTimeout(()=>{
+    log("✔ "+stage+" completed");
+    i++;
+    runPipeline();
+  },1200);
+}
+
+runPipeline();
+
+</script>
+
+</body>
+</html>
