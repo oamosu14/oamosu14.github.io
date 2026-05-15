@@ -153,53 +153,111 @@ nav a{
 
 <script>
 
-let current = "";
+const alertFeed = document.createElement("div");
+alertFeed.style.position = "fixed";
+alertFeed.style.right = "20px";
+alertFeed.style.bottom = "20px";
+alertFeed.style.width = "320px";
+alertFeed.style.maxHeight = "400px";
+alertFeed.style.overflow = "auto";
+alertFeed.style.background = "rgba(0,0,0,0.7)";
+alertFeed.style.border = "1px solid rgba(255,255,255,0.1)";
+alertFeed.style.borderRadius = "10px";
+alertFeed.style.padding = "10px";
+alertFeed.style.fontSize = "12px";
+alertFeed.style.zIndex = "9999";
+document.body.appendChild(alertFeed);
 
-function loadIncident(type){
-  current = type;
-  document.getElementById("panel").style.display = "block";
+// INCIDENT STATE
+let incidents = [];
+let selectedIncident = null;
 
-  const titles = {
-    cpu: "CPU Spike Incident - FSH-PROD-01",
-    auth: "Authentication Failure - MCV-AUTH-01",
-    network: "Network Latency Event - IND-PRX-01"
+// ALERT GENERATOR
+const alerts = [
+  {type:"INFO", msg:"Node heartbeat OK - IND-WEB-01"},
+  {type:"WARN", msg:"High CPU usage detected - FSH-DEV-01"},
+  {type:"CRITICAL", msg:"Authentication failure spike - MCV-AUTH-01"},
+  {type:"WARN", msg:"Disk usage > 80% - IND-LOG-01"},
+  {type:"CRITICAL", msg:"Possible brute-force detected - SSH Gateway"},
+  {type:"INFO", msg:"Backup job completed successfully"}
+];
+
+// PUSH ALERTS PERIODICALLY
+function generateAlert(){
+  const a = alerts[Math.floor(Math.random()*alerts.length)];
+
+  const entry = {
+    id: Date.now(),
+    ...a,
+    time: new Date().toLocaleTimeString(),
+    sla: a.type === "CRITICAL" ? 120 : 300
   };
 
-  document.getElementById("title").innerText = titles[type];
-  step(1);
+  incidents.unshift(entry);
+  renderFeed();
 }
 
-function step(t){
+// RENDER ALERT FEED
+function renderFeed(){
+  alertFeed.innerHTML = "<b>SOC Live Feed</b><hr>";
 
-  const logs = {
+  incidents.slice(0,8).forEach(i=>{
+    let color = "white";
 
-    cpu: {
-      1: "CPU baseline normal (20–30%). No alerts.",
-      2: "CPU spikes to 92%. Node exporter reports anomaly.",
-      3: "Prometheus triggers high CPU alert. Alertmanager routes incident.",
-      4: "Ansible playbook restarts service. CPU normalizes."
-    },
+    if(i.type === "INFO") color = "#60a5fa";
+    if(i.type === "WARN") color = "#fbbf24";
+    if(i.type === "CRITICAL") color = "#ef4444";
 
-    auth: {
-      1: "Login baseline stable. No anomalies.",
-      2: "Multiple failed SSH attempts detected.",
-      3: "Fail2Ban triggers IP block. Alert raised.",
-      4: "Access stabilized. No further intrusion attempts."
-    },
+    alertFeed.innerHTML += `
+      <div onclick="selectIncident(${i.id})"
+           style="margin-bottom:8px;cursor:pointer;">
+        <span style="color:${color};font-weight:bold;">
+          [${i.type}]
+        </span>
+        ${i.msg}<br>
+        <small>${i.time}</small>
+      </div>
+    `;
+  });
+}
 
-    network: {
-      1: "Latency within expected thresholds.",
-      2: "Packet delay increases on IND-PRX-01.",
-      3: "Grafana dashboard shows traffic congestion.",
-      4: "Routing corrected. Latency normalized."
-    }
-  };
+// SELECT INCIDENT
+function selectIncident(id){
+  selectedIncident = incidents.find(x=>x.id===id);
+  showPanel();
+}
+
+// SHOW PANEL
+function showPanel(){
+  const panel = document.getElementById("panel");
+  panel.style.display = "block";
+
+  if(!selectedIncident) return;
+
+  document.getElementById("title").innerText =
+    "SOC Investigation - " + selectedIncident.type;
 
   document.getElementById("logbox").innerText =
-    logs[current][t];
+    `Incident ID: ${selectedIncident.id}
+Severity: ${selectedIncident.type}
+Message: ${selectedIncident.msg}
+SLA Remaining: ${selectedIncident.sla}s`;
 }
 
-</script>
+// SLA TIMER
+function tickSLA(){
+  incidents.forEach(i=>{
+    i.sla--;
+    if(i.sla < 0) i.sla = 0;
+  });
 
-</body>
-</html>
+  renderFeed();
+}
+
+// START SYSTEM
+setInterval(generateAlert, 4000);
+setInterval(tickSLA, 1000);
+
+renderFeed();
+
+</script>
