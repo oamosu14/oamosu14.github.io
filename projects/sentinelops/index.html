@@ -79,6 +79,39 @@ nav a.primary{
   font-size:12px;
   margin-bottom:10px;
 }
+
+/* INTERACTIVE ELEMENTS */
+.hotspot{
+  position:absolute;
+  width:14px;
+  height:14px;
+  background:#22c55e;
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:0 0 10px #22c55e;
+}
+
+.btn{
+  padding:8px 12px;
+  margin:5px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background:#1f2937;
+  color:#e6edf3;
+}
+
+.btn:hover{
+  background:#374151;
+}
+
+.panel{
+  margin-top:15px;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:12px;
+  display:none;
+}
 </style>
 </head>
 
@@ -101,186 +134,167 @@ nav a.primary{
   <h1>SentinelOps: Enterprise Infrastructure Simulation Platform</h1>
 
   <p>
-  SentinelOps is a multi-site virtual infrastructure environment designed to simulate real-world enterprise
-  operations across SRE, DevOps, and Cybersecurity domains using Linux-based systems.
+  SentinelOps simulates real-world enterprise infrastructure across SRE, DevOps, and Cybersecurity domains.
   </p>
 
   <p>
-  The goal is not to build tools in isolation, but to model how production systems behave under monitoring,
-  automation, logging, and security enforcement layers.
+  It models how production systems behave under observability, automation, logging, and security enforcement.
   </p>
 </section>
 
 <!-- PROBLEM -->
 <section>
   <h2>1. Problem Statement</h2>
-
   <div class="card">
-    Modern infrastructure teams operate across fragmented systems:
-    monitoring tools, logging pipelines, automation frameworks, and security controls often exist in silos.
-
-    <br><br>
-
-    SentinelOps was built to unify these domains into a single operational simulation environment.
+    Enterprise infrastructure is fragmented across monitoring, logging, automation, and security tools.
+    SentinelOps unifies these into a single operational simulation.
   </div>
 </section>
 
-<!-- ARCHITECTURE -->
+<!-- ARCHITECTURE (INTERACTIVE) -->
 <section>
-  <h2>2. System Architecture</h2>
+  <h2>2. System Architecture (Interactive)</h2>
 
-  <div class="card">
-    Multi-site topology:
+  <div style="position:relative;">
+    <img src="../../assets/images/sentinelops-architecture.png">
 
-    <ul>
-      <li>IND-DC → Monitoring, API, Logging</li>
-      <li>FSH-DC → CI/CD, Dev, Test, Prod</li>
-      <li>MCV-DC → Web, Auth, Database</li>
-    </ul>
-
-    Core stack:
-    <ul>
-      <li>Prometheus → Metrics collection</li>
-      <li>Grafana → Visualization</li>
-      <li>Alertmanager → Incident routing</li>
-      <li>Rsyslog → Centralized logging</li>
-      <li>Ansible → Automation</li>
-      <li>UFW + Fail2Ban → Security enforcement</li>
-    </ul>
+    <div class="hotspot" style="top:25%; left:35%;" onclick="show('monitoring')"></div>
+    <div class="hotspot" style="top:45%; left:55%;" onclick="show('automation')"></div>
+    <div class="hotspot" style="top:65%; left:40%;" onclick="show('security')"></div>
   </div>
 
-  <img src="../../assets/images/sentinelops-architecture.png">
+  <div id="archPanel" class="panel"></div>
+</section>
+
+<!-- FLOW -->
+<section>
+  <h2>3. System Flow (Execution Path)</h2>
+
+  <button class="btn" onclick="flow(1)">Node Metrics</button>
+  <button class="btn" onclick="flow(2)">Prometheus</button>
+  <button class="btn" onclick="flow(3)">Grafana</button>
+  <button class="btn" onclick="flow(4)">Alerting</button>
+
+  <div id="flowPanel" class="panel"></div>
 </section>
 
 <!-- OBSERVABILITY -->
 <section>
-  <h2>3. Observability Layer (SRE Design)</h2>
+  <h2>4. Observability Layer</h2>
 
   <div class="card">
-    Metrics are collected using Node Exporter and aggregated in Prometheus.
-
-    Grafana dashboards provide visibility into:
-    CPU, memory, disk usage, and service health.
-
-    Alertmanager handles threshold-based anomaly detection.
+    Prometheus collects metrics via Node Exporter.
+    Grafana visualizes system health in real-time.
   </div>
 
   <img src="../../assets/images/grafana-dashboard.png">
 </section>
 
+<!-- INCIDENT TIMELINE -->
+<section>
+  <h2>5. Incident Replay Timeline</h2>
+
+  <button class="btn" onclick="incident(1)">T+0</button>
+  <button class="btn" onclick="incident(2)">T+5m</button>
+  <button class="btn" onclick="incident(3)">T+10m</button>
+  <button class="btn" onclick="incident(4)">Recovery</button>
+
+  <div id="incidentPanel" class="panel"></div>
+</section>
+
 <!-- LOGGING -->
 <section>
-  <h2>4. Logging & Visibility</h2>
-
+  <h2>6. Logging & Visibility</h2>
   <div class="card">
-    All nodes forward logs to a centralized rsyslog aggregation system.
-
-    This enables:
-    <ul>
-      <li>Cross-node log correlation</li>
-      <li>Incident traceability</li>
-      <li>Security event visibility</li>
-    </ul>
+    Centralized rsyslog aggregation enables cross-node correlation and incident tracing.
   </div>
 </section>
 
 <!-- AUTOMATION -->
 <section>
-  <h2>5. Automation Layer (Ansible)</h2>
-
+  <h2>7. Automation Layer</h2>
   <div class="card">
-    Ansible is used to enforce configuration consistency across all nodes.
-
-    Capabilities:
-    <ul>
-      <li>System configuration management</li>
-      <li>Package standardization</li>
-      <li>Security policy enforcement</li>
-    </ul>
+    Ansible enforces configuration consistency, security baselines, and system provisioning.
   </div>
-
-  <img src="../../assets/images/ansible-run.png">
 </section>
 
 <!-- SECURITY -->
 <section>
-  <h2>6. Security Architecture</h2>
-
+  <h2>8. Security Architecture</h2>
   <div class="card">
-    Security controls implemented:
-    <ul>
-      <li>SSH key-based authentication</li>
-      <li>Root login disabled</li>
-      <li>Firewall rules (UFW)</li>
-      <li>Fail2Ban brute-force protection</li>
-    </ul>
-
-    This simulates enterprise-grade access control enforcement.
+    SSH hardening, firewall rules, and Fail2Ban enforce secure access control.
   </div>
 </section>
 
 <!-- CMDB -->
 <section>
-  <h2>7. CMDB / Inventory System</h2>
-
+  <h2>9. CMDB System</h2>
   <div class="card">
-    A lightweight CMDB was built using PHP + SQLite to track infrastructure assets.
-
-    Features:
-    <ul>
-      <li>Node inventory tracking</li>
-      <li>IP mapping</li>
-      <li>Role-based classification</li>
-      <li>Auto-refresh dashboard (60s)</li>
-    </ul>
+    Lightweight inventory tracking system built with PHP + SQLite and 60s auto-refresh.
   </div>
-
   <img src="../../assets/images/cmdb-dashboard.png">
-</section>
-
-<!-- INCIDENT -->
-<section>
-  <h2>8. Incident Simulation</h2>
-
-  <div class="card">
-    Controlled failure scenarios were introduced to validate system behavior:
-
-    <ul>
-      <li>Alert generation via Prometheus rules</li>
-      <li>Log correlation across rsyslog layer</li>
-      <li>Service recovery validation via SSH</li>
-    </ul>
-
-    This simulates real-world SRE incident response workflows.
-  </div>
 </section>
 
 <!-- OUTCOMES -->
 <section>
-  <h2>9. Engineering Outcomes</h2>
-
+  <h2>10. Engineering Outcomes</h2>
   <div class="card">
-    This project demonstrates:
-    <ul>
-      <li>Distributed infrastructure design</li>
-      <li>SRE observability implementation</li>
-      <li>Cybersecurity enforcement architecture</li>
-      <li>Automation-driven operations model</li>
-    </ul>
+    Distributed systems design, SRE observability, cybersecurity enforcement, and automation modeling.
   </div>
 </section>
 
 <!-- CTA -->
 <section>
-  <h2>10. Evidence & Artifacts</h2>
-
+  <h2>11. Evidence</h2>
   <div class="card">
-    <p>View full operational evidence:</p>
-    <a href="./gallery.html" style="color:#22c55e;">➡ Open SentinelOps Evidence Gallery</a>
+    <a href="./gallery.html" style="color:#22c55e;">→ Open Evidence Gallery</a>
   </div>
 </section>
 
 </div>
+
+<script>
+function show(type){
+  const panel = document.getElementById("archPanel");
+
+  const data = {
+    monitoring: "Monitoring Layer: Prometheus + Node Exporter + Grafana observability stack.",
+    automation: "Automation Layer: Ansible ensures configuration consistency across all nodes.",
+    security: "Security Layer: SSH hardening, firewall rules, Fail2Ban protection."
+  };
+
+  panel.innerHTML = data[type];
+  panel.style.display = "block";
+}
+
+function flow(step){
+  const panel = document.getElementById("flowPanel");
+
+  const data = {
+    1:"Nodes generate metrics via Node Exporter.",
+    2:"Prometheus scrapes and stores time-series data.",
+    3:"Grafana visualizes system performance.",
+    4:"Alertmanager triggers incident notifications."
+  };
+
+  panel.innerHTML = data[step];
+  panel.style.display = "block";
+}
+
+function incident(stage){
+  const panel = document.getElementById("incidentPanel");
+
+  const data = {
+    1:"CPU spike detected on FSH-PROD-01.",
+    2:"Alert triggered for memory threshold breach.",
+    3:"Incident escalated via Alertmanager routing.",
+    4:"Recovery executed via service restart and validation."
+  };
+
+  panel.innerHTML = data[stage];
+  panel.style.display = "block";
+}
+</script>
 
 </body>
 </html>
