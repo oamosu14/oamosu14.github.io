@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SOC Lab | Security Operations Node</title>
+<title>SOC Lab | SIEM Simulation Engine</title>
 
 <style>
 body{
@@ -10,20 +10,13 @@ body{
   font-family:Inter, sans-serif;
   background:#0b0f19;
   color:#e6edf3;
-  line-height:1.6;
 }
 
 .container{
-  max-width:950px;
+  max-width:1000px;
   margin:auto;
   padding:60px 20px;
 }
-
-h1,h2,h3{
-  color:#22c55e;
-}
-
-p{ opacity:0.9; }
 
 nav{
   display:flex;
@@ -33,7 +26,6 @@ nav{
   backdrop-filter:blur(10px);
   position:sticky;
   top:0;
-  z-index:1000;
   border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
@@ -43,8 +35,17 @@ nav a{
   margin-right:15px;
 }
 
-nav a.primary{
-  color:#22c55e;
+nav a.primary{ color:#22c55e; }
+
+h1,h2{ color:#22c55e; }
+
+.badge{
+  display:inline-block;
+  padding:5px 10px;
+  background:rgba(34,197,94,0.15);
+  border:1px solid rgba(34,197,94,0.3);
+  border-radius:999px;
+  font-size:12px;
 }
 
 .card{
@@ -55,10 +56,9 @@ nav a.primary{
   margin-top:15px;
 }
 
-/* SECURITY STATUS GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:15px;
   margin-top:20px;
 }
@@ -70,13 +70,16 @@ nav a.primary{
   border:1px solid rgba(255,255,255,0.08);
 }
 
-.badge{
-  display:inline-block;
-  padding:5px 10px;
-  background:rgba(34,197,94,0.15);
-  border:1px solid rgba(34,197,94,0.3);
-  border-radius:999px;
+.logbox{
+  background:#0f172a;
+  padding:15px;
+  border-radius:10px;
+  margin-top:20px;
+  font-family:monospace;
   font-size:12px;
+  height:300px;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,0.08);
 }
 </style>
 </head>
@@ -87,107 +90,160 @@ nav a.primary{
   <a class="primary" href="../../index.html">⬅ Back to Portfolio</a>
   <div>
     <a href="../sentinelops/index.html">SentinelOps</a>
-    <a href="./index.html">SOC Lab</a>
   </div>
 </nav>
 
 <div class="container">
 
-<!-- HERO -->
 <section>
-  <span class="badge">Security Operations Engineering Lab</span>
-  <h1>SOC-Ready Virtual Machine Lab</h1>
+  <span class="badge">SIEM Simulation Engine</span>
+  <h1>SOC Lab — Security Event Monitoring System</h1>
 
   <p>
-    A single-node Security Operations Center simulation environment designed to replicate core SOC workflows:
-    monitoring, detection, logging, and incident response within a hardened Linux VM.
+    This lab simulates a lightweight SIEM engine that performs real-time log ingestion,
+    correlation, and alert generation similar to Splunk / Wazuh / ELK behavior.
   </p>
 </section>
 
-<!-- OBJECTIVES -->
+<!-- DASHBOARD -->
 <section>
-  <h2>Objectives</h2>
+  <h2>SIEM Dashboard</h2>
+
+  <div class="grid">
+    <div class="metric">Events: <span id="events">0</span></div>
+    <div class="metric">INFO: <span id="info">0</span></div>
+    <div class="metric">WARN: <span id="warn">0</span></div>
+    <div class="metric">CRITICAL: <span id="crit">0</span></div>
+  </div>
 
   <div class="card">
-    This lab focuses on foundational SOC engineering capabilities:
-    <ul>
-      <li>System hardening and secure baseline configuration</li>
-      <li>Centralized logging preparation</li>
-      <li>Intrusion detection readiness</li>
-      <li>Incident response simulation environment</li>
-    </ul>
+    <b>Detection Engine Status:</b> <span id="status">ACTIVE</span>
   </div>
 </section>
 
-<!-- HARDENING -->
+<!-- LOG STREAM -->
 <section>
-  <h2>System Hardening</h2>
-
-  <div class="card">
-    Baseline security controls applied:
-    <pre>
-sudo ufw enable
-sudo ufw allow ssh
-sudo apt install fail2ban -y
-    </pre>
-
-    These controls establish:
-    <ul>
-      <li>Firewall enforcement (UFW)</li>
-      <li>Brute-force mitigation (Fail2Ban)</li>
-      <li>Secure remote access via SSH</li>
-    </ul>
-  </div>
-</section>
-
-<!-- SECURITY MODEL -->
-<section>
-  <h2>Security Operations Model</h2>
-
-  <div class="card">
-    This lab simulates a minimal SOC stack:
-
-    <ul>
-      <li>Log ingestion (system logs, auth logs)</li>
-      <li>Threat detection via rule-based monitoring</li>
-      <li>Incident response workflows</li>
-    </ul>
-  </div>
-</section>
-
-<!-- SOC WORKFLOW -->
-<section>
-  <h2>Incident Response Flow</h2>
-
-  <div class="card">
-    SOC lifecycle simulation:
-
-    <ol>
-      <li>Event detection (system anomaly)</li>
-      <li>Alert generation (log or service failure)</li>
-      <li>Triage and validation</li>
-      <li>Containment action (service restart / blocking IP)</li>
-      <li>Post-incident review</li>
-    </ol>
-  </div>
-</section>
-
-<!-- VALUE -->
-<section>
-  <h2>Engineering Value</h2>
-
-  <div class="card">
-    This project demonstrates:
-    <ul>
-      <li>Linux security hardening capability</li>
-      <li>SOC operational understanding</li>
-      <li>Incident lifecycle awareness</li>
-      <li>Practical cybersecurity engineering skills</li>
-    </ul>
-  </div>
+  <h2>Live SIEM Event Stream</h2>
+  <div id="logbox" class="logbox"></div>
 </section>
 
 </div>
+
+<script>
+
+// =========================
+// SIEM EVENT STREAM
+// =========================
+let logs = [];
+
+let stats = {
+  total:0,
+  info:0,
+  warn:0,
+  crit:0
+};
+
+// =========================
+// EVENT GENERATION
+// =========================
+const events = [
+  {t:"INFO", m:"User login successful - opsadmin"},
+  {t:"WARN", m:"Multiple failed SSH attempts detected"},
+  {t:"CRITICAL", m:"Brute-force pattern detected on SSH service"},
+  {t:"INFO", m:"System heartbeat normal"},
+  {t:"WARN", m:"High CPU usage detected on node"},
+  {t:"CRITICAL", m:"Possible privilege escalation attempt"},
+  {t:"INFO", m:"Log rotation completed successfully"}
+];
+
+// =========================
+// CORRELATION ENGINE
+// =========================
+function detectPattern(){
+
+  let last10 = logs.slice(-10);
+
+  let sshFailures = last10.filter(l =>
+    l.m.toLowerCase().includes("failed ssh")
+  ).length;
+
+  if(sshFailures >= 3){
+    pushLog("CRITICAL", "CORRELATION ALERT: SSH brute-force pattern detected");
+  }
+}
+
+// =========================
+// PUSH EVENT
+// =========================
+function pushLog(type, msg){
+
+  let entry = {
+    time: new Date().toLocaleTimeString(),
+    type,
+    msg
+  };
+
+  logs.push(entry);
+
+  stats.total++;
+
+  if(type==="INFO") stats.info++;
+  if(type==="WARN") stats.warn++;
+  if(type==="CRITICAL") stats.crit++;
+
+  render();
+}
+
+// =========================
+// STREAM ENGINE
+// =========================
+function generate(){
+
+  let e = events[Math.floor(Math.random()*events.length)];
+  pushLog(e.t, e.m);
+
+  detectPattern();
+}
+
+// =========================
+// RENDER SIEM
+// =========================
+function render(){
+
+  document.getElementById("events").innerText = stats.total;
+  document.getElementById("info").innerText = stats.info;
+  document.getElementById("warn").innerText = stats.warn;
+  document.getElementById("crit").innerText = stats.crit;
+
+  let box = document.getElementById("logbox");
+  box.innerHTML = "";
+
+  logs.slice(-20).reverse().forEach(l=>{
+
+    let color = "#e6edf3";
+
+    if(l.type==="INFO") color="#60a5fa";
+    if(l.type==="WARN") color="#fbbf24";
+    if(l.type==="CRITICAL") color="#ef4444";
+
+    box.innerHTML += `
+      <div>
+        <span style="color:${color};font-weight:bold;">
+          [${l.type}]
+        </span>
+        ${l.msg}
+        <small>(${l.time})</small>
+      </div>
+    `;
+  });
+}
+
+// =========================
+// BOOT SIEM
+// =========================
+setInterval(generate, 2500);
+
+</script>
 
 </body>
 </html>
