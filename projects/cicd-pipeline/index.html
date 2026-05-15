@@ -2,168 +2,289 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Linux Operations | System Administration Lab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unified SOC Control Center | Oamosu Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{
+:root{
+  --bg:#0b0f19;
+  --card:rgba(255,255,255,0.05);
+  --text:#e6edf3;
+  --accent:#22c55e;
+  --warn:#fbbf24;
+  --crit:#ef4444;
+  --info:#60a5fa;
+  --muted:#9ca3af;
+}
+
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family:Inter, sans-serif;
-  background:#0b0f19;
-  color:#e6edf3;
 }
 
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:60px 20px;
+body{
+  background:var(--bg);
+  color:var(--text);
 }
 
-nav{
+/* TOP BAR */
+.topbar{
   display:flex;
   justify-content:space-between;
-  padding:15px 20px;
-  background:rgba(0,0,0,0.5);
+  align-items:center;
+  padding:14px 22px;
+  background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   position:sticky;
   top:0;
   border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-nav a{
-  color:#e6edf3;
-  text-decoration:none;
-  margin-right:15px;
+.brand{
+  font-weight:600;
+  color:var(--accent);
 }
 
-nav a.primary{ color:#22c55e; }
-
-h1,h2{ color:#22c55e; }
-
-.card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:20px;
-  border-radius:12px;
-  margin-top:15px;
+.status-pill{
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(34,197,94,0.15);
+  border:1px solid rgba(34,197,94,0.3);
+  font-size:12px;
 }
 
-/* OPERATION GRID */
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:20px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap:18px;
+  padding:22px;
+}
+
+/* PANELS */
+.panel{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:18px;
+}
+
+.hero-title{
+  font-size:26px;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
+}
+
+/* METRICS */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:16px;
 }
 
 .metric{
-  background:rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.08);
-  padding:15px;
+  padding:12px;
   border-radius:12px;
-  text-align:center;
 }
 
-/* LOG CONSOLE */
-.logbox{
-  margin-top:25px;
-  background:#0f172a;
-  padding:15px;
-  border-radius:10px;
+.metric h3{
+  font-size:11px;
+  color:var(--muted);
+}
+
+.metric p{
+  font-size:18px;
+  margin-top:4px;
+}
+
+.info{ color:var(--info); }
+.warn{ color:var(--warn); }
+.crit{ color:var(--crit); }
+.ok{ color:var(--accent); }
+
+/* STREAM */
+.stream{
+  margin-top:14px;
+  height:320px;
+  overflow:auto;
   font-family:monospace;
   font-size:12px;
-  height:300px;
-  overflow:auto;
+}
+
+.event{
+  padding:8px;
+  margin-bottom:6px;
+  background:rgba(255,255,255,0.03);
+  border-radius:8px;
+  border-left:3px solid transparent;
+}
+
+.event.info{ border-color:var(--info); }
+.event.warn{ border-color:var(--warn); }
+.event.crit{ border-color:var(--crit); }
+
+/* RIGHT */
+.right-grid{
+  display:grid;
+  gap:14px;
+}
+
+.card{
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.08);
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+}
+
+/* CONTACT */
+.contact{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+a{
+  color:var(--accent);
+  text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+  font-size:12px;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a class="primary" href="../../index.html">⬅ Portfolio</a>
-  <a href="../sentinelops/index.html">SentinelOps</a>
-</nav>
-
-<div class="container">
-
-<section>
-  <h1>Linux System Operations Lab</h1>
-
-  <div class="card">
-    This environment simulates enterprise Linux system administration operations
-    including monitoring, security enforcement, user management, and system diagnostics.
-  </div>
-</section>
-
-<!-- SYSTEM METRICS -->
-<section>
-  <h2>System Health Overview</h2>
-
-  <div class="grid">
-    <div class="metric">CPU Usage<br><b id="cpu">--%</b></div>
-    <div class="metric">Memory Usage<br><b id="mem">--%</b></div>
-    <div class="metric">Disk Usage<br><b id="disk">--%</b></div>
-    <div class="metric">Active Users<br><b id="users">--</b></div>
-  </div>
-</section>
-
-<!-- OPERATIONS LOG -->
-<section>
-  <h2>Operations Console</h2>
-
-  <div id="log" class="logbox"></div>
-</section>
-
+<div class="topbar">
+  <div class="brand">🛡 SOC CONTROL CENTER | OAMOSU</div>
+  <div class="status-pill">SYSTEM ONLINE</div>
 </div>
+
+<div class="grid">
+
+  <!-- LEFT PANEL -->
+  <div class="panel">
+
+    <div class="hero-title">Operational Security Dashboard</div>
+    <div class="subtitle">Real-time infrastructure telemetry • simulated SOC environment</div>
+
+    <div class="metrics">
+      <div class="metric"><h3>EVENTS</h3><p id="events">0</p></div>
+      <div class="metric"><h3>INFO</h3><p class="info" id="info">0</p></div>
+      <div class="metric"><h3>WARN</h3><p class="warn" id="warn">0</p></div>
+      <div class="metric"><h3>CRITICAL</h3><p class="crit" id="crit">0</p></div>
+    </div>
+
+    <div class="stream" id="stream"></div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-grid">
+
+    <div class="panel">
+      <h3>🚀 Projects</h3>
+
+      <div class="card" onclick="go('projects/sentinelops/')">SentinelOps Platform</div>
+      <div class="card" onclick="go('projects/soc-lab/')">SOC Lab (SIEM Engine)</div>
+
+      <!-- FIXED CI/CD LINK -->
+      <div class="card" onclick="go('projects/cicd-pipeline/')">CI/CD Pipeline</div>
+
+      <div class="card" onclick="go('projects/linux-operations/')">Linux Operations</div>
+      <div class="card" onclick="go('projects/devsecops/')">DevSecOps Lab</div>
+    </div>
+
+    <div class="panel contact">
+      <h3>📩 Contact</h3>
+      Email: <a href="mailto:oamosu14@aol.com">oamosu14@aol.com</a><br>
+      GitHub: <a href="https://github.com/oamosu14" target="_blank">github.com/oamosu14</a>
+    </div>
+
+    <div class="panel">
+      <h3>⚙ System Status</h3>
+      <p class="ok">All services operational</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 Unified SOC Engineering Portfolio
+</footer>
 
 <script>
 
-// =========================
-// SYSTEM STATE
-// =========================
-function rand(min,max){
-  return Math.floor(Math.random()*(max-min)+min);
-}
+let logs=[];
+let stats={total:0,info:0,warn:0,crit:0};
 
-// =========================
-// UPDATE METRICS
-// =========================
-function updateMetrics(){
-  document.getElementById("cpu").innerText = rand(10,90) + "%";
-  document.getElementById("mem").innerText = rand(20,85) + "%";
-  document.getElementById("disk").innerText = rand(30,95) + "%";
-  document.getElementById("users").innerText = rand(1,12);
-}
-
-// =========================
-// LOG EVENTS
-// =========================
-const actions = [
-  "User 'opsadmin' logged in via SSH",
-  "UFW firewall rules updated",
-  "Fail2Ban blocked suspicious IP",
-  "Cron job executed backup script",
-  "System package updates installed",
-  "Permission change applied to /var/log",
-  "New user account created",
-  "System audit scan completed"
+const events=[
+  {t:"INFO",m:"Node heartbeat OK - IND-WEB-01"},
+  {t:"WARN",m:"High CPU usage detected - FSH-DEV-01"},
+  {t:"CRIT",m:"Brute-force attempt detected"},
+  {t:"INFO",m:"Backup completed"},
+  {t:"WARN",m:"Disk threshold reached"},
 ];
 
-function logEvent(){
-  let msg = actions[Math.floor(Math.random()*actions.length)];
+function push(){
+  let e=events[Math.floor(Math.random()*events.length)];
+  logs.push(e);
+  stats.total++;
 
-  let box = document.getElementById("log");
+  if(e.t==="INFO") stats.info++;
+  if(e.t==="WARN") stats.warn++;
+  if(e.t==="CRIT") stats.crit++;
 
-  box.innerHTML += `<div>[INFO] ${msg}</div>`;
-  box.scrollTop = box.scrollHeight;
+  render();
 }
 
-// =========================
-// BOOT LOOP
-// =========================
-setInterval(updateMetrics, 2000);
-setInterval(logEvent, 2500);
+function render(){
+  document.getElementById("events").innerText=stats.total;
+  document.getElementById("info").innerText=stats.info;
+  document.getElementById("warn").innerText=stats.warn;
+  document.getElementById("crit").innerText=stats.crit;
+
+  let stream=document.getElementById("stream");
+  stream.innerHTML="";
+
+  logs.slice(-25).reverse().forEach(l=>{
+    let cls="info";
+    if(l.t==="WARN") cls="warn";
+    if(l.t==="CRIT") cls="crit";
+
+    stream.innerHTML+=`<div class="event ${cls}">[${l.t}] ${l.m}</div>`;
+  });
+}
+
+function go(link){
+  window.location.href=link;
+}
+
+setInterval(push,2000);
+render();
 
 </script>
 
