@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevOps Control Center | Unified Operations Dashboard</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:#0b0f19;
+  color:#e6edf3;
+}
+
+/* HEADER */
+header{
+  padding:25px 30px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header a{
+  color:#22c55e;
+  text-decoration:none;
+}
+
+/* GRID */
+.container{
+  padding:40px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* MODULE CARDS */
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:20px;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#22c55e;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+.status{
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:999px;
+  display:inline-block;
+  margin-top:10px;
+}
+
+.green{ background:rgba(34,197,94,0.2); color:#22c55e; }
+.yellow{ background:rgba(234,179,8,0.2); color:#fbbf24; }
+.red{ background:rgba(239,68,68,0.2); color:#ef4444; }
+
+/* LIVE PANEL */
+.console{
+  margin-top:30px;
+  background:#0f172a;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:15px;
+  font-family:monospace;
+  font-size:12px;
+  height:260px;
+  overflow:auto;
+}
+
+.title{
+  font-size:22px;
+  color:#22c55e;
+}
+
+.sub{
+  opacity:0.8;
+  margin-top:5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <b class="title">DevOps Control Center</b>
+    <div class="sub">Unified SOC + SRE + CI/CD Operations Dashboard</div>
+  </div>
+
+  <a href="../index.html">⬅ Back to Portfolio</a>
+</header>
+
+<div class="container">
+
+<!-- ========================= -->
+<!-- MODULE GRID -->
+<!-- ========================= -->
+
+<section class="grid">
+
+  <div class="card" onclick="openModule('sentinelops')">
+    <h3>🏗️ SentinelOps Platform</h3>
+    <p>Infrastructure simulation + observability layer</p>
+    <div class="status green">ONLINE</div>
+  </div>
+
+  <div class="card" onclick="openModule('soc')">
+    <h3>🛡️ SOC Lab</h3>
+    <p>SIEM simulation + incident detection engine</p>
+    <div class="status green">ACTIVE</div>
+  </div>
+
+  <div class="card" onclick="openModule('cicd')">
+    <h3>⚙️ CI/CD Pipeline</h3>
+    <p>Automated build, test, and delivery system</p>
+    <div class="status green">RUNNING</div>
+  </div>
+
+  <div class="card" onclick="openModule('linux')">
+    <h3>🐧 Linux Operations</h3>
+    <p>System administration + security hardening</p>
+    <div class="status yellow">STABLE</div>
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- LIVE OPERATION CONSOLE -->
+<!-- ========================= -->
+
+<section>
+  <h2 style="color:#22c55e;margin-top:40px;">Live Operations Feed</h2>
+
+  <div class="console" id="console">
+Initializing DevOps Control Center...
+Loading modules...
+Connecting SentinelOps telemetry...
+SOC event stream active...
+CI/CD pipeline monitoring enabled...
+Linux system nodes synchronized...
+  </div>
+</section>
+
+</div>
+
+<script>
+
+const consoleBox = document.getElementById("console");
+
+const logs = [
+  "[INFO] SentinelOps: CPU metrics stable across nodes",
+  "[INFO] SOC: 2 new events ingested from IND-DC",
+  "[WARN] CI/CD: Build queue delay detected",
+  "[INFO] Linux Ops: Cron jobs executed successfully",
+  "[INFO] SOC: No active critical incidents",
+  "[INFO] SentinelOps: Prometheus scrape interval normal",
+  "[INFO] CI/CD: Artifact published to repository",
+  "[WARN] Linux Ops: Disk usage at 72% on node FSH-DEV-01"
+];
+
+function stream(){
+  const msg = logs[Math.floor(Math.random()*logs.length)];
+  consoleBox.innerHTML += "\n" + msg;
+  consoleBox.scrollTop = consoleBox.scrollHeight;
+}
+
+setInterval(stream, 1800);
+
+// MODULE NAVIGATION
+function openModule(name){
+
+  const routes = {
+    sentinelops: "../sentinelops/index.html",
+    soc: "../soc-lab/index.html",
+    cicd: "../cicd-pipeline/index.html",
+    linux: "../linux-operations/index.html"
+  };
+
+  window.location.href = routes[name];
+}
+
+</script>
+
+</body>
+</html>
