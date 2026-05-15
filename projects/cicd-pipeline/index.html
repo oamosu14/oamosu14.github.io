@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CI/CD Pipeline | Execution Console</title>
+<title>CI/CD Pipeline | Engineering Design & Execution</title>
 
 <style>
 body{
@@ -10,17 +10,20 @@ body{
   font-family:Inter, sans-serif;
   background:#0b0f19;
   color:#e6edf3;
+  line-height:1.6;
 }
 
-header{
-  padding:18px;
-  background:rgba(0,0,0,0.6);
-  border-bottom:1px solid rgba(255,255,255,0.08);
+nav{
   display:flex;
   justify-content:space-between;
+  padding:15px 20px;
+  background:rgba(0,0,0,0.6);
+  position:sticky;
+  top:0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-a{
+nav a{
   color:#22c55e;
   text-decoration:none;
 }
@@ -31,33 +34,64 @@ a{
   padding:40px 20px;
 }
 
+h1,h2,h3{
+  color:#22c55e;
+}
+
+.section{
+  margin-bottom:50px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  margin-top:15px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+td,th{
+  border:1px solid rgba(255,255,255,0.1);
+  padding:10px;
+  font-size:13px;
+}
+
+/* PIPELINE VISUAL */
 .pipeline{
   display:flex;
   gap:10px;
-  margin-top:30px;
+  margin-top:25px;
 }
 
 .stage{
   flex:1;
+  padding:12px;
+  border-radius:10px;
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.08);
-  padding:15px;
-  border-radius:10px;
   text-align:center;
 }
 
 .running{
   border-color:#22c55e;
-  box-shadow:0 0 15px rgba(34,197,94,0.2);
+  box-shadow:0 0 12px rgba(34,197,94,0.3);
 }
 
+/* LOG */
 .log{
-  margin-top:30px;
+  margin-top:20px;
   background:#0f172a;
   padding:15px;
   border-radius:10px;
   font-family:monospace;
-  height:280px;
+  font-size:12px;
+  height:260px;
   overflow:auto;
   border:1px solid rgba(255,255,255,0.08);
 }
@@ -66,30 +100,110 @@ a{
 
 <body>
 
-<header>
-  <a href="../../index.html">⬅ Portfolio</a>
-  <span>CI/CD Execution Pipeline</span>
-</header>
+<nav>
+  <a href="../../index.html">⬅ Back to Portfolio</a>
+  <span>CI/CD Engineering Design</span>
+</nav>
 
 <div class="container">
 
-<h1>Jenkins-Style CI/CD Simulation</h1>
-<p>Simulated build → test → security scan → deploy workflow</p>
+<!-- 1. PURPOSE -->
+<section class="section">
+<h1>CI/CD Pipeline Proposal</h1>
+
+<div class="card">
+<p>
+This document proposes a simple and practical CI/CD (Continuous Integration / Continuous Delivery)
+pipeline for an engineering environment focused on desktop application delivery.
+</p>
+
+<p><b>Objectives:</b></p>
+<ul>
+<li>Automate build and test processes</li>
+<li>Improve code quality and consistency</li>
+<li>Reduce manual deployment errors</li>
+<li>Standardize engineering workflows</li>
+<li>Use open-source, on-premise tooling</li>
+</ul>
+</div>
+</section>
+
+<!-- 2. CI/CD EXPLANATION -->
+<section class="section">
+<h2>What is CI/CD?</h2>
+
+<div class="card">
+<p><b>Continuous Integration (CI)</b></p>
+<p>Automates build, test, and validation on every code commit.</p>
+
+<p><b>Continuous Delivery (CD)</b></p>
+<p>Packages validated builds into deployable artifacts for release or testing.</p>
+</div>
+</section>
+
+<!-- 3. PIPELINE FLOW -->
+<section class="section">
+<h2>High-Level Pipeline Flow</h2>
+
+<div class="card">
+<pre>
+Developer → Git Push → CI Trigger → Build → Test → Scan → Package → Artifact Store
+</pre>
+</div>
+</section>
+
+<!-- 4. ARCHITECTURE -->
+<section class="section">
+<h2>Proposed Architecture</h2>
+
+<div class="card">
+<table>
+<tr><th>Function</th><th>Tool</th><th>Purpose</th></tr>
+<tr><td>Source Control</td><td>Git / Gitea / GitLab CE</td><td>Version control</td></tr>
+<tr><td>CI/CD Engine</td><td>Jenkins</td><td>Automation orchestration</td></tr>
+<tr><td>Build System</td><td>CMake / MSBuild / Maven</td><td>Compilation</td></tr>
+<tr><td>Artifact Store</td><td>Nexus OSS</td><td>Release storage</td></tr>
+<tr><td>Code Quality</td><td>SonarQube</td><td>Static analysis</td></tr>
+<tr><td>Security Scan</td><td>OWASP Dependency-Check</td><td>Vulnerability scanning</td></tr>
+</table>
+</div>
+</section>
+
+<!-- 5. DESIGN PRINCIPLE -->
+<section class="section">
+<h2>Design Philosophy</h2>
+
+<div class="card">
+<ul>
+<li>On-premise first (no cloud dependency)</li>
+<li>Open-source stack only</li>
+<li>Modular pipeline design</li>
+<li>Low-cost, scalable architecture</li>
+</ul>
+</div>
+</section>
+
+<!-- 6. EXECUTION SIMULATION (AFTER THEORY) -->
+<section class="section">
+<h2>CI/CD Execution Simulation</h2>
 
 <div class="pipeline">
-  <div class="stage running" id="s1">BUILD</div>
+  <div class="stage" id="s1">BUILD</div>
   <div class="stage" id="s2">TEST</div>
-  <div class="stage" id="s3">SECURITY SCAN</div>
-  <div class="stage" id="s4">DEPLOY</div>
+  <div class="stage" id="s3">SCAN</div>
+  <div class="stage" id="s4">PACKAGE</div>
 </div>
 
 <div class="log" id="log"></div>
+</section>
 
 </div>
 
 <script>
 
 let step = 0;
+
+const stages = ["s1","s2","s3","s4"];
 
 const logs = document.getElementById("log");
 
@@ -98,9 +212,14 @@ function write(msg){
   logs.scrollTop = logs.scrollHeight;
 }
 
-function pipeline(){
+const messages = [
+  "Compiling source code...",
+  "Running unit tests...",
+  "Executing security scan...",
+  "Packaging build artifact..."
+];
 
-  const stages = ["s1","s2","s3","s4"];
+function run(){
 
   if(step > 0){
     document.getElementById(stages[step-1]).classList.remove("running");
@@ -110,26 +229,19 @@ function pipeline(){
     document.getElementById(stages[step]).classList.add("running");
   }
 
-  const messages = [
-    "Pulling source code from Git repo...",
-    "Running unit tests...",
-    "Executing SAST scan (Simulated)...",
-    "Deploying container to staging..."
-  ];
-
-  write("[CI/CD] " + messages[step]);
+  write("[PIPELINE] " + messages[step]);
 
   step++;
 
   if(step >= stages.length){
-    write("[SUCCESS] Pipeline completed successfully");
+    write("[SUCCESS] CI/CD pipeline completed");
     return;
   }
 
-  setTimeout(pipeline, 2000);
+  setTimeout(run, 2000);
 }
 
-pipeline();
+run();
 
 </script>
 
