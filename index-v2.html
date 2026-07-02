@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,97 +9,81 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#0b0f19;color:#e6edf3;font-family:Inter,sans-serif}
-.topbar{display:flex;justify-content:space-between;padding:16px 24px;background:#111827;border-bottom:1px solid #333;position:sticky;top:0}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:#111827;border-bottom:1px solid #263042;position:sticky;top:0}
 .brand{color:#22c55e;font-weight:700}
-.status{color:#22c55e}
-.container{max-width:1400px;margin:auto;padding:24px}
-.profile,.panel,.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:1.4fr .6fr;gap:20px}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.metric{background:#121826;padding:12px;border-radius:10px}
-.stream{height:320px;overflow:auto;font-family:monospace}
-.project{padding:10px;margin:8px 0;background:#121826;border-radius:8px;cursor:pointer}
-.project:hover{outline:1px solid #22c55e}
-.button{display:inline-block;padding:10px 14px;background:#22c55e;color:#08110d;border-radius:8px;text-decoration:none;font-weight:700}
+.status{background:#16341f;color:#7ef29a;padding:6px 12px;border-radius:999px;font-size:12px}
+.wrap{max-width:1400px;margin:auto;padding:24px}
+.hero,.panel,.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px}
+.hero{margin-bottom:22px}
+.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#16341f;color:#7ef29a;font-size:12px}
+.hero h1{margin:14px 0 6px;font-size:40px}
+.hero h2{margin:0;color:#22c55e;font-weight:500}
+.hero p{line-height:1.8;max-width:1000px}
+.layout{display:grid;grid-template-columns:1.45fr .55fr;gap:20px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.metric{background:#121826;border-radius:10px;padding:12px}
+.metric b{display:block;color:#9ca3af;font-size:11px}
+.stream{height:340px;overflow:auto;font-family:monospace;font-size:12px}
+.item{padding:8px;margin-bottom:6px;background:#121826;border-left:3px solid #22c55e}
+.side .card{margin-bottom:18px}
+.btn{display:inline-block;margin-top:12px;background:#22c55e;color:#08110d;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700}
+.link{padding:10px;background:#121826;border-radius:8px;margin:8px 0;cursor:pointer}
+.link:hover{outline:1px solid #22c55e}
 footer{text-align:center;padding:20px;color:#9ca3af}
+a{color:#7ef29a}
 </style>
 </head>
 <body>
-<div class="topbar">
-<div class="brand">🛡 Enterprise Infrastructure & Security Operations | OAMOSU</div>
-<div class="status">SYSTEM ONLINE</div>
-</div>
-<div class="container">
-<div class="profile">
+<div class="top"><div class="brand">🛡 Enterprise Infrastructure & Security Operations | OAMOSU</div><div class="status">SYSTEM ONLINE</div></div>
+<div class="wrap">
+<div class="hero">
+<span class="badge">FLAGSHIP ENGINEERING PORTFOLIO</span>
 <h1>Olufemi Amosu</h1>
-<h3 style="color:#22c55e">Platform Engineer | SRE | Cybersecurity Analyst</h3>
-<p>Infrastructure-focused Platform Engineer and Cybersecurity Analyst specializing in Linux systems administration, cybersecurity operations, DevSecOps, infrastructure automation, observability engineering, centralized logging, identity management, and enterprise platform operations.</p>
+<h2>Platform Engineer | SRE | Cybersecurity Analyst</h2>
+<p>Infrastructure-focused Platform Engineer and Cybersecurity Analyst specializing in Linux systems administration, cybersecurity operations, DevSecOps, observability engineering, infrastructure automation, centralized logging, identity management, and enterprise platform operations.</p>
+<p>This portfolio demonstrates enterprise-inspired engineering platforms built to simulate production environments using open-source technologies, operational automation, monitoring, security analytics, and incident response.</p>
 </div>
-<div class="grid">
+<div class="layout">
 <div class="panel">
 <h2>Operational Security Dashboard</h2>
 <div class="metrics">
-<div class="metric">Events<br><span id="events">0</span></div>
-<div class="metric">INFO<br><span id="info">0</span></div>
-<div class="metric">WARN<br><span id="warn">0</span></div>
-<div class="metric">CRITICAL<br><span id="crit">0</span></div>
+<div class="metric"><b>EVENTS</b><span id="events">0</span></div>
+<div class="metric"><b>INFO</b><span id="info">0</span></div>
+<div class="metric"><b>WARN</b><span id="warn">0</span></div>
+<div class="metric"><b>CRITICAL</b><span id="crit">0</span></div>
 </div>
 <div id="stream" class="stream"></div>
 </div>
-<div>
+<div class="side">
 <div class="card">
-<h2>🧠 Featured Platform</h2>
-<h3>SOC-AI Forge</h3>
-<p>AI-Assisted Security Operations Platform integrating infrastructure engineering, observability, automation, SIEM, threat intelligence, identity management and incident response.</p>
-<a class="button" href="projects/soc-ai-forge/">Open Platform →</a>
+<h3>🧠 Featured Platform</h3>
+<h2>SOC-AI Forge</h2>
+<p>Unified AI-assisted Security Operations platform integrating Linux administration, monitoring, automation, SIEM, identity management, threat intelligence, and incident response.</p>
+<a class="btn" href="projects/soc-ai-forge/">Explore Platform →</a>
 </div>
 <div class="card">
-<h2>🏗 Engineering Systems</h2>
-<div class="project" onclick="go('projects/sentinelops/')">SentinelOps Platform</div>
-<div class="project" onclick="go('projects/soc-lab/')">SOC Lab</div>
-<div class="project" onclick="go('projects/cicd-pipeline/')">CI/CD Pipeline</div>
-<div class="project" onclick="go('projects/linux-operations/')">Linux Operations</div>
-<div class="project" onclick="go('projects/devsecops/')">DevSecOps</div>
-<div class="project" onclick="go('projects/pentest-lab/')">Penetration Testing</div>
+<h3>🏗 Engineering Systems</h3>
+<div class="link" onclick="go('projects/sentinelops/')">SentinelOps Platform</div>
+<div class="link" onclick="go('projects/soc-lab/')">SOC Lab</div>
+<div class="link" onclick="go('projects/cicd-pipeline/')">CI/CD Pipeline</div>
+<div class="link" onclick="go('projects/linux-operations/')">Linux Operations</div>
+<div class="link" onclick="go('projects/devsecops/')">DevSecOps</div>
+<div class="link" onclick="go('projects/pentest-lab/')">Penetration Testing</div>
 </div>
 <div class="card">
-<h2>📩 Contact</h2>
-<p>Email: <a href="mailto:oamosu14@aol.com">oamosu14@aol.com</a><br>
-GitHub: <a href="https://github.com/oamosu14" target="_blank">github.com/oamosu14</a></p>
+<h3>📩 Contact</h3>
+<p>Email: <a href="mailto:oamosu14@aol.com">oamosu14@aol.com</a><br>GitHub: <a target="_blank" href="https://github.com/oamosu14">github.com/oamosu14</a></p>
 </div>
 </div>
 </div>
 </div>
 <footer>© 2026 Enterprise Infrastructure & Security Portfolio</footer>
 <script>
-let logs=[],stats={total:0,info:0,warn:0,crit:0};
-const events=[
-{t:"INFO",m:"Node heartbeat OK - IND-WEB-01"},
-{t:"INFO",m:"Prometheus scrape completed"},
-{t:"INFO",m:"CI/CD pipeline execution successful"},
-{t:"WARN",m:"High CPU usage detected - FSH-DEV-01"},
-{t:"WARN",m:"Disk threshold warning - IND-LOG-01"},
-{t:"CRIT",m:"Brute-force attempt detected on SSH gateway"},
-{t:"CRIT",m:"Wazuh correlation rule triggered"}
-];
-function render(){
-eventsEl.textContent=stats.total;
-info.textContent=stats.info;
-warn.textContent=stats.warn;
-crit.textContent=stats.crit;
-stream.innerHTML=logs.slice(-25).reverse().map(l=>`<div>[${l.t}] ${l.m}</div>`).join('');
-}
-function push(){
-let e=events[Math.floor(Math.random()*events.length)];
-logs.push(e);stats.total++;
-if(e.t==="INFO")stats.info++;
-if(e.t==="WARN")stats.warn++;
-if(e.t==="CRIT")stats.crit++;
-render();
-}
-function go(l){location.href=l;}
-const eventsEl=document.getElementById("events");
-setInterval(push,2000);render();
+const ev=document.getElementById('events'),inf=document.getElementById('info'),wa=document.getElementById('warn'),cr=document.getElementById('crit'),st=document.getElementById('stream');
+let s={t:0,i:0,w:0,c:0},logs=[];
+const data=[["INFO","Node heartbeat OK"],["INFO","Prometheus scrape completed"],["INFO","CI/CD pipeline completed"],["WARN","High CPU usage detected"],["WARN","Disk threshold reached"],["CRIT","SSH brute-force detected"],["CRIT","Wazuh correlation triggered"]];
+function go(x){location.href=x;}
+function tick(){const e=data[Math.floor(Math.random()*data.length)];logs.push(e);s.t++;if(e[0]=="INFO")s.i++;else if(e[0]=="WARN")s.w++;else s.c++;ev.textContent=s.t;inf.textContent=s.i;wa.textContent=s.w;cr.textContent=s.c;st.innerHTML=logs.slice(-25).reverse().map(v=>`<div class="item">[${v[0]}] ${v[1]}</div>`).join('');}
+setInterval(tick,2000);tick();
 </script>
-</body>
-</html>
+</body></html>
