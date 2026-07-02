@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SOC-AI Forge | Evidence Gallery</title>
+
+<link rel="stylesheet" href="../../assets/css/theme.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+section{
+    margin-bottom:70px;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 24px;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+nav a{
+    color:#22c55e;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.gallery{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+border-radius:14px;
+padding:18px;
+transition:.25s;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px);
+border-color:#22c55e;
+
+}
+
+.card img{
+
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.card h3{
+
+color:#22c55e;
+margin-bottom:10px;
+
+}
+
+.card p{
+
+line-height:1.7;
+
+}
+
+.badge{
+
+display:inline-block;
+padding:6px 12px;
+background:rgba(34,197,94,.15);
+border:1px solid rgba(34,197,94,.35);
+border-radius:999px;
+font-size:12px;
+color:#22c55e;
+margin-bottom:20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div>
+
+<a href="../../index.html">⬅ Back to Portfolio</a>
+
+</div>
+
+<div>
+
+<a href="./index.html">Project Overview</a>
+
+</div>
+
+</nav>
+
+<div class="container">
+
+<section>
+
+<span class="badge">
+
+SOC-AI Forge Evidence Repository
+
+</span>
+
+<h1>
+
+Evidence Gallery
+
+</h1>
+
+<p>
+
+This gallery contains implementation evidence, operational dashboards, architecture artifacts, investigation workflows, and platform validation collected throughout the SOC-AI Forge project.
+
+</p>
+
+</section>
+
+<section>
+
+<div class="gallery">
+
+<div class="card">
+
+<img src="../../assets/images/sample/architecture.png">
+
+<h3>Platform Architecture</h3>
+
+<p>
+
+Enterprise architecture illustrating infrastructure, observability, security operations, identity management, automation, and AI-assisted workflows.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/wazuh-dashboard.png">
+
+<h3>Wazuh SIEM</h3>
+
+<p>
+
+Centralized monitoring, endpoint visibility, event correlation, and security alert investigation.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/grafana-dashboard.png">
+
+<h3>Grafana Dashboards</h3>
+
+<p>
+
+Infrastructure observability, performance metrics, and operational dashboards.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/prometheus.png">
+
+<h3>Prometheus Monitoring</h3>
+
+<p>
+
+Metric collection, service health monitoring, and performance analysis.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/ansible.png">
+
+<h3>Ansible Automation</h3>
+
+<p>
+
+Configuration management, inventory management, and infrastructure automation.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/keycloak.png">
+
+<h3>Identity Management</h3>
+
+<p>
+
+Centralized authentication, access control, and identity services.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/thehive.png">
+
+<h3>Incident Response</h3>
+
+<p>
+
+Case management and incident investigation using TheHive and Cortex.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/misp.png">
+
+<h3>Threat Intelligence</h3>
+
+<p>
+
+Threat intelligence platform integrating indicators of compromise and intelligence workflows.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="../../assets/images/sample/sysmon.png">
+
+<h3>Windows Endpoint Monitoring</h3>
+
+<p>
+
+Sysmon telemetry supporting endpoint detection and forensic investigations.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="card">
+
+<h2>
+
+Engineering Summary
+
+</h2>
+
+<p>
+
+The evidence presented throughout this gallery demonstrates the practical implementation of enterprise security operations, infrastructure automation, monitoring, centralized logging, identity management, threat intelligence integration, and AI-assisted analyst workflows within the SOC-AI Forge platform.
+
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+<footer style="text-align:center;padding:35px;color:#9ca3af;">
+
+© 2026 SOC-AI Forge Evidence Gallery
+
+</footer>
+
+</body>
+
+</html>
