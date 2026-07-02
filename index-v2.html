@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Enterprise Infrastructure & Security Operations | Olufemi Amosu</title>
+
+<link rel="stylesheet" href="assets/css/theme.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#0b0f19;
+  --card:rgba(255,255,255,.05);
+  --text:#e6edf3;
+  --accent:#22c55e;
+  --warn:#fbbf24;
+  --crit:#ef4444;
+  --info:#60a5fa;
+  --muted:#9ca3af;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{
+  color:var(--accent);
+  text-decoration:none;
+}
+
+.topbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 24px;
+
+background:rgba(0,0,0,.60);
+
+backdrop-filter:blur(10px);
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.brand{
+
+font-size:18px;
+
+font-weight:600;
+
+color:var(--accent);
+
+}
+
+.status{
+
+padding:5px 12px;
+
+border-radius:999px;
+
+background:rgba(34,197,94,.15);
+
+border:1px solid rgba(34,197,94,.35);
+
+font-size:12px;
+
+}
+
+.container{
+
+max-width:1400px;
+
+margin:auto;
+
+padding:24px;
+
+}
+
+.profile{
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:16px;
+
+padding:28px;
+
+margin-bottom:22px;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:6px 12px;
+
+background:rgba(34,197,94,.15);
+
+border:1px solid rgba(34,197,94,.35);
+
+border-radius:999px;
+
+font-size:12px;
+
+color:#22c55e;
+
+margin-bottom:18px;
+
+}
+
+.profile h1{
+
+font-size:42px;
+
+margin-bottom:8px;
+
+}
+
+.profile h2{
+
+font-size:20px;
+
+font-weight:400;
+
+color:#22c55e;
+
+margin-bottom:22px;
+
+}
+
+.profile p{
+
+font-size:16px;
+
+line-height:1.9;
+
+max-width:950px;
+
+margin-bottom:18px;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:1.35fr .65fr;
+
+gap:20px;
+
+}
+
+.panel{
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:16px;
+
+padding:20px;
+
+}
+
+.panel-title{
+
+font-size:24px;
+
+margin-bottom:6px;
+
+}
+
+.subtitle{
+
+color:var(--muted);
+
+font-size:14px;
+
+margin-bottom:20px;
+
+}
+
+.metrics{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:12px;
+
+margin-bottom:20px;
+
+}
+
+.metric{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:12px;
+
+padding:14px;
+
+}
+
+.metric h4{
+
+font-size:11px;
+
+color:var(--muted);
+
+margin-bottom:6px;
+
+}
+
+.metric p{
+
+font-size:24px;
+
+font-weight:600;
+
+}
+
+.info{color:var(--info);}
+.warn{color:var(--warn);}
+.crit{color:var(--crit);}
+.ok{color:var(--accent);}
+
+.stream{
+
+height:360px;
+
+overflow:auto;
+
+font-family:monospace;
+
+font-size:12px;
+
+}
+
+.event{
+
+padding:9px;
+
+margin-bottom:8px;
+
+border-left:4px solid transparent;
+
+background:rgba(255,255,255,.03);
+
+border-radius:8px;
+
+}
+
+.event.info{
+
+border-color:var(--info);
+
+}
+
+.event.warn{
+
+border-color:var(--warn);
+
+}
+
+.event.crit{
+
+border-color:var(--crit);
+
+}
+
+.right{
+
+display:grid;
+
+gap:18px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:14px;
+
+padding:18px;
+
+transition:.2s;
+
+}
+
+.card:hover{
+
+transform:translateY(-3px);
+
+border-color:#22c55e;
+
+}
+
+.button{
+
+display:inline-block;
+
+margin-top:16px;
+
+padding:10px 18px;
+
+border-radius:8px;
+
+background:#22c55e;
+
+color:#08110d;
+
+font-weight:600;
+
+}
+
+.project{
+
+padding:12px;
+
+margin-top:10px;
+
+background:rgba(255,255,255,.03);
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.project:hover{
+
+border-left:4px solid #22c55e;
+
+padding-left:16px;
+
+}
+
+.contact{
+
+line-height:1.9;
+
+color:var(--muted);
+
+}
+
+footer{
+
+text-align:center;
+
+padding:30px;
+
+color:var(--muted);
+
+font-size:12px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="topbar">
+
+<div class="brand">
+
+🛡 Enterprise Infrastructure & Security Operations | OAMOSU
+
+</div>
+
+<div class="status">
+
+SYSTEM ONLINE
+
+</div>
+
+</div>
+
+<div class="container">
+
+<section class="profile">
+
+<span class="badge">
+
+FEATURED ENGINEERING PORTFOLIO
+
+</span>
+
+<h1>
+
+Olufemi Amosu
+
+</h1>
+
+<h2>
+
+Platform Engineer | SRE | Cybersecurity Analyst
+
+</h2>
+
+<p>
+
+Infrastructure-focused Platform Engineer and Cybersecurity Analyst specializing in Linux systems administration, cybersecurity operations, DevSecOps, infrastructure automation, observability engineering, centralized logging, identity management, and enterprise platform operations.
+
+</p>
+
+<p>
+
+This portfolio showcases enterprise-inspired engineering platforms that demonstrate secure infrastructure design, automation, monitoring, incident response, and operational excellence through practical implementations using open-source technologies.
+
+</p>
+
+</section>
+
+<div class="grid">
+
+<div class="panel">
+
+<div class="panel-title">
+
+Operational Security Dashboard
+
+</div>
+
+<div class="subtitle">
+
+Real-time infrastructure telemetry • simulated enterprise operations
+
+</div>
+
+<div class="metrics">
+
+<div class="metric">
+
+<h4>EVENTS</h4>
+
+<p id="events">0</p>
+
+</div>
+
+<div class="metric">
+
+<h4>INFO</h4>
+
+<p class="info" id="info">0</p>
+
+</div>
+
+<div class="metric">
+
+<h4>WARN</h4>
+
+<p class="warn" id="warn">0</p>
+
+</div>
+
+<div class="metric">
+
+<h4>CRITICAL</h4>
+
+<p class="crit" id="crit">0</p>
+
+</div>
+
+</div>
+
+<div id="stream" class="stream"></div>
+
+</div>
+
+<div class="right">
+
+<!-- ========================================================= -->
+<!-- FEATURED PLATFORM -->
+<!-- ========================================================= -->
+
+<div class="card">
+
+<h2 style="color:#22c55e;margin-bottom:15px;">
+
+🧠 Featured Platform
+
+</h2>
+
+<h3 style="margin-bottom:10px;">
+
+SOC-AI Forge
+
+</h3>
+
+<p style="line-height:1.8;">
+
+AI-Assisted Security Operations Platform integrating enterprise infrastructure, Linux administration, observability, automation, identity management, SIEM, threat intelligence, incident response, and AI-assisted analyst workflows into a unified operational environment.
+
+</p>
+
+<a class="button" href="projects/soc-ai-forge/">
+
+Open Platform →
+
+</a>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- ENGINEERING SYSTEMS -->
+<!-- ========================================================= -->
+
+<div class="card">
+
+<h2 style="color:#22c55e;margin-bottom:15px;">
+
+🏗 Engineering Systems
+
+</h2>
+
+<div class="project"
+onclick="go('projects/sentinelops/')">
+
+SentinelOps Platform
+
+</div>
+
+<div class="project"
+onclick="go('projects/soc-lab/')">
+
+SOC Lab (SIEM Engine)
+
+</div>
+
+<div class="project"
+onclick="go('projects/cicd-pipeline/')">
+
+CI/CD Pipeline
+
+</div>
+
+<div class="project"
+onclick="go('projects/linux-operations/')">
+
+Linux Operations
+
+</div>
+
+<div class="project"
+onclick="go('projects/devsecops/')">
+
+DevSecOps
+
+</div>
+
+<div class="project"
+onclick="go('projects/pentest-lab/')">
+
+Penetration Testing
+
+</div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- CONTACT -->
+<!-- ========================================================= -->
+
+<div class="card contact">
+
+<h2 style="color:#22c55e;margin-bottom:15px;">
+
+📩 Contact
+
+</h2>
+
+Email
+
+<br>
+
+<a href="mailto:oamosu14@aol.com">
+
+oamosu14@aol.com
+
+</a>
+
+<br><br>
+
+GitHub
+
+<br>
+
+<a
+target="_blank"
+href="https://github.com/oamosu14">
+
+github.com/oamosu14
+
+</a>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- PLATFORM STATUS -->
+<!-- ========================================================= -->
+
+<div class="card">
+
+<h2 style="color:#22c55e;margin-bottom:15px;">
+
+⚙ Platform Status
+
+</h2>
+
+<p class="ok">
+
+🟢 Infrastructure Online
+
+</p>
+
+<br>
+
+<p class="ok">
+
+🟢 Monitoring Operational
+
+</p>
+
+<br>
+
+<p class="ok">
+
+🟢 Security Services Active
+
+</p>
+
+<br>
+
+<p class="ok">
+
+🟢 Automation Available
+
+</p>
+
+<br>
+
+<p class="ok">
+
+🟢 AI Services Ready
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Enterprise Infrastructure & Security Portfolio
+
+</footer>
+
+<script>
+
+let logs=[];
+
+let stats={
+total:0,
+info:0,
+warn:0,
+crit:0
+};
+
+const events=[
+
+{t:"INFO",m:"Node heartbeat OK - IND-WEB-01"},
+
+{t:"INFO",m:"Prometheus scrape completed"},
+
+{t:"INFO",m:"CI/CD pipeline execution successful"},
+
+{t:"INFO",m:"Backup completed successfully"},
+
+{t:"WARN",m:"High CPU usage detected - FSH-DEV-01"},
+
+{t:"WARN",m:"Disk threshold warning - IND-LOG-01"},
+
+{t:"CRIT",m:"Brute-force attempt detected on SSH gateway"},
+
+{t:"CRIT",m:"Wazuh correlation rule triggered"}
+
+];
+
+function push(){
+
+let e=events[Math.floor(Math.random()*events.length)];
+
+logs.push(e);
+
+stats.total++;
+
+if(e.t==="INFO") stats.info++;
+
+if(e.t==="WARN") stats.warn++;
+
+if(e.t==="CRIT") stats.crit++;
+
+render();
+
+}
+
+function render(){
+
+document.getElementById("events").innerText=stats.total;
+
+document.getElementById("info").innerText=stats.info;
+
+document.getElementById("warn").innerText=stats.warn;
+
+document.getElementById("crit").innerText=stats.crit;
+
+let stream=document.getElementById("stream");
+
+stream.innerHTML="";
+
+logs.slice(-25).reverse().forEach(l=>{
+
+let cls="info";
+
+if(l.t==="WARN") cls="warn";
+
+if(l.t==="CRIT") cls="crit";
+
+stream.innerHTML+=`
+
+<div class="event ${cls}">
+
+[${l.t}] ${l.m}
+
+</div>
+
+`;
+
+});
+
+}
+
+function go(link){
+
+window.location.href=link;
+
+}
+
+setInterval(push,2000);
+
+render();
+
+</script>
+
+</body>
+
+</html>
