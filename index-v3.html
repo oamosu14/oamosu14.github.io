@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Infrastructure &amp; Security Operations | OAMOSU</title>
+<link href="assets/css/theme.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0f19;
+  --card:rgba(255,255,255,0.05);
+  --text:#e6edf3;
+  --accent:#22c55e;
+  --warn:#fbbf24;
+  --crit:#ef4444;
+  --info:#60a5fa;
+  --muted:#9ca3af;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* TOP BAR */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 22px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.brand{
+  font-weight:600;
+  color:var(--accent);
+}
+
+.status-pill{
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(34,197,94,0.15);
+  border:1px solid rgba(34,197,94,0.3);
+  font-size:12px;
+}
+
+/* HERO PROFILE */
+.hero-profile{
+  padding:50px 22px 20px 22px;
+}
+
+.hero-content{
+  max-width:1200px;
+  margin:auto;
+}
+
+.hero-content h1{
+  font-size:48px;
+  color:var(--accent);
+}
+
+.hero-content h2{
+  margin-top:10px;
+  font-size:22px;
+  font-weight:400;
+  color:#e6edf3;
+}
+
+.hero-content p{
+  margin-top:18px;
+  max-width:950px;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* MAIN GRID */
+.grid{
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap:18px;
+  padding:22px;
+}
+
+/* PANELS */
+.panel{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:18px;
+}
+
+.hero-title{
+  font-size:26px;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
+}
+
+/* METRICS */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+
+.metric{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:12px;
+  border-radius:12px;
+}
+
+.metric h3{
+  font-size:11px;
+  color:var(--muted);
+}
+
+.metric p{
+  font-size:18px;
+  margin-top:4px;
+}
+
+.info{ color:var(--info); }
+.warn{ color:var(--warn); }
+.crit{ color:var(--crit); }
+.ok{ color:var(--accent); }
+
+/* STREAM */
+.stream{
+  margin-top:14px;
+  height:320px;
+  overflow:auto;
+  font-family:monospace;
+  font-size:12px;
+}
+
+.event{
+  padding:8px;
+  margin-bottom:6px;
+  background:rgba(255,255,255,0.03);
+  border-radius:8px;
+  border-left:3px solid transparent;
+}
+
+.event.info{ border-color:var(--info); }
+.event.warn{ border-color:var(--warn); }
+.event.crit{ border-color:var(--crit); }
+
+/* RIGHT COLUMN */
+.right-grid{
+  display:grid;
+  gap:14px;
+}
+
+.card{
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+}
+
+/* CONTACT */
+.contact{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+a{
+  color:var(--accent);
+  text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .metrics{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero-content h1{
+    font-size:36px;
+  }
+
+  .hero-content h2{
+    font-size:18px;
+  }
+}
+</style>
+</head>
+<body>
+<!-- TOP BAR -->
+<div class="topbar">
+<div class="brand">🛡 Enterprise Infrastructure &amp; Security Operations | OAMOSU</div>
+<div class="status-pill">SYSTEM ONLINE</div>
+</div>
+<!-- HERO PROFILE -->
+<section class="hero-profile">
+<div class="hero-content"><div style="display:inline-block;margin-bottom:14px;padding:6px 12px;border-radius:999px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e;font-size:12px;">EXECUTIVE OPERATIONS CENTER</div>
+<h1>Olufemi Amosu</h1>
+<h2>Platform Engineer | SRE | Cybersecurity Analyst</h2>
+<p>Infrastructure-focused Platform Engineer and Cybersecurity Analyst specializing in Linux systems administration, platform engineering, observability, DevSecOps, cybersecurity operations, infrastructure automation, and AI-assisted Security Operations.</p>
+<p>This portfolio showcases SOC-AI Forge, an enterprise-inspired engineering platform supported by monitoring, automation, SIEM, identity management, threat intelligence, CI/CD, and incident response systems.</p>
+</div>
+</section>
+<!-- MAIN GRID -->
+<div class="grid">
+<!-- LEFT -->
+<div class="panel">
+<div class="hero-title">Operational Security Dashboard</div>
+<div class="subtitle">
+      Real-time infrastructure telemetry • simulated SOC environment
+    </div>
+<div class="metrics">
+<div class="metric">
+<h3>EVENTS</h3>
+<p id="events">0</p>
+</div>
+<div class="metric">
+<h3>INFO</h3>
+<p class="info" id="info">0</p>
+</div>
+<div class="metric">
+<h3>WARN</h3>
+<p class="warn" id="warn">0</p>
+</div>
+<div class="metric">
+<h3>CRITICAL</h3>
+<p class="crit" id="crit">0</p>
+</div>
+</div>
+<div class="stream" id="stream"></div>
+</div>
+<!-- RIGHT -->
+<div class="right-grid">
+<div class="panel"><h3>🧠 Featured Platform</h3><div class="card" onclick="go('projects/soc-ai-forge/')">
+<strong>SOC-AI Forge</strong><br/>
+<span style="color:#9ca3af;font-size:13px">
+Enterprise AI-Assisted Security Operations Platform
+</span><br/><br/>
+<span style="color:#22c55e;font-weight:600">Explore Platform →</span>
+</div><h3 style="margin-top:18px">🏗 Engineering Systems</h3><div class="card" onclick="go('projects/sentinelops/')"><strong>SentinelOps Platform</strong><br/><span style="color:#9ca3af;font-size:13px">Enterprise Infrastructure Operations</span></div><div class="card" onclick="go('projects/soc-lab/')"><strong>SOC Lab</strong><br/><span style="color:#9ca3af;font-size:13px">Security Monitoring &amp; Detection</span></div><div class="card" onclick="go('projects/linux-operations/')"><strong>Linux Operations</strong><br/><span style="color:#9ca3af;font-size:13px">Enterprise Linux Administration</span></div><div class="card" onclick="go('projects/cicd-pipeline/')"><strong>CI/CD Pipeline</strong><br/><span style="color:#9ca3af;font-size:13px">Continuous Integration &amp; Delivery</span></div><div class="card" onclick="go('projects/devsecops/')"><strong>DevSecOps Lab</strong><br/><span style="color:#9ca3af;font-size:13px">Secure Software Delivery</span></div></div>
+<div class="panel contact">
+<h3>📩 Contact</h3>
+
+      Email:
+      <a href="mailto:oamosu14@aol.com">
+        oamosu14@aol.com
+      </a>
+<br/>
+
+      GitHub:
+      <a href="https://github.com/oamosu14" target="_blank">
+        github.com/oamosu14
+      </a>
+</div>
+<div class="panel">
+<h3>⚙ System Status</h3>
+<p class="ok">All services operational</p>
+</div>
+</div>
+</div>
+<footer>
+  © 2026 Unified SOC Engineering Portfolio
+</footer>
+<script>
+
+let logs=[];
+
+let stats={
+  total:0,
+  info:0,
+  warn:0,
+  crit:0
+};
+
+const events=[
+  {t:"INFO",m:"Node heartbeat OK - IND-WEB-01"},
+  {t:"WARN",m:"High CPU usage detected - FSH-DEV-01"},
+  {t:"CRIT",m:"Brute-force attempt detected on SSH gateway"},
+  {t:"INFO",m:"Backup completed successfully"},
+  {t:"WARN",m:"Disk threshold warning - IND-LOG-01"},
+  {t:"INFO",m:"Prometheus scrape completed"},
+  {t:"CRIT",m:"Authentication anomaly detected"},
+  {t:"INFO",m:"CI/CD pipeline execution successful"}
+];
+
+function push(){
+
+  let e=events[Math.floor(Math.random()*events.length)];
+
+  logs.push(e);
+
+  stats.total++;
+
+  if(e.t==="INFO") stats.info++;
+  if(e.t==="WARN") stats.warn++;
+  if(e.t==="CRIT") stats.crit++;
+
+  render();
+}
+
+function render(){
+
+  document.getElementById("events").innerText=stats.total;
+  document.getElementById("info").innerText=stats.info;
+  document.getElementById("warn").innerText=stats.warn;
+  document.getElementById("crit").innerText=stats.crit;
+
+  let stream=document.getElementById("stream");
+
+  stream.innerHTML="";
+
+  logs.slice(-25).reverse().forEach(l=>{
+
+    let cls="info";
+
+    if(l.t==="WARN") cls="warn";
+    if(l.t==="CRIT") cls="crit";
+
+    stream.innerHTML+=`
+      <div class="event ${cls}">
+        [${l.t}] ${l.m}
+      </div>
+    `;
+  });
+}
+
+function go(link){
+  window.location.href=link;
+}
+
+setInterval(push,2000);
+
+render();
+
+</script>
+</body>
+</html>
