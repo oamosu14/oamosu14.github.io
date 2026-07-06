@@ -1,25 +1,28 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olufemi Amosu | Enterprise Operations Center</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Enterprise Infrastructure & Security Operations | OAMOSU</title>
-
-    <link rel="stylesheet"
-          href="assets/css/theme.css">
-
-    <link rel="stylesheet"
-          href="assets/css/homepage.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
 
     <style>
+        :root{
+            --bg:#0B0F19;
+            --panel:rgba(255,255,255,.04);
+            --border:rgba(255,255,255,.08);
+            --text:#F8FAFC;
+            --muted:#94A3B8;
+            --green:#22C55E;
+            --shadow:0 20px 60px rgba(0,0,0,.35);
+        }
 
         *{
             margin:0;
@@ -28,246 +31,313 @@
         }
 
         body{
-
-            background:#0b0f19;
-
-            color:#E6EDF3;
-
+            background:var(--bg);
+            color:var(--text);
             font-family:'Inter',sans-serif;
-
+            overflow-x:hidden;
+            background-image:
+            radial-gradient(circle at top right,#163a25 0%,transparent 30%),
+            radial-gradient(circle at bottom left,#111827 0%,transparent 45%);
         }
 
-        /*==========================
-            TOP BAR
-        ==========================*/
+        a{
+            color:inherit;
+            text-decoration:none;
+        }
 
-        .topbar{
+        .container{
+            width:min(1400px,92%);
+            margin:auto;
+        }
 
+        /* HEADER */
+
+        header{
+            height:82px;
             display:flex;
-
-            justify-content:space-between;
-
             align-items:center;
-
-            padding:18px 30px;
-
-            background:rgba(0,0,0,.65);
-
-            border-bottom:1px solid rgba(255,255,255,.08);
-
             position:sticky;
-
             top:0;
+            backdrop-filter:blur(18px);
+            background:rgba(11,15,25,.72);
+            border-bottom:1px solid var(--border);
+            z-index:100;
+        }
 
-            z-index:999;
-
+        .header-inner{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
         }
 
         .brand{
-
-            color:#22C55E;
-
-            font-weight:600;
-
-            font-size:18px;
-
+            display:flex;
+            align-items:center;
+            gap:14px;
         }
 
-        .status-pill{
+        .brand-logo{
+            width:42px;
+            height:42px;
+            border-radius:12px;
+            background:linear-gradient(135deg,#22C55E,#15803D);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-shadow:0 0 25px rgba(34,197,94,.35);
+        }
 
-            padding:6px 14px;
+        .brand-logo svg{
+            width:22px;
+            height:22px;
+            fill:white;
+        }
 
-            border-radius:999px;
+        .brand-text h1{
+            font-size:16px;
+            font-weight:700;
+            letter-spacing:.4px;
+        }
 
-            background:rgba(34,197,94,.15);
-
-            border:1px solid rgba(34,197,94,.35);
-
+        .brand-text span{
+            color:var(--muted);
             font-size:12px;
-
+            display:block;
+            margin-top:2px;
         }
 
-        /*==========================
-            HERO
-        ==========================*/
+        nav{
+            display:flex;
+            gap:30px;
+        }
+
+        nav a{
+            font-size:14px;
+            color:#CBD5E1;
+            transition:.25s;
+        }
+
+        nav a:hover{
+            color:white;
+        }
+
+        /* HERO */
 
         .hero{
-
-            padding:70px 35px 50px;
-
+            padding:72px 0 70px;
         }
 
-        .hero-container{
-
-            max-width:1400px;
-
-            margin:auto;
-
+        .hero-grid{
+            display:grid;
+            grid-template-columns:1.15fr .85fr;
+            gap:60px;
+            align-items:center;
         }
 
         .badge{
-
-            display:inline-block;
-
-            padding:8px 14px;
-
-            border-radius:999px;
-
-            background:rgba(34,197,94,.15);
-
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            padding:10px 18px;
             border:1px solid rgba(34,197,94,.35);
+            border-radius:999px;
+            background:rgba(34,197,94,.08);
+            color:#D1FAE5;
+            font-size:13px;
+            font-weight:600;
+            margin-bottom:30px;
+        }
 
-            color:#22C55E;
+        .pulse{
+            width:8px;
+            height:8px;
+            border-radius:50%;
+            background:var(--green);
+        }
 
-            font-size:12px;
-
-            letter-spacing:1px;
-
+        .hero h2{
+            font-size:62px;
+            line-height:1.02;
+            font-weight:800;
+            letter-spacing:-2px;
             margin-bottom:18px;
-
         }
 
-        h1{
-
-            font-size:58px;
-
-            color:#22C55E;
-
-            margin-bottom:12px;
-
+        .subtitle{
+            font-size:22px;
+            color:#CBD5E1;
+            font-weight:500;
+            margin-bottom:34px;
         }
 
-        h2{
-
-            font-size:26px;
-
-            font-weight:400;
-
-            margin-bottom:24px;
-
-        }
-
-        .hero p{
-
-            max-width:900px;
-
-            color:#9CA3AF;
-
-            line-height:1.8;
-
+        .summary{
+            max-width:760px;
+            color:var(--muted);
             font-size:16px;
-
+            line-height:1.9;
+            margin-bottom:20px;
         }
 
-        /*==========================
-            MAIN GRID
-        ==========================*/
-
-        .main-grid{
-
-            max-width:1400px;
-
-            margin:auto;
-
-            padding:0 35px 40px;
-
-            display:grid;
-
-            grid-template-columns:65% 35%;
-
-            gap:24px;
-
-        }
-
-        /*==========================
-            LEFT PANEL
-        ==========================*/
-
-        .dashboard{
-
-            background:rgba(255,255,255,.03);
-
-            border:1px solid rgba(255,255,255,.08);
-
-            border-radius:18px;
-
-            min-height:720px;
-
-            padding:24px;
-
-        }
-
-        /*==========================
-            RIGHT COLUMN
-        ==========================*/
-
-        .sidebar{
-
+        .pill-group{
             display:flex;
-
-            flex-direction:column;
-
-            gap:18px;
-
+            flex-wrap:wrap;
+            gap:14px;
+            margin-top:36px;
         }
 
-        .card{
+        .pill{
+            border:1px solid var(--border);
+            background:rgba(255,255,255,.04);
+            backdrop-filter:blur(18px);
+            padding:12px 18px;
+            border-radius:999px;
+            font-size:14px;
+            color:#E2E8F0;
+            transition:.25s;
+        }
 
-            background:rgba(255,255,255,.03);
+        .pill:hover{
+            border-color:rgba(34,197,94,.45);
+            transform:translateY(-2px);
+        }
 
+        /* RIGHT */
+
+        .hero-right{
+            display:flex;
+            justify-content:center;
+        }
+
+        .globe-card{
+            width:470px;
+            height:470px;
+            border-radius:34px;
+            border:1px solid var(--border);
+            background:rgba(255,255,255,.04);
+            backdrop-filter:blur(20px);
+            box-shadow:var(--shadow);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .globe-card::before{
+            content:"";
+            position:absolute;
+            width:380px;
+            height:380px;
+            border-radius:50%;
+            border:1px solid rgba(34,197,94,.20);
+        }
+
+        .globe-card::after{
+            content:"";
+            position:absolute;
+            width:300px;
+            height:300px;
+            border-radius:50%;
             border:1px solid rgba(255,255,255,.08);
-
-            border-radius:18px;
-
-            padding:22px;
-
-            min-height:150px;
-
         }
 
-        footer{
-
-            text-align:center;
-
-            padding:40px;
-
-            color:#9CA3AF;
-
+        .globe{
+            width:220px;
+            height:220px;
+            opacity:.9;
         }
 
-        @media(max-width:950px){
+        .globe path,
+        .globe circle{
+            stroke:#22C55E;
+            stroke-width:1.6;
+            fill:none;
+        }
 
-            .main-grid{
+        @media(max-width:1100px){
 
+            .hero-grid{
                 grid-template-columns:1fr;
-
             }
 
-            h1{
+            .hero-right{
+                order:-1;
+            }
 
+            .globe-card{
+                width:100%;
+                max-width:480px;
+                height:420px;
+            }
+
+            .hero h2{
+                font-size:52px;
+            }
+        }
+
+        @media(max-width:700px){
+
+            nav{
+                display:none;
+            }
+
+            .hero{
+                padding-top:50px;
+            }
+
+            .hero h2{
                 font-size:42px;
-
             }
 
+            .subtitle{
+                font-size:18px;
+            }
+
+            .globe-card{
+                height:340px;
+            }
+
+            .globe{
+                width:170px;
+                height:170px;
+            }
         }
 
     </style>
-
 </head>
 
 <body>
 
-<header class="topbar">
+<header>
 
-    <div class="brand">
+    <div class="container header-inner">
 
-        🛡 Enterprise Infrastructure & Security Operations | OAMOSU
+        <div class="brand">
 
-    </div>
+            <div class="brand-logo">
 
-    <div class="status-pill">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l8 4v6c0 5-3.3 9.3-8 10-4.7-.7-8-5-8-10V6l8-4z"/>
+                </svg>
 
-        SYSTEM ONLINE
+            </div>
+
+            <div class="brand-text">
+                <h1>Olufemi Amosu</h1>
+                <span>Enterprise Engineering Portfolio</span>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="#">Home</a>
+            <a href="#">Platforms</a>
+            <a href="#">Projects</a>
+            <a href="#">Dashboard</a>
+            <a href="#">Contact</a>
+
+        </nav>
 
     </div>
 
@@ -275,110 +345,77 @@
 
 <section class="hero">
 
-    <div class="hero-container">
+    <div class="container hero-grid">
 
-        <div class="badge">
+        <div>
 
-            EXECUTIVE OPERATIONS CENTER
+            <div class="badge">
+                <span class="pulse"></span>
+                Executive Operations Center
+            </div>
+
+            <h2>Olufemi Amosu</h2>
+
+            <div class="subtitle">
+                Platform Engineer | SRE | Cybersecurity Analyst
+            </div>
+
+            <p class="summary">
+                Platform Engineer with experience designing secure infrastructure, automating enterprise operations, and building production-ready platforms that integrate Linux administration, DevOps practices, cloud technologies, and cybersecurity operations into scalable engineering solutions.
+            </p>
+
+            <p class="summary">
+                Focused on reliability engineering, observability, automation, and modern Security Operations, with hands-on experience developing enterprise-grade platforms that emphasize operational excellence, infrastructure resilience, and continuous improvement through engineering discipline.
+            </p>
+
+            <div class="pill-group">
+
+                <div class="pill">Linux</div>
+
+                <div class="pill">DevOps</div>
+
+                <div class="pill">SRE</div>
+
+                <div class="pill">Security Operations</div>
+
+                <div class="pill">Observability</div>
+
+                <div class="pill">Automation</div>
+
+            </div>
 
         </div>
 
-        <h1>
+        <div class="hero-right">
 
-            Olufemi Amosu
+            <div class="globe-card">
 
-        </h1>
+                <svg class="globe" viewBox="0 0 220 220">
 
-        <h2>
+                    <circle cx="110" cy="110" r="90"/>
 
-            Platform Engineer | SRE | Cybersecurity Analyst
+                    <path d="M20 110h180"/>
 
-        </h2>
+                    <path d="M110 20v180"/>
 
-        <p>
+                    <path d="M45 60c18 14 112 14 130 0"/>
 
-            Building enterprise-inspired infrastructure, cybersecurity operations,
-            observability, DevSecOps, automation, cloud engineering,
-            and AI-assisted Security Operations.
+                    <path d="M45 160c18-14 112-14 130 0"/>
 
-        </p>
+                    <path d="M70 30c-20 40-20 120 0 160"/>
+
+                    <path d="M150 30c20 40 20 120 0 160"/>
+
+                </svg>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
-<main class="main-grid">
-
-    <section class="dashboard">
-
-        <h2>
-
-            Operational Security Dashboard
-
-        </h2>
-
-        <p style="color:#9CA3AF">
-
-            Real-time infrastructure telemetry • simulated SOC environment
-
-        </p>
-
-    </section>
-
-    <aside class="sidebar">
-
-        <div class="card">
-
-            <h3>
-
-                🧠 Featured Platform
-
-            </h3>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-
-                🏗 Engineering Systems
-
-            </h3>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-
-                📩 Contact
-
-            </h3>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-
-                ⚙ System Status
-
-            </h3>
-
-        </div>
-
-    </aside>
-
-</main>
-
-<footer>
-
-    © 2026 SOC-AI Forge Enterprise Platform
-
-</footer>
-
-<script src="assets/js/homepage.js"></script>
-
 </body>
-
 </html>
+```
