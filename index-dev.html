@@ -202,6 +202,39 @@ opacity:.2}
 .okdot{width:10px;height:10px;background:#22C55E;border-radius:50%;box-shadow:0 0 10px #22C55E}
 @media(max-width:900px){.topology-grid,.health-matrix{grid-template-columns:repeat(2,1fr)}}
 </style>
+
+<style id="stage7">
+body{
+background:
+radial-gradient(circle at top right,rgba(34,197,94,.18),transparent 22%),
+radial-gradient(circle at bottom left,rgba(59,130,246,.12),transparent 35%),
+#0B0F19!important;
+}
+.logo{letter-spacing:.08em}
+.hero{padding-top:90px!important;padding-bottom:90px!important}
+.card,.panel,.ops-card,.topology,.quick,.metric{
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+.card:hover,.metric:hover,.quick:hover,.ops-card:hover{
+transform:translateY(-6px) scale(1.01);
+}
+.globe svg{width:280px!important;height:280px!important}
+.orbit{animation:spin 14s linear infinite!important}
+.orbit ellipse:nth-child(2){animation:spin 20s linear reverse infinite;transform-origin:center}
+.badge{
+box-shadow:0 0 20px rgba(34,197,94,.25)
+}
+.section-title{
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:18px;
+}
+.version{
+padding:6px 10px;border-radius:999px;
+border:1px solid rgba(34,197,94,.35);
+background:rgba(34,197,94,.08);
+font-size:12px
+}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -250,8 +283,8 @@ opacity:.2}
 </g>
 </svg>
 </div>
-<div class="card"><h3>Featured Platform</h3><p><strong>SOC-AI Forge v1.0</strong><br>Enterprise AI-Assisted Security Operations Platform<div class='platform-meta'><span class='tag'>ONLINE</span><span class='tag'>Docker</span><span class='tag'>AI</span><span class='tag'>SOC</span></div></p><a class="cta" href="#">Open Platform</a></div>
-<div class="card"><h3>Engineering Systems</h3>
+<div class="card"><div class='section-title'><h3>Featured Platform</h3><span class='version'>v1.0 Enterprise</span></div><p><strong>SOC-AI Forge v1.0</strong><br>Enterprise AI-Assisted Security Operations Platform<div class='platform-meta'><span class='tag'>ONLINE</span><span class='tag'>Docker</span><span class='tag'>AI</span><span class='tag'>SOC</span></div></p><a class="cta" href="#">Open Platform</a></div>
+<div class="card"><div class='section-title'><h3>Engineering Systems</h3><span class='version'>5 Systems</span></div>
 <div class="system"><span>SentinelOps Platform</span><span class="badge-ok">ONLINE</span></div>
 <div class="system"><span>SOC Lab</span><span class="badge-ok">READY</span></div>
 <div class="system"><span>Linux Operations</span><span class="badge-ok">READY</span></div>
@@ -294,8 +327,8 @@ opacity:.2}
 <section class="dashboard"><div class="container"><div class="panel">
 <div class="dashboard-header">
 <div>
-<h2>Operational Security Dashboard</h2>
-<p style="color:#94A3B8">Enterprise Security Telemetry Center</p>
+<h2>Operational Security Dashboard • Enterprise SOC Console</h2>
+<p style="color:#94A3B8">Enterprise Security Telemetry Center • Real-time Operations View</p>
 </div>
 <div class="health">
 <div>Health <strong style='color:#22C55E'>Healthy</strong></div>
