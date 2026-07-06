@@ -162,5 +162,34 @@ render();
 setInterval(push,2000);
 </script>
 
+
+<style>
+html{scroll-behavior:smooth}
+header{position:sticky;top:0;z-index:100}
+.card,.system,.pill{transition:.25s ease}
+.card:hover,.system:hover,.pill:hover{transform:translateY(-4px);border-color:#22C55E}
+.hero{animation:fadeUp .8s ease}
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(24px)}
+to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:768px){
+header nav{display:none}
+.container{width:94%}
+h1{font-size:38px!important}
+.grid{grid-template-columns:1fr!important}
+}
+footer{
+margin-top:60px;
+padding:24px;
+text-align:center;
+color:#94A3B8;
+border-top:1px solid rgba(255,255,255,.08)
+}
+</style>
+<footer>
+© 2026 Olufemi Amosu • Enterprise Engineering Portfolio
+</footer>
+
 </body>
 </html>
