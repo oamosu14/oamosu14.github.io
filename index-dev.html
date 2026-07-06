@@ -387,6 +387,28 @@ font-size:12px;
 letter-spacing:.04em;
 }
 </style>
+
+<style id="stage92c">
+@keyframes pulseNode{
+0%,100%{transform:scale(1);filter:drop-shadow(0 0 6px #22C55E);}
+50%{transform:scale(1.12);filter:drop-shadow(0 0 14px #4ade80);}
+}
+.flow-node{animation:pulseNode 2.2s infinite;}
+.packet{fill:#86efac;filter:drop-shadow(0 0 8px #86efac);}
+@keyframes move1{0%{offset-distance:0%}100%{offset-distance:100%}}
+.packet1{
+offset-path:path("M160,40 L160,105 L80,180 L160,270");
+animation:move1 4s linear infinite;
+}
+.packet2{
+offset-path:path("M160,40 L160,105 L160,180 L160,270");
+animation:move1 3.2s linear infinite .8s;
+}
+.packet3{
+offset-path:path("M160,40 L160,105 L240,180 L160,270");
+animation:move1 4.5s linear infinite 1.2s;
+}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -427,7 +449,12 @@ letter-spacing:.04em;
 </div>
 <div class="sidebar">
 
-<div class="card globe"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="90" fill="none" stroke="#22C55E"/><g class="orbit"><ellipse cx="120" cy="120" rx="90" ry="35" fill="none" stroke="#22C55E"/><ellipse cx="120" cy="120" rx="35" ry="90" fill="none" stroke="#22C55E"/></g></svg></div><div class="card"><div class='section-title'><h3>Featured Platform</h3><span class='version'>v1.0 Enterprise</span></div><p><strong>SOC-AI Forge v1.0</strong><br>Enterprise AI-Assisted Security Operations Platform<div class='platform-meta'><span class='tag'>ONLINE</span><span class='tag'>Docker</span><span class='tag'>AI</span><span class='tag'>SOC</span></div></p><a class="cta" href="#">Open Platform</a></div>
+<div class="card globe"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="90" fill="none" stroke="#22C55E"/><g class="orbit"><ellipse cx="120" cy="120" rx="90" ry="35" fill="none" stroke="#22C55E"/><ellipse cx="120" cy="120" rx="35" ry="90" fill="none" stroke="#22C55E"/></g>
+<circle class="packet packet1" r="3"></circle>
+<circle class="packet packet2" r="3"></circle>
+<circle class="packet packet3" r="3"></circle>
+
+</svg></div><div class="card"><div class='section-title'><h3>Featured Platform</h3><span class='version'>v1.0 Enterprise</span></div><p><strong>SOC-AI Forge v1.0</strong><br>Enterprise AI-Assisted Security Operations Platform<div class='platform-meta'><span class='tag'>ONLINE</span><span class='tag'>Docker</span><span class='tag'>AI</span><span class='tag'>SOC</span></div></p><a class="cta" href="#">Open Platform</a></div>
 <div class="card"><div class='section-title'><h3>Engineering Systems</h3><span class='version'>5 Systems</span></div>
 <div class="system"><span>SentinelOps Platform</span><span class="badge-ok">ONLINE</span></div>
 <div class="system"><span>SOC Lab</span><span class="badge-ok">READY</span></div>
