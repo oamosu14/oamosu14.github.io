@@ -19,101 +19,365 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            background:#0b0f19;
+
+            color:#E6EDF3;
+
+            font-family:'Inter',sans-serif;
+
+        }
+
+        /*==========================
+            TOP BAR
+        ==========================*/
+
+        .topbar{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            padding:18px 30px;
+
+            background:rgba(0,0,0,.65);
+
+            border-bottom:1px solid rgba(255,255,255,.08);
+
+            position:sticky;
+
+            top:0;
+
+            z-index:999;
+
+        }
+
+        .brand{
+
+            color:#22C55E;
+
+            font-weight:600;
+
+            font-size:18px;
+
+        }
+
+        .status-pill{
+
+            padding:6px 14px;
+
+            border-radius:999px;
+
+            background:rgba(34,197,94,.15);
+
+            border:1px solid rgba(34,197,94,.35);
+
+            font-size:12px;
+
+        }
+
+        /*==========================
+            HERO
+        ==========================*/
+
+        .hero{
+
+            padding:70px 35px 50px;
+
+        }
+
+        .hero-container{
+
+            max-width:1400px;
+
+            margin:auto;
+
+        }
+
+        .badge{
+
+            display:inline-block;
+
+            padding:8px 14px;
+
+            border-radius:999px;
+
+            background:rgba(34,197,94,.15);
+
+            border:1px solid rgba(34,197,94,.35);
+
+            color:#22C55E;
+
+            font-size:12px;
+
+            letter-spacing:1px;
+
+            margin-bottom:18px;
+
+        }
+
+        h1{
+
+            font-size:58px;
+
+            color:#22C55E;
+
+            margin-bottom:12px;
+
+        }
+
+        h2{
+
+            font-size:26px;
+
+            font-weight:400;
+
+            margin-bottom:24px;
+
+        }
+
+        .hero p{
+
+            max-width:900px;
+
+            color:#9CA3AF;
+
+            line-height:1.8;
+
+            font-size:16px;
+
+        }
+
+        /*==========================
+            MAIN GRID
+        ==========================*/
+
+        .main-grid{
+
+            max-width:1400px;
+
+            margin:auto;
+
+            padding:0 35px 40px;
+
+            display:grid;
+
+            grid-template-columns:65% 35%;
+
+            gap:24px;
+
+        }
+
+        /*==========================
+            LEFT PANEL
+        ==========================*/
+
+        .dashboard{
+
+            background:rgba(255,255,255,.03);
+
+            border:1px solid rgba(255,255,255,.08);
+
+            border-radius:18px;
+
+            min-height:720px;
+
+            padding:24px;
+
+        }
+
+        /*==========================
+            RIGHT COLUMN
+        ==========================*/
+
+        .sidebar{
+
+            display:flex;
+
+            flex-direction:column;
+
+            gap:18px;
+
+        }
+
+        .card{
+
+            background:rgba(255,255,255,.03);
+
+            border:1px solid rgba(255,255,255,.08);
+
+            border-radius:18px;
+
+            padding:22px;
+
+            min-height:150px;
+
+        }
+
+        footer{
+
+            text-align:center;
+
+            padding:40px;
+
+            color:#9CA3AF;
+
+        }
+
+        @media(max-width:950px){
+
+            .main-grid{
+
+                grid-template-columns:1fr;
+
+            }
+
+            h1{
+
+                font-size:42px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-    <!-- ===========================
-         TOP BAR
-    ============================ -->
+<header class="topbar">
 
-    <header class="topbar">
+    <div class="brand">
 
-        <div class="brand">
+        🛡 Enterprise Infrastructure & Security Operations | OAMOSU
 
-            🛡 Enterprise Infrastructure & Security Operations | OAMOSU
+    </div>
 
-        </div>
+    <div class="status-pill">
 
-        <div class="status-pill">
+        SYSTEM ONLINE
 
-            SYSTEM ONLINE
+    </div>
 
-        </div>
+</header>
 
-    </header>
+<section class="hero">
 
+    <div class="hero-container">
 
+        <div class="badge">
 
-    <!-- ===========================
-         HERO
-    ============================ -->
-
-    <section class="hero">
-
-        <div class="hero-container">
-
-            <!-- Hero content goes here -->
+            EXECUTIVE OPERATIONS CENTER
 
         </div>
+
+        <h1>
+
+            Olufemi Amosu
+
+        </h1>
+
+        <h2>
+
+            Platform Engineer | SRE | Cybersecurity Analyst
+
+        </h2>
+
+        <p>
+
+            Building enterprise-inspired infrastructure, cybersecurity operations,
+            observability, DevSecOps, automation, cloud engineering,
+            and AI-assisted Security Operations.
+
+        </p>
+
+    </div>
+
+</section>
+
+<main class="main-grid">
+
+    <section class="dashboard">
+
+        <h2>
+
+            Operational Security Dashboard
+
+        </h2>
+
+        <p style="color:#9CA3AF">
+
+            Real-time infrastructure telemetry • simulated SOC environment
+
+        </p>
 
     </section>
 
+    <aside class="sidebar">
 
+        <div class="card">
 
-    <!-- ===========================
-         MAIN CONTENT
-    ============================ -->
+            <h3>
 
-    <main class="main-grid">
+                🧠 Featured Platform
 
-        <!-- LEFT COLUMN -->
+            </h3>
 
-        <section class="dashboard-column">
+        </div>
 
-            <!-- Dashboard goes here -->
+        <div class="card">
 
-        </section>
+            <h3>
 
+                🏗 Engineering Systems
 
+            </h3>
 
-        <!-- RIGHT COLUMN -->
+        </div>
 
-        <aside class="sidebar">
+        <div class="card">
 
-            <!-- Featured Platform -->
+            <h3>
 
+                📩 Contact
 
+            </h3>
 
-            <!-- Engineering Systems -->
+        </div>
 
+        <div class="card">
 
+            <h3>
 
-            <!-- Contact -->
+                ⚙ System Status
 
+            </h3>
 
+        </div>
 
-            <!-- Status -->
+    </aside>
 
-        </aside>
+</main>
 
-    </main>
+<footer>
 
+    © 2026 SOC-AI Forge Enterprise Platform
 
+</footer>
 
-    <!-- ===========================
-         FOOTER
-    ============================ -->
-
-    <footer>
-
-        © 2026 SOC-AI Forge Enterprise Platform
-
-    </footer>
-
-
-
-    <script src="assets/js/homepage.js"></script>
+<script src="assets/js/homepage.js"></script>
 
 </body>
 
