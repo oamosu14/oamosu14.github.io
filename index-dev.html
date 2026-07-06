@@ -245,6 +245,20 @@ font-size:12px
 .arch-flow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}
 .arch-node{flex:1;min-width:120px;padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);text-align:center}
 </style>
+
+<style id="stage72">
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:34px 0}
+.project-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px;transition:.25s}
+.project-card:hover{transform:translateY(-6px);border-color:#22C55E;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.project-card h3{margin-bottom:10px}
+.project-meta{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.chip{font-size:12px;padding:5px 10px;border-radius:999px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35)}
+.project-btn{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:10px;background:#22C55E;color:#07120a;text-decoration:none;font-weight:700}
+.soc-layout{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:24px}
+.incidents{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;background:rgba(255,255,255,.03)}
+.incidents ul{margin-left:18px;line-height:1.9;color:#94A3B8}
+@media(max-width:900px){.project-grid,.soc-layout{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -356,6 +370,27 @@ font-size:12px
 <div class="arch-node">SOC Core</div>
 <div class="arch-node">Observability</div>
 <div class="arch-node">Endpoints</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+<section class="project-grid">
+<div class="project-card"><h3>SOC-AI Forge</h3><p>AI-assisted SOC platform.</p><div class="project-meta"><span class="chip">AI</span><span class="chip">SOC</span><span class="chip">Docker</span></div><a class="project-btn" href="#">Open Project</a></div>
+<div class="project-card"><h3>SentinelOps</h3><p>Enterprise monitoring platform.</p><div class="project-meta"><span class="chip">Monitoring</span><span class="chip">Linux</span></div><a class="project-btn" href="#">Open Project</a></div>
+<div class="project-card"><h3>DevSecOps Lab</h3><p>Secure CI/CD engineering.</p><div class="project-meta"><span class="chip">CI/CD</span><span class="chip">Security</span></div><a class="project-btn" href="#">Open Project</a></div>
+</section>
+
+<div class="soc-layout">
+<div></div>
+<div class="incidents">
+<h3>Priority Queue</h3>
+<ul>
+<li>Authentication anomaly</li>
+<li>CPU threshold exceeded</li>
+<li>Review endpoint health</li>
+<li>Validate backups</li>
+</ul>
 </div>
 </div>
 </div>
