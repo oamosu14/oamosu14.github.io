@@ -259,6 +259,19 @@ font-size:12px
 .incidents ul{margin-left:18px;line-height:1.9;color:#94A3B8}
 @media(max-width:900px){.project-grid,.soc-layout{grid-template-columns:1fr}}
 </style>
+
+<style id="stage73">
+.analytics{margin:36px 0;display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.chart,.summary{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px}
+.bars{display:flex;align-items:flex-end;gap:14px;height:180px;margin-top:18px}
+.bar{flex:1;background:linear-gradient(180deg,#22C55E,#2563eb);border-radius:8px 8px 0 0}
+.bar:nth-child(1){height:45%}.bar:nth-child(2){height:70%}.bar:nth-child(3){height:55%}.bar:nth-child(4){height:88%}.bar:nth-child(5){height:62%}.bar:nth-child(6){height:78%}
+.alert-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.alert-item:last-child{border-bottom:none}
+.level{padding:4px 8px;border-radius:999px;font-size:11px}
+.crit{background:#ef444422;color:#ef4444}.warn{background:#f59e0b22;color:#fbbf24}.info{background:#2563eb22;color:#60a5fa}
+@media(max-width:900px){.analytics{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -391,6 +404,24 @@ font-size:12px
 <li>Review endpoint health</li>
 <li>Validate backups</li>
 </ul>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="analytics">
+<div class="chart">
+<h2>Security Event Trends</h2>
+<div class="bars">
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+</div>
+</div>
+<div class="summary">
+<h2>Incident Summary</h2>
+<div class="alert-item"><span>Authentication</span><span class="level crit">CRITICAL</span></div>
+<div class="alert-item"><span>Endpoint Health</span><span class="level warn">WARNING</span></div>
+<div class="alert-item"><span>Backups</span><span class="level info">INFO</span></div>
+<div class="alert-item"><span>Containers</span><span class="level info">HEALTHY</span></div>
 </div>
 </div>
 </div>
