@@ -334,6 +334,16 @@ backdrop-filter:blur(18px);
 .stat-pill{padding:8px 14px;border-radius:999px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35)}
 @media(max-width:900px){.map-grid{grid-template-columns:1fr}}
 </style>
+
+<style id="stage83">
+.integration{max-width:1400px;margin:40px auto;display:grid;grid-template-columns:1.4fr .6fr;gap:18px}
+.int-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:24px}
+.link-table{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-top:18px}
+.link-table div{padding:12px;border:1px solid rgba(255,255,255,.06);border-radius:10px;background:rgba(255,255,255,.03)}
+.phase{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.phase:last-child{border-bottom:none}
+@media(max-width:900px){.integration,.link-table{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -511,6 +521,26 @@ backdrop-filter:blur(18px);
 
 
 
+
+<div class="integration">
+<div class="int-card">
+<h2>Navigation Integration Matrix</h2>
+<div class="link-table">
+<div><strong>Destination</strong></div><div><strong>Status</strong></div><div><strong>Target</strong></div>
+<div>Projects Hub</div><div>Ready</div><div>projects/</div>
+<div>SOC-AI Forge</div><div>Ready</div><div>soc-ai-forge/</div>
+<div>Documentation</div><div>Ready</div><div>docs/</div>
+<div>Contact</div><div>Ready</div><div>contact/</div>
+</div>
+</div>
+<div class="int-card">
+<h2>Build Progress</h2>
+<div class="phase"><span>Homepage</span><strong>100%</strong></div>
+<div class="phase"><span>Project Pages</span><strong>Next</strong></div>
+<div class="phase"><span>Navigation</span><strong>Pending</strong></div>
+<div class="phase"><span>Deployment</span><strong>Pending</strong></div>
+</div>
+</div>
 <div class="live-map">
 <h2>Enterprise Service Flow</h2>
 <p>High-level operational path through the platform.</p>
