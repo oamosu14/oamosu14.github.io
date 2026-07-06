@@ -295,6 +295,15 @@ backdrop-filter:blur(18px);
 .env div{padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.03)}
 .badge-live{display:inline-block;padding:5px 10px;border-radius:999px;background:#22C55E22;color:#22C55E;border:1px solid #22C55E55}
 </style>
+
+<style id="stage76">
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,#22C55E,transparent);margin:42px auto;max-width:1400px;opacity:.6}
+.command-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1400px;margin:0 auto 36px}
+.strip-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;text-align:center;backdrop-filter:blur(18px)}
+.strip-card h4{color:#22C55E;margin-bottom:8px}
+.strip-card:hover{transform:translateY(-4px);transition:.25s}
+@media(max-width:900px){.command-strip{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -468,6 +477,14 @@ backdrop-filter:blur(18px);
 </div>
 </div>
 
+
+<div class="section-divider"></div>
+<div class="command-strip">
+<div class="strip-card"><h4>Infrastructure</h4><div>18 Active Nodes</div></div>
+<div class="strip-card"><h4>Security</h4><div>3 Active Alerts</div></div>
+<div class="strip-card"><h4>Automation</h4><div>92% Success</div></div>
+<div class="strip-card"><h4>Observability</h4><div>100% Telemetry</div></div>
+</div>
 <div class="command-center container">
 <div class="cc-grid">
 <div class="cc-card">
