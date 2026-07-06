@@ -155,6 +155,24 @@ border-radius:10px;
 text-decoration:none
 }
 </style>
+
+<style id="stage65">
+body:before{
+content:"";
+position:fixed;inset:0;pointer-events:none;
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+background-size:40px 40px;
+mask-image:radial-gradient(circle at center,black 40%,transparent 90%);
+opacity:.2}
+.ops-banner{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin:26px 0}
+.ops-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
+.progress{height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-top:10px}
+.progress span{display:block;height:100%;width:92%;background:linear-gradient(90deg,#22C55E,#60A5FA)}
+.system{display:flex;justify-content:space-between;align-items:center}
+.badge-ok{background:#22C55E22;color:#22C55E;padding:4px 8px;border-radius:999px;font-size:11px;border:1px solid #22C55E55}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -205,15 +223,27 @@ text-decoration:none
 </div>
 <div class="card"><h3>Featured Platform</h3><p><strong>SOC-AI Forge v1.0</strong><br>Enterprise AI-Assisted Security Operations Platform<div class='platform-meta'><span class='tag'>ONLINE</span><span class='tag'>Docker</span><span class='tag'>AI</span><span class='tag'>SOC</span></div></p><a class="cta" href="#">Open Platform</a></div>
 <div class="card"><h3>Engineering Systems</h3>
-<div class="system">SentinelOps Platform</div>
-<div class="system">SOC Lab</div>
-<div class="system">Linux Operations</div>
-<div class="system">CI/CD Pipeline</div>
-<div class="system">DevSecOps Lab</div>
+<div class="system"><span>SentinelOps Platform</span><span class="badge-ok">ONLINE</span></div>
+<div class="system"><span>SOC Lab</span><span class="badge-ok">READY</span></div>
+<div class="system"><span>Linux Operations</span><span class="badge-ok">READY</span></div>
+<div class="system"><span>CI/CD Pipeline</span><span class="badge-ok">READY</span></div>
+<div class="system"><span>DevSecOps Lab</span><span class="badge-ok">READY</span></div>
 </div>
 <div class="card"><h3>Contact</h3><p>oamosu14@aol.com<br>github.com/oamosu14</p></div>
 </div>
 </div></section>
+
+<div class="ops-banner">
+<div class="ops-card">
+<h3>Executive Operations Overview</h3>
+<p>Platform availability and security posture across enterprise infrastructure.</p>
+<div class="progress"><span></span></div>
+</div>
+<div class="ops-card">
+<h3>Mission Status</h3>
+<p><span class="badge-ok">OPERATIONAL</span></p>
+</div>
+</div>
 <section class="dashboard"><div class="container"><div class="panel">
 <div class="dashboard-header">
 <div>
