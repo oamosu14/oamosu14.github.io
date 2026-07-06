@@ -109,6 +109,17 @@ cursor:pointer;
 }
 .toolbtn.active{background:#22C55E;color:#08120c;font-weight:700}
 </style>
+
+<style id="stage63">
+.live-status{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}
+.live-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px}
+.live-dot{width:10px;height:10px;background:#22C55E;border-radius:50%;display:inline-block;margin-right:8px;box-shadow:0 0 12px #22C55E}
+.sys{position:relative;padding-left:18px}
+.sys:before{content:'';position:absolute;left:8px;top:20px;width:6px;height:6px;background:#22C55E;border-radius:50%}
+.hero-banner{margin-top:28px;padding:18px;border:1px solid rgba(34,197,94,.25);border-radius:16px;background:linear-gradient(90deg,rgba(34,197,94,.08),transparent)}
+.hero-banner strong{color:#22C55E}
+.panel{box-shadow:0 20px 50px rgba(0,0,0,.35)}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -121,6 +132,24 @@ cursor:pointer;
 <p>Building resilient platforms through DevOps, SRE, infrastructure automation, and AI-assisted security operations.</p>
 <div class="pills"><span class="pill">Linux</span><span class="pill">DevOps</span><span class="pill">SRE</span><span class="pill">Security Operations</span><span class="pill">Observability</span><span class="pill">Automation</span></div>
 
+
+<div class="hero-banner">
+<strong>Live Platform Status</strong><br>
+<span class="live-dot"></span>SOC Online
+&nbsp;&nbsp;
+<span class="live-dot"></span>SentinelOps Running
+&nbsp;&nbsp;
+<span class="live-dot"></span>AI Engine Ready
+&nbsp;&nbsp;
+<span class="live-dot"></span>Infrastructure Healthy
+</div>
+
+<div class="live-status">
+<div class="live-box"><small>Protected Nodes</small><h3>18</h3></div>
+<div class="live-box"><small>Threat Score</small><h3>12%</h3></div>
+<div class="live-box"><small>Environment</small><h3>Production</h3></div>
+<div class="live-box"><small>Refresh</small><h3 id="clock">--:--:--</h3></div>
+</div>
 <div class="kpi-grid">
 <div class="kpi"><h3>25+</h3><span>Projects</span></div>
 <div class="kpi"><h3>12</h3><span>Platforms</span></div>
@@ -174,5 +203,14 @@ logs.push(m);s.e++;
 if(m[0]=="INFO")s.i++; else if(m[0]=="WARN")s.w++; else s.c++;
 draw();
 },1800);
+</script>
+
+<script id="stage63script">
+setInterval(()=>{
+const d=new Date();
+const t=d.toLocaleTimeString();
+const c=document.getElementById('clock');
+if(c)c.textContent=t;
+},1000);
 </script>
 </body></html>
