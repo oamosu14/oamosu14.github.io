@@ -631,6 +631,37 @@ animation:heartbeat 1.5s infinite;
 box-shadow:0 0 12px #22C55E;
 }
 </style>
+
+<style id="stage97">
+:root{
+--radius:20px;
+}
+.card,.panel,.metric,.system,.live-box,.kpi,.ops-card{
+border-radius:var(--radius)!important;
+}
+.card,.panel{
+transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover,.panel:hover{
+box-shadow:0 28px 60px rgba(0,0,0,.45),0 0 18px rgba(34,197,94,.10);
+}
+.section-title h3,
+.dashboard-header h2{
+letter-spacing:.04em;
+}
+footer{
+border-top:1px solid rgba(255,255,255,.08);
+padding:28px 0!important;
+background:rgba(255,255,255,.02);
+}
+.hero{
+padding-top:96px!important;
+padding-bottom:84px!important;
+}
+.container{
+max-width:1420px;
+}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
