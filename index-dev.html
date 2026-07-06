@@ -235,6 +235,16 @@ background:rgba(34,197,94,.08);
 font-size:12px
 }
 </style>
+
+<style id="stage71">
+.tech-stack{margin:34px 0;padding:26px;border:1px solid rgba(255,255,255,.08);border-radius:20px;background:rgba(255,255,255,.04)}
+.tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:18px}
+.tech{padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:14px;text-align:center;background:rgba(255,255,255,.03);transition:.25s}
+.tech:hover{transform:translateY(-5px);border-color:#22C55E}
+.arch{margin:34px 0;padding:26px;border:1px solid rgba(255,255,255,.08);border-radius:20px;background:rgba(255,255,255,.04)}
+.arch-flow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}
+.arch-node{flex:1;min-width:120px;padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);text-align:center}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -322,6 +332,31 @@ font-size:12px
 <div class="service"><span>Grafana</span><span class="okdot"></span></div>
 <div class="service"><span>Prometheus</span><span class="okdot"></span></div>
 <div class="service"><span>Wazuh</span><span class="okdot"></span></div>
+</div>
+</div>
+
+<div class="container">
+<div class="tech-stack">
+<h2>Enterprise Technology Stack</h2>
+<div class="tech-grid">
+<div class="tech">Linux</div>
+<div class="tech">Docker</div>
+<div class="tech">Ansible</div>
+<div class="tech">Wazuh</div>
+<div class="tech">Grafana</div>
+<div class="tech">Prometheus</div>
+</div>
+</div>
+
+<div class="arch">
+<h2>Platform Architecture</h2>
+<div class="arch-flow">
+<div class="arch-node">Internet</div>
+<div class="arch-node">Edge</div>
+<div class="arch-node">SOC Core</div>
+<div class="arch-node">Observability</div>
+<div class="arch-node">Endpoints</div>
+</div>
 </div>
 </div>
 <section class="dashboard"><div class="container"><div class="panel">
