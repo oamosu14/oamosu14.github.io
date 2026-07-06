@@ -173,6 +173,22 @@ opacity:.2}
 .system{display:flex;justify-content:space-between;align-items:center}
 .badge-ok{background:#22C55E22;color:#22C55E;padding:4px 8px;border-radius:999px;font-size:11px;border:1px solid #22C55E55}
 </style>
+
+<style id="stage66">
+.timeline{margin-top:26px;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px;background:rgba(255,255,255,.03)}
+.timeline h3{margin-bottom:14px}
+.t-item{display:grid;grid-template-columns:90px 1fr 90px;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.t-item:last-child{border-bottom:none}
+.t-time{color:#94A3B8;font-family:monospace}
+.t-sev{font-size:12px;text-align:center;padding:6px;border-radius:999px}
+.low{background:#1d4ed822;color:#60A5FA}
+.med{background:#f59e0b22;color:#fbbf24}
+.high{background:#ef444422;color:#ef4444}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+.quick{padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.04);text-align:center}
+.quick h4{color:#22C55E;margin-bottom:8px}
+@media(max-width:900px){.quick-grid{grid-template-columns:repeat(2,1fr)}.t-item{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -264,7 +280,44 @@ opacity:.2}
 </div>
 <div id="stream"></div>
 </div></div></section>
-<footer>© 2026 Olufemi Amosu • Enterprise Engineering Portfolio</footer>
+<footer>© 2026 Olufemi Amosu • Enterprise Engineering Portfolio
+<div class="quick-grid">
+<div class="quick"><h4>Incidents</h4><strong>03</strong></div>
+<div class="quick"><h4>Endpoints</h4><strong>18</strong></div>
+<div class="quick"><h4>Playbooks</h4><strong>12</strong></div>
+<div class="quick"><h4>Automation</h4><strong>92%</strong></div>
+</div>
+
+<div class="timeline">
+<h3>Recent Security Activity</h3>
+
+<div class="t-item">
+<div class="t-time">09:12</div>
+<div>Authentication anomaly investigated and contained.</div>
+<div class="t-sev high">HIGH</div>
+</div>
+
+<div class="t-item">
+<div class="t-time">09:04</div>
+<div>Prometheus completed infrastructure scrape.</div>
+<div class="t-sev low">INFO</div>
+</div>
+
+<div class="t-item">
+<div class="t-time">08:57</div>
+<div>CPU threshold exceeded on DEV node.</div>
+<div class="t-sev med">WARN</div>
+</div>
+
+<div class="t-item">
+<div class="t-time">08:41</div>
+<div>CI/CD deployment completed successfully.</div>
+<div class="t-sev low">INFO</div>
+</div>
+
+</div>
+
+</footer>
 <script>
 const msgs=[["INFO","Prometheus scrape complete"],["WARN","CPU threshold exceeded"],["CRITICAL","Authentication anomaly"],["INFO","Backup completed"]];
 let s={e:0,i:0,w:0,c:0},logs=[];
