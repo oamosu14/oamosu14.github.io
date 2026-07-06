@@ -313,6 +313,16 @@ backdrop-filter:blur(18px);
 .nav-card small{color:#94A3B8}
 @media(max-width:900px){.nav-panels{grid-template-columns:repeat(2,1fr)}}
 </style>
+
+<style id="stage81">
+.feature-links{max-width:1400px;margin:36px auto;display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.feature-box,.roadmap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:24px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.tile{padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.03)}
+.tile strong{display:block;color:#22C55E;margin-bottom:6px}
+.roadmap ol{margin-left:20px;line-height:2;color:#94A3B8}
+@media(max-width:900px){.feature-links,.tiles{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -488,6 +498,29 @@ backdrop-filter:blur(18px);
 
 
 
+
+<div class="feature-links">
+<div class="feature-box">
+<h2>Portfolio Destinations</h2>
+<div class="tiles">
+<div class="tile"><strong>SentinelOps</strong>Monitoring Platform</div>
+<div class="tile"><strong>SOC Lab</strong>Detection Engineering</div>
+<div class="tile"><strong>Linux Ops</strong>Administration</div>
+<div class="tile"><strong>DevSecOps</strong>CI/CD Security</div>
+<div class="tile"><strong>Documentation</strong>Runbooks & MOPs</div>
+<div class="tile"><strong>Resume</strong>Experience</div>
+</div>
+</div>
+<div class="roadmap">
+<h2>Integration Roadmap</h2>
+<ol>
+<li>Connect navigation</li>
+<li>Link project pages</li>
+<li>Add architecture diagrams</li>
+<li>Publish live demos</li>
+</ol>
+</div>
+</div>
 <div class="nav-panels">
 <a class="nav-card" href="#"><h3>Projects Hub</h3><small>Browse engineering platforms and labs.</small></a>
 <a class="nav-card" href="#"><h3>SOC-AI Forge</h3><small>Open enterprise SOC platform.</small></a>
