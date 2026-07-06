@@ -344,6 +344,15 @@ backdrop-filter:blur(18px);
 .phase:last-child{border-bottom:none}
 @media(max-width:900px){.integration,.link-table{grid-template-columns:1fr}}
 </style>
+
+<style id="stage84">
+.launchpad{max-width:1400px;margin:40px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.launch-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px;transition:.25s}
+.launch-card:hover{transform:translateY(-6px);border-color:#22C55E}
+.launch-card h3{color:#22C55E;margin-bottom:10px}
+.launch-card code{display:block;margin-top:10px;color:#94A3B8}
+@media(max-width:900px){.launchpad{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -522,6 +531,13 @@ backdrop-filter:blur(18px);
 
 
 
+
+<div class="launchpad">
+<div class="launch-card"><h3>Projects</h3><p>Primary portfolio landing page.</p><code>/projects/index.html</code></div>
+<div class="launch-card"><h3>SOC-AI Forge</h3><p>Flagship platform experience.</p><code>/projects/soc-ai-forge/</code></div>
+<div class="launch-card"><h3>SentinelOps</h3><p>Enterprise monitoring showcase.</p><code>/projects/sentinelops/</code></div>
+<div class="launch-card"><h3>Documentation</h3><p>Runbooks and architecture.</p><code>/docs/index.html</code></div>
+</div>
 <div class="integration">
 <div class="int-card">
 <h2>Navigation Integration Matrix</h2>
