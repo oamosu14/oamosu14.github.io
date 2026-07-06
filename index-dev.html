@@ -304,6 +304,15 @@ backdrop-filter:blur(18px);
 .strip-card:hover{transform:translateY(-4px);transition:.25s}
 @media(max-width:900px){.command-strip{grid-template-columns:repeat(2,1fr)}}
 </style>
+
+<style id="stage80">
+.nav-panels{max-width:1400px;margin:40px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.nav-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px;transition:.25s;text-decoration:none;color:#F8FAFC}
+.nav-card:hover{transform:translateY(-6px);border-color:#22C55E;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.nav-card h3{margin-bottom:10px;color:#22C55E}
+.nav-card small{color:#94A3B8}
+@media(max-width:900px){.nav-panels{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active">Home</a><a>Platforms</a><a>Projects</a><a>Contact</a></nav></div></header>
@@ -478,6 +487,13 @@ backdrop-filter:blur(18px);
 </div>
 
 
+
+<div class="nav-panels">
+<a class="nav-card" href="#"><h3>Projects Hub</h3><small>Browse engineering platforms and labs.</small></a>
+<a class="nav-card" href="#"><h3>SOC-AI Forge</h3><small>Open enterprise SOC platform.</small></a>
+<a class="nav-card" href="#"><h3>Documentation</h3><small>Architecture, MOPs and runbooks.</small></a>
+<a class="nav-card" href="#"><h3>Contact</h3><small>Professional profile and links.</small></a>
+</div>
 <div class="section-divider"></div>
 <div class="command-strip">
 <div class="strip-card"><h4>Infrastructure</h4><div>18 Active Nodes</div></div>
