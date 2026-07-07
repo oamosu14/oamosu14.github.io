@@ -713,7 +713,18 @@ margin-left:18px;
 flex-shrink:0;
 }
 </style>
-</head>
+<style>
+nav a{
+transition:color .2s ease, transform .2s ease;
+}
+nav a:hover{
+color:#22C55E;
+transform:translateY(-1px);
+}
+nav a.active{
+font-weight:700;
+}
+</style></head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active" href="index.html">Home</a><a href="/projects/soc-ai-forge/">Platforms</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></nav></div></header>
 <section class="hero"><div class="container grid">
