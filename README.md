@@ -158,4 +158,4 @@ All activities in this repository were performed in isolated virtual environment
 
 ## Author
 
-Cybersecurity Student / Analyst (Lab Portfolio Project)
+Cybersecurity Student / Analyst (Lab Portfolio Project).
