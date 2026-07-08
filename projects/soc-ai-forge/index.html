@@ -339,6 +339,31 @@ align-self:start;
  color:#08111f;
  transform:translateY(-2px);
 }
+
+/* Stage 2.0 Related Systems */
+.related-card{
+display:block;
+text-decoration:none;
+color:inherit;
+}
+.related-card .card{
+transition:.25s;
+}
+.related-card:hover .card{
+transform:translateY(-6px);
+border-color:#22c55e!important;
+box-shadow:0 18px 34px rgba(34,197,94,.2);
+}
+.related-icon{
+font-size:2rem;
+margin-bottom:10px;
+}
+.open-link{
+margin-top:18px;
+display:inline-block;
+color:#22c55e;
+font-weight:700;
+}
 </style>
 </head>
 <body>
@@ -830,23 +855,23 @@ Related Engineering Systems
 
 </h2>
 <div class="grid">
-<div class="card">
+
+
+
+
+<a class="related-card" href="../sentinelops/"><div class="card"><div class="related-icon">🖥️</div>
 <h3>SentinelOps</h3>
 <p>Enterprise infrastructure operations, monitoring, automation, centralized logging, and multi-site platform management.</p>
-</div>
-<div class="card">
+<div class="open-link">Open Project →</div></div></a><a class="related-card" href="../soc-lab/"><div class="card"><div class="related-icon">🛡️</div>
 <h3>SOC Lab</h3>
 <p>Security monitoring, SIEM operations, alert investigation, and analyst workflow simulation.</p>
-</div>
-<div class="card">
+<div class="open-link">Open Project →</div></div></a><a class="related-card" href="../linux-operations/"><div class="card"><div class="related-icon">🐧</div>
 <h3>Linux Operations</h3>
 <p>Enterprise Linux administration, security hardening, automation, user management, and system maintenance.</p>
-</div>
-<div class="card">
+<div class="open-link">Open Project →</div></div></a><a class="related-card" href="../cicd-pipeline/"><div class="card"><div class="related-icon">⚙️</div>
 <h3>CI/CD Pipeline</h3>
 <p>Automated software delivery, build orchestration, artifact management, and deployment workflows.</p>
-</div>
-</div>
+<div class="open-link">Open Project →</div></div></a></div>
 </section>
 </div>
 <footer style="text-align:center;padding:35px;color:#9ca3af;">
