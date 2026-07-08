@@ -307,6 +307,15 @@ border:1px solid rgba(56,189,248,.45);
 .hero-right{
 align-self:start;
 }
+
+/* Stage1.8 Workflow */
+.workflow{position:relative;margin-top:10px}
+.workflow:before{content:"";position:absolute;left:26px;top:10px;bottom:10px;width:3px;background:#22c55e}
+.wf{display:flex;gap:18px;align-items:flex-start;background:#0f172a;border:1px solid rgba(34,197,94,.18);border-radius:14px;padding:18px 20px;margin:16px 0;position:relative}
+.ico{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#163047;font-size:24px;border:2px solid #22c55e;flex:none}
+.wf strong{color:#f8fafc;font-size:1.05rem}
+.wf span{color:#cbd5e1}
+.wf:hover{transform:translateX(6px);box-shadow:0 12px 26px rgba(34,197,94,.18)}
 </style>
 </head>
 <body>
@@ -630,35 +639,19 @@ Security Operations Workflow
 
 </h2>
 <div class="card">
-<pre style="font-size:15px;line-height:1.8;overflow:auto;">
 
-Windows Endpoint
-        │
-        ▼
-Windows Events / Sysmon
-        │
-        ▼
-Wazuh SIEM
-        │
-        ▼
-Detection Rules
-        │
-        ▼
-Threat Intelligence (MISP)
-        │
-        ▼
-Incident Management (TheHive)
-        │
-        ▼
-Response Automation (Cortex)
-        │
-        ▼
-AI-Assisted Investigation
-        │
-        ▼
-Documentation &amp; Continuous Improvement
 
-</pre>
+<div class="workflow">
+<div class="wf"><div class="ico">🖥️</div><div><strong>Windows Endpoint</strong><br/><span>Endpoint generates security events.</span></div></div>
+<div class="wf"><div class="ico">🛡️</div><div><strong>Windows Events / Sysmon</strong><br/><span>Detailed telemetry collection.</span></div></div>
+<div class="wf"><div class="ico">🔍</div><div><strong>Wazuh SIEM</strong><br/><span>Centralized log analysis.</span></div></div>
+<div class="wf"><div class="ico">⚠️</div><div><strong>Detection Rules</strong><br/><span>Correlation and alert generation.</span></div></div>
+<div class="wf"><div class="ico">🌐</div><div><strong>Threat Intelligence (MISP)</strong><br/><span>IOC enrichment.</span></div></div>
+<div class="wf"><div class="ico">📁</div><div><strong>Incident Management (TheHive)</strong><br/><span>Case creation.</span></div></div>
+<div class="wf"><div class="ico">🤖</div><div><strong>Response Automation (Cortex)</strong><br/><span>Automated analysis.</span></div></div>
+<div class="wf"><div class="ico">📊</div><div><strong>AI-Assisted Investigation</strong><br/><span>Analyst guidance.</span></div></div>
+<div class="wf"><div class="ico">📝</div><div><strong>Documentation &amp; Continuous Improvement</strong></div></div>
+</div>
 </div>
 </section>
 <!-- ========================================================= -->
