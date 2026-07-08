@@ -264,6 +264,49 @@ h2{color:#f8fafc}
  background:#0f172a!important;
  border-color:rgba(56,189,248,.25)!important;
 }
+
+/* Stage 1.7 - Platform Status Card Enhancement */
+.status-panel{
+background:linear-gradient(180deg,#132338 0%,#0b1726 100%) !important;
+border:2px solid rgba(34,197,94,.45)!important;
+border-radius:18px!important;
+padding:26px!important;
+box-shadow:
+0 0 0 1px rgba(34,197,94,.15),
+0 12px 32px rgba(0,0,0,.45),
+0 0 28px rgba(34,197,94,.18)!important;
+}
+.status-panel h3{
+margin-top:0;
+margin-bottom:18px;
+font-size:1.3rem;
+color:#f8fafc!important;
+padding-bottom:10px;
+border-bottom:1px solid rgba(56,189,248,.25);
+}
+.status-row{
+padding:12px 0!important;
+}
+.status-row:not(:last-child){
+border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+.online,.ready{
+display:inline-block;
+padding:4px 10px;
+border-radius:999px;
+font-size:.85rem;
+}
+.online{
+background:rgba(34,197,94,.18);
+border:1px solid rgba(34,197,94,.45);
+}
+.ready{
+background:rgba(56,189,248,.18);
+border:1px solid rgba(56,189,248,.45);
+}
+.hero-right{
+align-self:start;
+}
 </style>
 </head>
 <body>
