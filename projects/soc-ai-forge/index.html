@@ -459,6 +459,33 @@ transform:translateY(-2px);
 .secondary-btn:hover{
 background:rgba(255,255,255,.08);
 }
+
+/* Stage 2.4 Final UI Polish */
+html{scroll-behavior:smooth}
+section{
+  animation:fadeUp .5s ease both;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+.card,.dashboard-tile,.gallery-tile,.wf,.arch-node{
+ transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover,.arch-node:hover{
+ transform:translateY(-4px);
+ box-shadow:0 16px 30px rgba(0,0,0,.28);
+}
+.summary{
+ max-width:900px;
+}
+.hero-buttons{
+ margin-top:36px;
+}
+footer{
+ border-top:1px solid rgba(255,255,255,.08);
+ background:#07101c;
+}
 </style>
 </head>
 <body>
