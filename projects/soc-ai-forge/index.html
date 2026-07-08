@@ -120,6 +120,14 @@ margin-bottom:20px;
 .status-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .online{color:#22c55e;font-weight:700}.ready{color:#38bdf8;font-weight:700}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+
+.pipeline-section{margin-top:-20px;margin-bottom:70px}
+.pipeline{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:25px 0}
+.stage{min-width:120px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;text-align:center}
+.stage.active{border-color:#22c55e;box-shadow:0 0 18px rgba(34,197,94,.35)}
+.stage:after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(34,197,94,.25),transparent);animation:scan 2s infinite}
+@keyframes scan{0%{left:-100%}100%{left:100%}}
+.console{margin:30px auto 0;max-width:980px;background:#0f172a;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:15px;font-family:monospace;font-size:12px;height:180px;overflow:auto}
 </style>
 </head>
 <body>
@@ -133,7 +141,6 @@ margin-bottom:20px;
 </nav>
 <div class="container">
 <!-- ========================================================= -->
-
 <section class="hero-command">
 <div class="hero-grid">
 <div class="hero-left">
@@ -162,6 +169,21 @@ security operations into a unified engineering platform.
 </div>
 </div>
 </div>
+</section>
+<section class="pipeline-section">
+<h2>Live Security Operations Pipeline</h2>
+<div class="pipeline">
+<div class="stage" id="p1">Endpoint</div>
+<div class="stage" id="p2">Sysmon</div>
+<div class="stage" id="p3">Wazuh</div>
+<div class="stage" id="p4">Detection</div>
+<div class="stage" id="p5">MISP</div>
+<div class="stage" id="p6">TheHive</div>
+<div class="stage" id="p7">Cortex</div>
+<div class="stage" id="p8">Grafana</div>
+<div class="stage" id="p9">Analyst</div>
+</div>
+<div class="console" id="socConsole"></div>
 </section>
 
 <!-- ========================================================= -->
@@ -670,6 +692,20 @@ card.style.borderColor="rgba(255,255,255,.08)";
 
 });
 
+
+const socSteps=["Endpoint Connected","Sysmon Event Created","Wazuh Rule Matched","Detection Correlated","IOC Verified (MISP)","Case Opened (TheHive)","Cortex Analysis Complete","Grafana Dashboard Updated","Analyst Investigation Ready"];
+let si=0;
+function socRun(){
+ document.querySelectorAll('.pipeline .stage').forEach(s=>s.classList.remove('active'));
+ document.getElementById('p'+(si+1)).classList.add('active');
+ const c=document.getElementById('socConsole');
+ const t=new Date().toLocaleTimeString();
+ c.innerHTML+=t+"  "+socSteps[si]+"<br>";
+ c.scrollTop=c.scrollHeight;
+ si=(si+1)%socSteps.length;
+}
+setInterval(socRun,1200);
+socRun();
 </script>
 </body>
 </html>
