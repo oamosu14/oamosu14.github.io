@@ -373,6 +373,92 @@ font-weight:700;
 .arch-node:after{content:"➜";position:absolute;right:-16px;top:50%;transform:translateY(-50%);color:#22c55e;font-size:24px}
 .arch-node:last-child:after{display:none}
 @media(max-width:900px){.arch-grid{grid-template-columns:1fr}.arch-node:after{display:none}}
+
+/* Stage 2.2 Evidence Gallery */
+.gallery-preview{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin:24px 0;
+}
+.gallery-tile{
+background:linear-gradient(180deg,#132338,#0f172a);
+border:1px solid rgba(34,197,94,.22);
+border-radius:16px;
+height:150px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+color:#cbd5e1;
+transition:.25s;
+}
+.gallery-tile:hover{
+transform:translateY(-5px);
+border-color:#22c55e;
+box-shadow:0 16px 30px rgba(34,197,94,.18);
+}
+.gallery-icon{font-size:40px;margin-bottom:10px}
+.gallery-cta{
+display:inline-block;
+margin-top:10px;
+padding:12px 22px;
+background:#22c55e;
+color:#08111f!important;
+text-decoration:none;
+font-weight:700;
+border-radius:10px;
+}
+
+/* Stage 2.3 Hero polish */
+.hero-command{
+position:relative;
+overflow:hidden;
+background:linear-gradient(135deg,#0e1b2d 0%,#08111f 100%)!important;
+border:1px solid rgba(56,189,248,.18)!important;
+}
+.hero-command:before{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+right:-120px;
+top:-120px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(34,197,94,.12),transparent 70%);
+pointer-events:none;
+}
+.hero-left{
+position:relative;
+z-index:2;
+padding-right:20px;
+}
+.hero-title{
+font-size:56px;
+font-weight:700;
+letter-spacing:.5px;
+color:#f8fafc;
+margin:8px 0 14px;
+}
+.subtitle{
+font-size:20px;
+color:#38bdf8;
+margin-bottom:20px;
+}
+.badge{
+font-weight:700;
+letter-spacing:1px;
+}
+.hero-buttons a{
+box-shadow:0 10px 24px rgba(0,0,0,.25);
+}
+.primary-btn:hover{
+background:#2dd46f;
+transform:translateY(-2px);
+}
+.secondary-btn:hover{
+background:rgba(255,255,255,.08);
+}
 </style>
 </head>
 <body>
@@ -581,7 +667,6 @@ SOC-AI Forge follows a layered platform architecture that combines infrastructur
 <div class="arch-node"><div class="icon">🛡️</div><h4>Security</h4><div>Wazuh • Sysmon</div></div>
 <div class="arch-node"><div class="icon">⚙️</div><h4>Automation</h4><div>Ansible • SSH</div></div>
 </div>
-
 </section>
 <!-- ========================================================= -->
 <section>
@@ -853,14 +938,13 @@ The SOC-AI Forge Evidence Gallery contains architecture diagrams, monitoring das
 
 </p>
 <br/>
-<a href="./gallery.html" style="font-size:18px;
-font-weight:600;
-color:#22c55e;
-text-decoration:none;">
-
-➡ Open SOC-AI Forge Evidence Gallery
-
-</a>
+<div class="gallery-preview">
+<div class="gallery-tile"><div class="gallery-icon">🖼️</div><div>Architecture</div></div>
+<div class="gallery-tile"><div class="gallery-icon">📊</div><div>Dashboards</div></div>
+<div class="gallery-tile"><div class="gallery-icon">🛡️</div><div>Investigations</div></div>
+<div class="gallery-tile"><div class="gallery-icon">⚙️</div><div>Automation</div></div>
+</div>
+<a class="gallery-cta" href="./gallery.html">Open SOC-AI Forge Evidence Gallery →</a>
 </div>
 </section>
 <!-- ========================================================= -->
