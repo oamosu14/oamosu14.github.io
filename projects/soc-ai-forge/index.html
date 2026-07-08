@@ -161,6 +161,35 @@ box-shadow:0 0 18px rgba(34,197,94,.25);
 .dashboard-title{color:#22c55e;font-weight:700;margin-bottom:10px}
 .dashboard-status{color:#e5e7eb}
 .dashboard-status .ok{color:#22c55e;font-weight:700}
+
+/* Stage 1.4 - Presentation Refinement */
+section>h2{
+font-size:2rem;
+margin-bottom:28px;
+padding-bottom:12px;
+border-bottom:1px solid rgba(34,197,94,.25);
+letter-spacing:.4px;
+}
+section>h2::after{
+content:"";
+display:block;
+width:72px;
+height:3px;
+margin-top:10px;
+background:#22c55e;
+border-radius:3px;
+}
+.card{
+background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.03));
+border-left:4px solid #22c55e;
+padding:30px;
+box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+.grid>.card{height:100%;display:flex;flex-direction:column}
+.card h3{font-size:1.2rem;margin-bottom:16px}
+.card ul{margin:0;padding-left:22px}
+.card li{margin-bottom:10px;color:#e5e7eb}
+.summary{font-size:1.03rem;line-height:2;color:#d7dee7}
 </style>
 </head>
 <body>
@@ -229,7 +258,6 @@ security operations into a unified engineering platform.
 <div class="dashboard-tile"><div class="dashboard-title">Incident Response</div><div class="dashboard-status"><span class="ok">● Active</span></div></div>
 </div>
 </section>
-
 <!-- ========================================================= -->
 <section>
 <h2>
