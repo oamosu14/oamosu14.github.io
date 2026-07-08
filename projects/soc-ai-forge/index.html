@@ -316,6 +316,29 @@ align-self:start;
 .wf strong{color:#f8fafc;font-size:1.05rem}
 .wf span{color:#cbd5e1}
 .wf:hover{transform:translateX(6px);box-shadow:0 12px 26px rgba(34,197,94,.18)}
+
+/* Stage 1.9 - Technology Badges */
+.tech-list{
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:12px;
+}
+.tech-chip{
+ display:inline-block;
+ padding:8px 14px;
+ border-radius:999px;
+ background:rgba(34,197,94,.10);
+ border:1px solid rgba(34,197,94,.35);
+ color:#f8fafc;
+ font-size:.92rem;
+ transition:.25s;
+}
+.tech-chip:hover{
+ background:#22c55e;
+ color:#08111f;
+ transform:translateY(-2px);
+}
 </style>
 </head>
 <body>
@@ -639,8 +662,6 @@ Security Operations Workflow
 
 </h2>
 <div class="card">
-
-
 <div class="workflow">
 <div class="wf"><div class="ico">🖥️</div><div><strong>Windows Endpoint</strong><br/><span>Endpoint generates security events.</span></div></div>
 <div class="wf"><div class="ico">🛡️</div><div><strong>Windows Events / Sysmon</strong><br/><span>Detailed telemetry collection.</span></div></div>
@@ -668,11 +689,7 @@ Technology Stack
 Operating Systems
 
 </h3>
-<ul>
-<li>Ubuntu Server</li>
-<li>Windows 11</li>
-<li>Linux CLI</li>
-</ul>
+<div class="tech-list"><span class="tech-chip">Ubuntu Server</span><span class="tech-chip">Windows 11</span><span class="tech-chip">Linux CLI</span></div>
 </div>
 <div class="card">
 <h3>
@@ -680,12 +697,7 @@ Operating Systems
 Platform Engineering
 
 </h3>
-<ul>
-<li>Docker</li>
-<li>Ansible</li>
-<li>SSH</li>
-<li>VirtualBox</li>
-</ul>
+<div class="tech-list"><span class="tech-chip">Docker</span><span class="tech-chip">Ansible</span><span class="tech-chip">SSH</span><span class="tech-chip">VirtualBox</span></div>
 </div>
 <div class="card">
 <h3>
@@ -693,11 +705,7 @@ Platform Engineering
 Observability
 
 </h3>
-<ul>
-<li>Prometheus</li>
-<li>Grafana</li>
-<li>Node Exporter</li>
-</ul>
+<div class="tech-list"><span class="tech-chip">Prometheus</span><span class="tech-chip">Grafana</span><span class="tech-chip">Node Exporter</span></div>
 </div>
 <div class="card">
 <h3>
@@ -705,14 +713,7 @@ Observability
 Security
 
 </h3>
-<ul>
-<li>Wazuh</li>
-<li>Sysmon</li>
-<li>Keycloak</li>
-<li>MISP</li>
-<li>TheHive</li>
-<li>Cortex</li>
-</ul>
+<div class="tech-list"><span class="tech-chip">Wazuh</span><span class="tech-chip">Sysmon</span><span class="tech-chip">Keycloak</span><span class="tech-chip">MISP</span><span class="tech-chip">TheHive</span><span class="tech-chip">Cortex</span></div>
 </div>
 </div>
 </section>
