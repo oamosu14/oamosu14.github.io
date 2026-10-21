@@ -816,6 +816,12 @@ color:#22C55E;
 }
 @media(max-width:760px){.hero-flagship .flagship-grid{grid-template-columns:1fr!important}.hero .quick-launch-center,.hero .panel{width:100%;box-sizing:border-box}}
 @media(max-width:520px){.hero .metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero .launch-grid{grid-template-columns:1fr!important}}
+</style><style id="wide-screen-layout-correction">
+/* Wide-screen utilization: expand the main site container instead of leaving large side gutters. */
+.container{width:min(1800px,96vw)!important;max-width:1800px!important;margin-left:auto!important;margin-right:auto!important}
+.hero .container.grid{grid-template-columns:minmax(0,2.05fr) minmax(320px,.95fr)!important;gap:28px!important}
+@media(min-width:1600px){.container{width:96vw!important;max-width:1900px!important}.hero .container.grid{grid-template-columns:minmax(0,2.1fr) minmax(340px,.9fr)!important;gap:32px!important}}
+@media(max-width:900px){.container{width:min(96%,100%)!important}.hero .container.grid{grid-template-columns:minmax(0,1fr)!important;gap:22px!important}}
 </style></head>
 <body>
 <header><div class="container header"><div class="logo">Olufemi Amosu</div><nav><a class="active" href="index.html">Home</a><a href="projects/soc-ai-forge/">Platforms</a><a href="https://github.com/oamosu14?tab=repositories">Projects</a><a href="#contact">Contact</a></nav></div></header>
