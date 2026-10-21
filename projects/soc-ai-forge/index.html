@@ -528,6 +528,20 @@ footer{
   box-shadow:0 10px 22px rgba(0,0,0,.35);
 }
 </style>
+
+<style id="case-study-extension">
+.case-study-extension{max-width:1200px;margin:0 auto;padding:10px 20px 60px;color:#e5e7eb}
+.case-study-extension .ext-section{margin:52px 0}
+.case-study-extension .ext-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.case-study-extension .ext-card{background:#0f1b2d;border:1px solid rgba(148,163,184,.22);border-radius:15px;padding:22px}
+.case-study-extension .ext-card h3{color:#86efac;margin:0 0 12px}
+.case-study-extension .ext-card p,.case-study-extension li{color:#cbd5e1;line-height:1.8}
+.case-study-extension .ext-arch{width:100%;height:auto;border-radius:15px;border:1px solid rgba(148,163,184,.2)}
+.case-study-extension .ext-note{border-left:3px solid #60a5fa;padding:12px 16px;background:rgba(96,165,250,.07);color:#cbd5e1}
+.case-study-extension code{overflow-wrap:anywhere}
+@media(max-width:720px){.case-study-extension .ext-grid{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 <nav>
@@ -674,7 +688,50 @@ Platform Engineering
 </section>
 <!-- ===========================
 PART 1 ENDS HERE
-DO NOT ADD </body> OR </html>
+DO NOT ADD 
+<div class="case-study-extension" id="verified-project-record">
+<section class="ext-section">
+  <h2>Project case study: architecture, implementation and verified progress</h2>
+  <p>SOC-AI Forge is an enterprise-inspired security operations lab that brings endpoint telemetry, SIEM investigation, infrastructure observability, automation, and analyst workflow documentation into one learning and engineering environment. The purpose is to practice the operational lifecycle—from telemetry and alert review to investigation records and follow-up—not to imply that every planned integration is fully connected.</p>
+  <img class="ext-arch" src="../../assets/images/platform-architecture.svg" alt="SOC-AI Forge logical architecture from endpoints to detection, investigation and analyst workflow">
+  <p class="ext-note">This is a logical architecture diagram based on the project record. It is not a live network map. Components described in the original project documentation as integration targets are not all verified as deployed or connected in the current lab.</p>
+</section>
+<section class="ext-section">
+<h2>Environment and confirmed build context</h2>
+<div class="ext-grid">
+ <article class="ext-card"><h3>SOC Core</h3><ul><li>Ubuntu Server 24.04 LTS.</li><li>Docker Engine.</li><li>Wazuh Manager, Wazuh Dashboard, and Wazuh Indexer.</li><li>Core role: central security event collection, indexing, alert review, and investigation.</li></ul></article>
+ <article class="ext-card"><h3>Monitored endpoints</h3><ul><li>Agent-001: Windows 11 Pro with Wazuh Agent and Sysmon.</li><li>Agent-002: Ubuntu 24.04 LTS under WSL2 with Wazuh Agent, FIM, Syscollector, and Logcollector.</li><li>Endpoint telemetry is the basis for host-specific security investigation.</li></ul></article>
+ <article class="ext-card"><h3>Threat Simulation Platform</h3><ul><li>TSP-01 is Kali Linux Rolling running in VirtualBox.</li><li>The recorded configuration states Kali is not currently monitored by Wazuh.</li><li>Activity originating on Kali is not automatically visible as endpoint telemetry unless collected by a monitored endpoint, network sensor, or other configured source.</li></ul></article>
+ <article class="ext-card"><h3>Analyst ticketing</h3><ul><li>Jira space: SOC Operations Center.</li><li>Work statuses include To Do, In Progress, In Review, and Done.</li><li>Security alert fields include Hostname, Investigation Result, MITRE Technique, Source IP, and Username, alongside alert-related fields.</li></ul></article>
+</div>
+</section>
+<section class="ext-section">
+<h2>Operational workflow</h2>
+<div class="ext-grid">
+ <article class="ext-card"><h3>1. Collect and inspect</h3><p>Start with Wazuh alerts and event details. Review the agent, timestamp, rule ID, severity, source and destination context, username, and raw JSON before drawing conclusions.</p></article>
+ <article class="ext-card"><h3>2. Investigate the endpoint</h3><p>Use agent context, Sysmon or Linux event data, FIM changes, inventory, and relevant log records to establish what happened and whether the activity is expected.</p></article>
+ <article class="ext-card"><h3>3. Map and document</h3><p>Where evidence supports it, map behavior to MITRE ATT&amp;CK. Record the hypothesis, evidence, investigation result, and unresolved questions in the SOC ticket.</p></article>
+ <article class="ext-card"><h3>4. Resolve and learn</h3><p>Update the ticket through the agreed workflow, record the disposition, and identify whether detection tuning, endpoint configuration, or a follow-up investigation is warranted.</p></article>
+</div>
+</section>
+<section class="ext-section">
+<h2>Technology layers and integration status</h2>
+<div class="ext-grid">
+ <article class="ext-card"><h3>Core and current focus</h3><ul><li>Ubuntu Server, Docker, Wazuh Manager/Dashboard/Indexer.</li><li>Windows Sysmon and Wazuh endpoint telemetry.</li><li>Ubuntu Wazuh agent with FIM, Syscollector and Logcollector.</li><li>Jira-based SOC ticket structure and analyst documentation.</li></ul></article>
+ <article class="ext-card"><h3>Documented wider platform design</h3><p>The project documentation also describes Prometheus, Grafana, Node Exporter, Ansible, Keycloak, MISP, TheHive, Cortex, and AI-assisted analyst support as platform layers or integration objectives. Their inclusion in the design is not, by itself, proof that each service is running and integrated in the current environment.</p></article>
+</div>
+</section>
+<section class="ext-section">
+<h2>Security engineering and lessons</h2>
+<div class="ext-card"><ul><li><strong>Telemetry boundaries matter:</strong> a Kali simulator that is not enrolled in Wazuh does not produce Wazuh agent events by itself.</li><li><strong>Alert triage needs context:</strong> rule severity is a prioritization signal, not a final verdict; analyst conclusions should cite supporting event and endpoint evidence.</li><li><strong>Ticket quality supports repeatability:</strong> structured fields make investigation results, source details, and technique mapping easier to review.</li><li><strong>Separate implemented from planned:</strong> integration claims should be backed by service status, configuration, or a repeatable test.</li></ul></div>
+</section>
+<section class="ext-section">
+<h2>Validation status and next practical work</h2>
+<div class="ext-card"><p>The project record confirms the SOC Core stack, two Wazuh-monitored endpoints, the unmonitored Kali simulation host, and Jira workflow setup. It also records the need for analyst orientation and controlled practice before beginning Shift 01 exercises. This case study does not claim that attack simulations have already been executed or that every integration target is operational.</p><p>Next practical work is to complete the Wazuh analyst orientation, verify event fields and filtering on the live dashboard, test the Jira investigation form with representative tickets, and design controlled simulations only after the telemetry path and expected evidence are understood.</p><p><a href="./gallery.html">Open the existing SOC-AI Forge evidence gallery →</a> · <a href="../forgeops/">Read ForgeOps case study →</a> · <a href="../../index.html#featured-projects">Back to portfolio →</a></p></div>
+</section>
+</div>
+
+</body> OR </html>
 =========================== -->
 <!-- ========================================================= -->
 <section>

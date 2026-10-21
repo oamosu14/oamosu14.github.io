@@ -159,3 +159,11 @@ All activities in this repository were performed in isolated virtual environment
 ## Author
 
 Cybersecurity Student / Analyst (Lab Portfolio Project).
+
+
+## Featured case studies
+
+- [ForgeOps Enterprise Linux Infrastructure](projects/forgeops/) — platform engineering, operations workspaces, remote access and monitoring.
+- [SOC-AI Forge](projects/soc-ai-forge/) — Wazuh-based security operations lab, monitored endpoints, analyst workflow and Jira ticketing.
+
+The portfolio keeps existing project folders and source files. The case studies distinguish the documented architecture from integrations or behaviors that still require runtime verification.
