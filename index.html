@@ -804,7 +804,7 @@ color:#22C55E;
 .hero .sidebar .card{padding:16px!important}
 .hero .globe{height:220px!important}
 .hero .globe svg{width:160px!important;height:160px!important}
-@media(max-width:900px){
+@media(max-width:760px){
  .hero{padding-top:28px!important;padding-bottom:28px!important}
  .hero .container.grid{grid-template-columns:minmax(0,1fr)!important;gap:22px!important}
  .hero .container.grid > div:first-child{display:block}
@@ -814,6 +814,7 @@ color:#22C55E;
  .hero-flagship .flagship-heading p{max-width:none;margin-top:8px}
  .hero .launch-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
+@media(max-width:760px){.hero-flagship .flagship-grid{grid-template-columns:1fr!important}.hero .quick-launch-center,.hero .panel{width:100%;box-sizing:border-box}}
 @media(max-width:520px){.hero .metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero .launch-grid{grid-template-columns:1fr!important}}
 </style></head>
 <body>
@@ -921,7 +922,8 @@ color:#22C55E;
 <div class="system" data-href="projects/control-center/"><span><a href="projects/control-center/" style="color:inherit;text-decoration:none;display:block;width:100%;text-align:left;">Control Center</a></span><span class="badge-ok">READY</span></div><div class="system" data-href="projects/home-lab-data-center/"><span><a href="projects/home-lab-data-center/" style="color:inherit;text-decoration:none;display:block;width:100%;text-align:left;">Home Lab Data Center</a></span><span class="badge-ok">READY</span></div><div class="system" data-href="projects/pentest-lab/"><span><a href="projects/pentest-lab/" style="color:inherit;text-decoration:none;display:block;width:100%;text-align:left;">Pentest Lab</a></span><span class="badge-ok">READY</span></div></div>
 <div class="card" id="contact"><h3>Contact</h3><div class="contact-row"><span>Email</span><strong><a href="mailto:oamosu14@aol.com" style="color:inherit;text-decoration:none">oamosu14@aol.com</a></strong></div><div class="contact-row"><span>GitHub</span><strong><a href="https://github.com/oamosu14" style="color:#22C55E;text-decoration:none">github.com/oamosu14</a></strong></div><div class="status-card"><span class="status-dot"></span><strong>All Services Operational</strong><div style="margin-top:8px;color:#94A3B8;font-size:13px">Platform Uptime 99.9%</div></div></div></div></div></section>
 <style id="flagship-project-styles">
-.hero-flagship{padding:18px 0 0;margin:0;width:100%}.hero-flagship .flagship-heading{display:block;margin-bottom:14px}.hero-flagship .flagship-heading p{max-width:none;margin-top:8px}.hero-flagship .flagship-heading h2{font-size:1.35rem;margin-top:4px;margin-bottom:0}.hero-flagship .flagship-grid{grid-template-columns:1fr;gap:12px}.hero-flagship .flagship-card{padding:18px}.hero-flagship .flagship-card h3{font-size:1.18rem}.hero-flagship .flagship-card p{font-size:.92rem;line-height:1.6}.hero-flagship .flagship-tags{margin:12px 0 16px}.hero-flagship .flagship-tags span{font-size:.72rem;padding:4px 7px}.hero-flagship .flagship-link{padding:9px 12px;font-size:.88rem}
+/* Final desktop layout: keep the two flagship case studies side by side. */
+.hero-flagship{padding:18px 0 0;margin:0;width:100%}.hero-flagship .flagship-heading{display:block;margin-bottom:14px}.hero-flagship .flagship-heading p{max-width:none;margin-top:8px}.hero-flagship .flagship-heading h2{font-size:1.35rem;margin-top:4px;margin-bottom:0}.hero-flagship .flagship-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.hero-flagship .flagship-card{padding:14px!important;min-width:0}.hero-flagship .flagship-card h3{font-size:1rem;overflow-wrap:anywhere}.hero-flagship .flagship-card p{font-size:.78rem;line-height:1.55}.hero-flagship .flagship-tags{margin:9px 0 12px}.hero-flagship .flagship-tags span{font-size:.62rem;padding:3px 6px}.hero-flagship .flagship-link{padding:8px 9px;font-size:.72rem;max-width:100%;flex-wrap:wrap}
 .flagship-section{padding:26px 0 48px}
 .flagship-heading{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap;margin-bottom:20px}
 .flagship-heading h2{font-size:clamp(1.6rem,3vw,2.2rem);color:#f8fafc;margin:0}
